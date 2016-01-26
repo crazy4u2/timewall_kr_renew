@@ -18,7 +18,7 @@ var UI = (function()
     var _pageContainer;
     var _app;
 
-    var _defaultPage = 'SHOP_LIST';
+    var _defaultPage = 'LOGIN';
     var _firstShowFlagList = {};
 
 
@@ -243,7 +243,6 @@ var UI = (function()
             popComponent = _popupComponentList[key];
         else if( typeof key == 'object' )
             popComponent = key;
-
 
         var $popContainer = $('.popup-container-wrapper');
         var $popBackground = $('.popup-background');

@@ -36,13 +36,13 @@ var PageBookmark = React.createClass(
         var style =
         {
             width:this.context.viewSize.width,
-            height:this.context.viewSize.height,
-            backgroundColor : '#00F'
+            height:this.context.viewSize.height
+            //backgroundColor : '#00F'
         };
         return (
             <div className="page page-bookmark" style={style}>
                 <PageHeader title="북마크 페이지" />
-                <div onClick={this.handleClick}>매장리스트 페이지로</div>
+
             </div>
         );
     }

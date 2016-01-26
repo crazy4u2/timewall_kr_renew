@@ -24,6 +24,7 @@ var PageMainMenu = React.createClass(
 
     onShow : function()
     {
+        console.log(this.props);
         var self = this;
         BRIDGE.getUserOption( function( option )
         {

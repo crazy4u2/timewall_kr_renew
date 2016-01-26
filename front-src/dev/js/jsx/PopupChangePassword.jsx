@@ -18,7 +18,9 @@ var PopupChangePassword = React.createClass(
     {
         UI.closePopup( this );
     },
+    onShow : function() {
 
+    },
     render : function()
     {
         return (
