@@ -1,0 +1,49 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ajax formData test</title>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+</head>
+<body>
+
+    <form id="frm" action="~/shop/Set_ShopReview_Image_Insert" method="post" enctype="multipart/form-data">
+        <input type="file" name="review_image" />
+        <input type="button" id="uploadbutton" value="클릭" />
+        <input type="hidden" name="shop_idx" value="500" />
+        <input type="hidden" name="u_idx" value="1" />
+        <input type="hidden" name="grade" value="1" />
+        <input type="hidden" name="review_contents" value="@DateTime.Now.ToShortTimeString()" />
+    </form>
+
+    <div id="result"></div>
+
+</body>
+</html>
+<script>
+
+    $(function () {
+        $("#uploadbutton").click(function () {
+            var form = $('form')[0];
+            var formData = new FormData(form);
+            $.ajax({
+                url: '/shop/Set_ShopReview_Image_Insert',
+                processData: false,
+                contentType: 'multipart/form-data',
+                data: formData,
+                type: 'POST',
+                success: function (result) {
+                    $("#result").html(result);
+                }
+            });
+        });
+    })
+
+
+</script>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no, address=no, email=no" /><!-- telephone, address, email autolink is not work -->
+	<title></title>
+	<script src="/front-src/release/js/library/jquery.min.js"></script>
+	<script src="/front-src/release/js/plugin/slick.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/front-src/release/css/timewallet.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		// simple include function for basic ui(view only) dev.
+		var include = function(obj){
+			jQuery.ajax({
+				url: 'front-src/release/html/'+obj+'.html',
+				success: function(data){
+					jQuery('.'+obj).html(data);
+					console.log(obj+' include ok');
+				}
+			});
+		};
+
+		var launch = function() {
+			include('header');
+			include('sidebar');
+		};
+		launch();
+
+		jQuery(document).ready(function(){
+			// 기부처 목록 높이
+			jQuery('.donate-place').height(
+				jQuery(window).height() - jQuery('.header').height() - jQuery('.donate-intro').height()
+			);
+		});
+	</script>
+</head>
+<body>
+<section class="container coin gray-wrap">
+	<header class="header">
+		<!-- header-menu 나와야 함 -->
+	</header>
+	<!-- contents -->
+	<section class="contents">
+		<div class="contentsScroll">
+			<div class="donate-visual">
+				<div class="visual">
+					<img src="/front-src/release/images/bg_donate_visual.png" alt="" />
+				</div>
+				<div class="total">총 모금액 : <span>138,000</span> coin</div>
+			</div>
+			<!-- common-tab -->
+			<div class="common-tab count-2 coin-donate-tab">
+				<ul class="fix">
+					<li><a class="place-info active" href="javascript:void(0);">기부처 정보</a></li>
+					<li><a class="donor" href="javascript:void(0);">기부자 명단</a></li>
+					<!-- <li><a class="use-history" href="javascript:void(0);">사용내역</a></li>  2015-12-04 삭제 -->
+				</ul>
+			</div>
+			<!-- //common-tab -->
+			<!-- common-tab-contents -->
+			<div class="common-tab-contents tab-cont-place" style="display:block;"> <!-- 기부처 정보 -->
+				<div class="donate-amount">
+					<div class="donate-amount-inner">
+						<strong>100,000</strong><span>coin</span>
+						<p>나의 현제 코인</p>
+					</div>
+				</div>
+				<div class="roundbox first">
+					<div class="roundbox-inner">
+						<div class="amount">
+							<label for="will">기부할 금액을 입력해주세요</label>
+							<div class="money">
+								<div class="money-inner">
+									<input type="text" value="" id="will" placeholder="" />
+								</div>
+							</div>
+							<div class="message">* 금액을 입력해 주세요</div><!-- 에러메시지 나올땐 addClass : error -->
+							<!--<div class="message error">* 보유금액을 초과한 금액입니다.</div> -->
+							<!--<div class="message error">* 코인은 100단위로만 사용가능합니다.</div>  -->
+						</div>
+					</div>
+				</div>
+				<div class="btn-donate">
+					<a href="javascript:void(0);">기부하기</a>
+				</div>
+				<div class="roundbox">
+					<div class="roundbox-inner">
+						<p class="title">기부처 정보</p>
+						<div class="tb-donate-info">
+							<table>
+								<caption>매장정보</caption>
+								<colgroup>
+									<col style="width:60px;" />
+									<col style="width:*" />
+								</colgroup>
+								<tbody>
+								<tr>
+									<th scope="row">주소</th>
+									<td>서울특별시 서초구 서초동 12-12</td>
+								</tr>
+								<tr>
+									<th scope="row">전화번호</th>
+									<td>02-322-3333</td>
+								</tr>
+								<tr>
+									<th scope="row">홈페이지</th>
+									<td><a href="www.time.co.kr" target="_blank">www.time.co.kr</a></td>
+								</tr>
+								</tbody>
+							</table>
+							<a class="btn-phone" href="tel:02-322-3333;" >전화하기</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="roundbox">
+					<div class="roundbox-inner">
+						<p class="title">유니세프 한국위원회</p>
+						<div class="text">
+							유니세프는 국적과 인종, 이념, 종교, 성별등과 상관없이 도움을 필요로하는 어린이가 있는 곳에 도움의 손길을 전하는 차별없는 구호의 정신에 따라 1946년 12월 설립된 국제기구.
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //common-tab-contents -->
+			<!-- common-tab-contents -->
+			<div class="common-tab-contents tab-cont-donor" style="display:none;"><!-- 기부자 명단 -->
+				<div class="donor-history">
+					<div class="donate-list">
+						<!-- 데이터 없을 때
+                        <div class="no-data">
+                            <div class="no-data-ment type2">
+                                <p class="text-type2">기부자 명단이 없습니다.</p>
+                            </div>
+                        </div>  -->
+						<!-- 최대 4개까지 노출되고 4개 이상이면 페이징 -->
+						<ul>
+							<li>
+								<div class="donate-logo" style="background-image:url(/front-src/release/images/logo_unicef.png);"></div>
+								<div class="balloons">
+									<p class="donate-date">2015-09-14</p>
+									<div class="report">
+										<span class="donate-place">유니세프한국위원회</span>에 <br />
+										<span class="doate-coin"><em>5,000</em>coin</span>을 기부하셨습니다.
+									</div>
+									<div class="donor-num">기부자 : <span>**04</span>님</div>
+								</div>
+							</li>
+							<li>
+								<div class="donate-logo" style="background-image:url(/front-src/release/images/logo_unicef.png);"></div>
+								<div class="balloons">
+									<p class="donate-date">2015-09-14</p>
+									<div class="report">
+										<span class="donate-place">유니세프한국위원회</span>에 <br />
+										<span class="doate-coin"><em>5,000</em>coin</span>을 기부하셨습니다.
+									</div>
+									<div class="donor-num">기부자 : <span>**04</span>님</div>
+								</div>
+							</li>
+							<li>
+								<div class="donate-logo" style="background-image:url(/front-src/release/images/logo_unicef.png);"></div>
+								<div class="balloons">
+									<p class="donate-date">2015-09-14</p>
+									<div class="report">
+										<span class="donate-place">유니세프한국위원회</span>에 <br />
+										<span class="doate-coin"><em>5,000</em>coin</span>을 기부하셨습니다.
+									</div>
+									<div class="donor-num">기부자 : <span>**04</span>님</div>
+								</div>
+							</li>
+							<li>
+								<div class="donate-logo" style="background-image:url(/front-src/release/images/logo_unicef.png);"></div>
+								<div class="balloons">
+									<p class="donate-date">2015-09-14</p>
+									<div class="report">
+										<span class="donate-place">유니세프한국위원회</span>에 <br />
+										<span class="doate-coin"><em>5,000</em>coin</span>을 기부하셨습니다.
+									</div>
+									<div class="donor-num">기부자 : <span>**04</span>님</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!-- //donate-list -->
+					<div class="paging">
+						<a class="btn-prev" href="javascript:void(0);"><i class="fa fa-chevron-left"></i><span>이전</span></a>
+							<span>
+								<a  class="active" href="javascript:void(0);">1</a>
+								<a href="javascript:void(0);">2</a>
+								<a href="javascript:void(0);">3</a>
+								<a href="javascript:void(0);">4</a>
+								<a href="javascript:void(0);">5</a>
+							</span>
+						<a class="btn-next" href="javascript:void(0);"><i class="fa fa-chevron-right"></i><span>다음</span></a>
+					</div>
+					<!--// paging -->
+				</div>
+				<!-- //donor-history -->
+			</div>
+			<!-- //common-tab-contents -->
+
+			<!-- common-tab-contents -->
+			<div class="common-tab-contents tab-cont-use" style="display:none;"> <!-- 2015-12-04 사용내역 탭 컨텐츠가 삭제 되지만 추후 되살릴수도 있음. -->
+				<div class="current-gather">
+					<div class="current-gather-inner">
+						<p>현재 잔여 모금액 : <span><em>30,000</em>coin</span></p>
+					</div>
+				</div>
+				<div class="use-history">
+					<div class="donate-list">
+						<!-- 데이터 없을 때
+                        <div class="no-data">
+                            <div class="no-data-ment type2">
+                                <p class="text-type2">기부자 명단이 없습니다.</p>
+                            </div>
+                        </div>  -->
+						<!-- 최대 3개까지 노출되고 3개 이상이면 페이징 -->
+						<ul>
+							<li>
+								<div class="donate-logo" style="background-image:url(/front-src/release/images/logo_unicef.png);"></div>
+								<div class="balloons">
+									<p class="donate-date">2015-09-14</p>
+									<div class="report">
+										<span class="donate-place">유니세프한국위원회</span>에 <br />
+										<span class="doate-coin"><em>5,000</em>coin</span>을 전달하였습니다.
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="donate-logo" style="background-image:url(/front-src/release/images/logo_unicef.png);"></div>
+								<div class="balloons">
+									<p class="donate-date">2015-09-14</p>
+									<div class="report">
+										<span class="donate-place">유니세프한국위원회</span>에 <br />
+										<span class="doate-coin"><em>5,000</em>coin</span>을 전달하였습니다.
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="donate-logo" style="background-image:url(/front-src/release/images/logo_unicef.png);"></div>
+								<div class="balloons">
+									<p class="donate-date">2015-09-14</p>
+									<div class="report">
+										<span class="donate-place">유니세프한국위원회</span>에 <br />
+										<span class="doate-coin"><em>5,000</em>coin</span>을 전달하였습니다.
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!-- //donate-list -->
+					<div class="paging">
+						<a class="btn-prev" href="javascript:void(0);"><i class="fa fa-chevron-left"></i><span>이전</span></a>
+							<span>
+								<a  class="active" href="javascript:void(0);">1</a>
+								<a href="javascript:void(0);">2</a>
+								<a href="javascript:void(0);">3</a>
+								<a href="javascript:void(0);">4</a>
+								<a href="javascript:void(0);">5</a>
+							</span>
+						<a class="btn-next" href="javascript:void(0);"><i class="fa fa-chevron-right"></i><span>다음</span></a>
+					</div>
+					<!--// paging -->
+				</div>
+				<!-- //donor-history -->
+			</div>
+			<!-- //common-tab-contents -->
+		</div>
+	</section>
+	<!-- //contents -->
+
+
+
+</section>
+
+<div id="errors"></div>
+<div class="shadow" style="display:none;"></div>
+<!-- js remote -->
+<script src="http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyAbifDvTwZeJGRnq1OUxoArY2yYJ98fXKY"></script>
+
+<!--
+<script src="/front-src/release/js/library/react-0.13.3.min.js"></script>
+<script src="/front-src/release/js/library/react-with-addons-0.13.3.min.js"></script>
+-->
+<script src="/front-src/release/js/library/lazy.min.js"></script>
+
+<!-- gMap -->
+<script src="/front-src/release/js/plugin/gmaps.min.js"></script>
+
+<!-- msg -->
+<script src="/front-src/release/js/msg.js"></script>
+
+<!-- twUi -->
+<script src="/front-src/release/js/twUi.js"></script>
+
+
+
+<script>
+	var scriptUrl="/front-src/release/js/";
+
+	twCommonUi.scriptLoadNext(
+		[
+			scriptUrl+'plugin/json2.js',
+			scriptUrl+'library/router.js',
+			scriptUrl+'library/reqwest.js',
+			scriptUrl+'plugin/interact.min.js',
+			scriptUrl+'library/pageslider-react.js',
+			scriptUrl+'plugin/slick.min.js',
+			scriptUrl+'plugin/jquery.storage.js',
+			scriptUrl+'plugin/lazysizes.min.js',
+			scriptUrl+'plugin/jquery.easings.js',
+			scriptUrl+'plugin/jquery.transit.js',
+			//scriptUrl+'twRouter.js'
+
+		],function() {
+		}
+	);
+</script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no, address=no, email=no" /><!-- telephone, address, email autolink is not work -->
+	<title></title>
+	<script src="/front-src/release/js/library/jquery.min.js"></script>
+	<script src="/front-src/release/js/twUi.js"></script>
+	<link rel="stylesheet" type="text/css" href="/front-src/release/css/timewallet.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<script>
+		// simple include function for basic ui(view only) dev.
+		var include = function(obj){
+			jQuery.ajax({
+				url: 'front-src/release/html/'+obj+'.html',
+				success: function(data){
+					jQuery('.'+obj).html(data);
+					console.log(obj+' include ok');
+				}
+			});
+		};
+
+		var launch = function() {
+			include('header');
+			include('sidebar');
+		};
+		launch();
+
+		jQuery(document).ready(function(){
+
+		});
+	</script>
+</head>
+<body>
+<section class="container member"><!-- member classname is Variable -->
+	<header class="header"></header>
+	<section class="contents member-reg">
+		<div class="member-info">
+			<div class="member-title">
+				<h3>회원가입정보</h3>
+				<p class="essential">*표시는 필수 입력사항 입니다.</p>
+			</div>
+			<div class="member-contents">
+				<!-- phone -->
+				<div class="cert">
+					<div class="inp-type1"><input type="tel" placeholder="* 휴대폰 번호"></div>
+					<a href="javascript:void(0);" class="btn-modal-cert modal-cert"><span>인증하기</span></a>
+				</div>
+				<!--// phone -->
+				<!-- password
+                    default : inp-type1
+                    correct : addclass pass-ok,
+                    incorret : addclass pass-not
+                -->
+				<div class="inp-type1 pass-ok">
+					<input type="password" placeholder="* 비밀번호 입력(영,숫자 혼합 8~15자리)">
+					<span class="marker good"></span>
+					<span class="marker ng"></span>
+				</div>
+				<p class="comment notice">* 비밀번호 형식에 맞지 않습니다.</p>
+				<div class="inp-type1 pass-not">
+					<input type="password" placeholder="* 비밀번호 확인">
+					<span class="marker good"></span>
+					<span class="marker ng"></span>
+				</div>
+				<p class="comment notice">* 비밀번호가 일치하지 않습니다.</p>
+				<!--// password -->
+				<!-- gender -->
+				<div class="inputbox-group fix">
+					<div class="inp-radio active"><!-- When you select addclass active -->
+						<input type="radio" id="rdo1" /><label for="rdo1"><span class="box"><em class="box-dot"></em></span><span class="text">남자</span></label>
+					</div>
+					<div class="inp-radio">
+						<input type="radio" id="rdo2" /><label for="rdo2"><span class="box"><em class="box-dot"></em></span><span class="text">여자</span></label>
+					</div>
+				</div>
+				<!--// gender -->
+				<!-- birthday -->
+				<div class="selectbox-group fix">
+					<div class="select-type1 year">
+						<span class="select-title">* 생년월일</span>
+						<select id="sel1">
+							<option value=""></option>
+							<option value="1982">1982</option>
+							<option value="1981">1981</option>
+							<option value="1980">1980</option>
+							<option value="1979">1979</option>
+						</select>
+						<label for="sel1" class="right">년</label>
+					</div>
+					<div class="select-type1 month">
+						<select id="sel2">
+							<option value=""></option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+						<label for="sel2" class="right">월</label>
+					</div>
+					<div class="select-type1 date">
+						<select>
+							<option value=""></option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
+							<option value="25">25</option>
+							<option value="26">26</option>
+							<option value="27">27</option>
+							<option value="28">28</option>
+							<option value="29">29</option>
+							<option value="30">30</option>
+							<option value="31">31</option>
+						</select>
+						<label class="right">일</label>
+					</div>
+				</div>
+				<!--// birthday -->
+				<!-- region -->
+				<div class="inp-type1 region">
+					<a href="javascript:void(0);"></a>
+					<input type="text" placeholder="* 거주지역설정" value="광주광역시 남구"/>
+				</div>
+				<!--// region -->
+				<!-- email
+                <div class="email">
+                    <div class="inp-type1"><input type="text" placeholder="* e-mail 입력" /></div>
+                    <p class="comment notice">* 이메일 형식이 잘못되었습니다.</p>
+                    <p class="comment">* e-mail 정보는 비밀번호 분실 시 사용됩니다.</p>
+                </div>-->
+				<!--//email  -->
+			</div>
+		</div>
+		<!--// member-info -->
+		<div class="member-footer">
+			<a href="javascript:void(0);" class="btn-start"><span>가입하기</span></a><!-- When all of the input condition is the complete, btn-start addclass active -->
+		</div>
+		<!--// member-footer -->
+	</section>
+	<!--// contents -->
+	<section class="sidebar"></section>
+</section>
+<!--// container -->
+
+<div id="errors"></div>
+<div class="shadow"></div>
+
+<script>
+
+</script>
+
+<!-- js remote -->
+<script src="http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyAbifDvTwZeJGRnq1OUxoArY2yYJ98fXKY"></script>
+
+<!--
+<script src="/front-src/release/js/library/react-0.13.3.min.js"></script>
+<script src="/front-src/release/js/library/react-with-addons-0.13.3.min.js"></script>
+-->
+<script src="/front-src/release/js/library/lazy.min.js"></script>
+
+<!-- gMap -->
+<script src="/front-src/release/js/plugin/gmaps.min.js"></script>
+
+<!-- msg -->
+<script src="/front-src/release/js/msg.js"></script>
+
+<!-- twUi -->
+<script src="/front-src/release/js/twUi.js"></script>
+
+
+<script>
+	var scriptUrl="/front-src/release/js/";
+
+	twCommonUi.scriptLoadNext(
+		[
+			scriptUrl+'plugin/json2.js',
+			scriptUrl+'library/router.js',
+			scriptUrl+'library/reqwest.js',
+			scriptUrl+'plugin/interact.min.js',
+			scriptUrl+'library/pageslider-react.js',
+			scriptUrl+'plugin/slick.min.js',
+			scriptUrl+'plugin/jquery.storage.js',
+			scriptUrl+'plugin/lazysizes.min.js',
+			scriptUrl+'plugin/jquery.easings.js',
+			scriptUrl+'plugin/jquery.transit.js',
+			scriptUrl+'twRouter.js'
+
+		],function() {
+		}
+	);
+</script>
+
+</body>
+</html>

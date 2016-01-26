@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>timewallet-test</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <script src="/front-src/release/js/app/bridge.js?ver=617" type="text/javascript"></script>
+    <script src="/front-src/release/js/ncutil.js" tyle="text/javascript"></script>
+</head>
+<body>
+    <div class="container"></div>
+    <script>
+        var scriptlist =
+        [
+            'http://maps.google.com/maps/api/js?sensor=true',
+            '/front-src/release/css/renewal.css?ver=22',
+            '/front-src/release/css/timewallet.css?ver=22',
+            '/front-src/release/js/library/react.js',
+            '/front-src/release/js/library/react-dom.js',
+            '/front-src/release/js/library/jquery.min.js',
+            '/front-src/release/js/library/jquery.transit.min.js',
+            '/front-src/release/js/library/router.js',
+
+            '/front-src/release/template/ui.js',
+            '/front-src/release/js/ncui.js',
+            '/front-src/release/js/ncrouter.js',
+            '/front-src/release/js/model.js',
+
+            '/front-src/release/js/app.js'
+        ];
+
+        UTIL.loadScript( scriptlist, function()
+        {
+            APP.start();
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no, address=no, email=no" /><!-- telephone, address, email autolink is not work -->
+	<title></title>
+	<script src="/front-src/release/js/library/jquery.min.js"></script>
+	<script src="/front-src/release/js/plugin/slick.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/front-src/release/css/timewallet.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		// simple include function for basic ui(view only) dev.
+		var include = function(obj){
+			jQuery.ajax({
+				url: 'front-src/release/html/'+obj+'.html',
+				success: function(data){
+					jQuery('.'+obj).html(data);
+					console.log(obj+' include ok');
+				}
+			});
+		};
+
+		var launch = function() {
+			include('header');
+			include('sidebar');
+		};
+		launch();
+
+		jQuery(document).ready(function(){
+			
+		});
+	</script>
+</head>
+<body>
+	<section class="container coupon">
+		<header class="header">
+			<!-- header-menu 나와야 함 -->
+		</header>
+		<!-- contents -->
+		<section class="contents">
+			<div class="contentsScroll">
+				<div class="view-coupon">
+					<div class="coupon-imgbox">
+						<div class="imgarea">
+							<div class="coupon-kind plus"><span class="hanareum" style="background-image:url(/front-src/release/images/han.jpg);">한아름 제휴</span>coupon 플러스</div><!-- 한아름 제휴사일 경우 hanareum 가 추가됨 -->
+							<!--<div class="coupon-kind freebies ">coupon 사은품</div>
+							<div class="coupon-kind free">coupon 무료</div>
+							<div class="coupon-kind discount">coupon 할인</div>-->
+						</div>
+						<!-- //imgarea -->
+						<div class="coupon-top-info">
+							<strong class="coupon-detail">3만원이상 구매고객 텀블러 증정</strong><!-- 제한 글자 15자  -->
+							<div class="info">
+								<div class="coupon-until"><span>2015-06-30</span>부터 <span>2015-09-30</span>까지</div>
+								<div class="txt">일일일일일일일일일일이이이이이이이이이이삼삼삼삼삼삼삼삼삼삼사사사사사사사사사사</div><!-- 제한 글자 40자  -->
+							</div>
+						</div>
+						<!-- //coupon-img-info -->
+					</div>
+					<!-- //coupon-imgbox -->
+					<div class="info-notice">구매한 쿠폰 사용시 <span>100coin</span>이 적립됩니다!</div>
+				</div>
+				<!-- //view-coupon -->
+				<div class="view-coupon-txt">
+					<p class="paper-min"><strong>1</strong>매 <span><em>60</em>min</span></p>
+					<div class="view-info">
+						<span class="shop-logo" style="background-image:url(/front-src/release/images/shop_logo_sample1.png);"></span>
+						<span class="useable-shop">사용가능매장</span>
+						<strong class="coupon-shop-name">스타벅스 강남 2호점</strong>
+						<div class="tb-shop-info">
+							<table>
+								<caption>매장정보</caption>
+								<colgroup>
+								<col style="width:70px;" />
+								<col style="width:*" />
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row">주소</th>
+										<td>서울특별시 서초구 서초동 12-12</td>
+									</tr>
+									<tr>
+										<th scope="row">전화번호</th>
+										<td><a href="tel:02-322-3333">02-322-3333</a></td>
+									</tr>
+									<tr>
+										<th scope="row">영업시간</th>
+										<td>AM10:00-PM10:00</td>
+									</tr>
+									<tr>
+										<th scope="row">휴무일</th>
+										<td>연중무휴</td>
+									</tr>
+									<tr>
+										<th scope="row">홈페이지</th>
+										<td><a href="www.time.co.kr" target="_blank">www.time.co.kr</a></td>
+									</tr>
+								</tbody>
+							</table>
+							<a class="btn-shop-map"href="javascript:void(0);">지도로 가기</a>
+							<a class="btn-shop-detail" href="tel:02-322-3333" >매장상세정보로가기</a>
+						</div>
+						<!-- //tb-shop-info -->
+						<div class="notice">
+							<p class="notice-title">쿠폰 사용 시 주의사항</p>
+							<ul>
+								<li>- 본 매장 어디서든 사용가능 (단, 역사점은 불가능)</li>
+								<li>- 타 쿠폰과 중복사용 불가<li>
+								<li>- 예약 필수</li>
+								<li>- 주말 및 공휴일 제외</li>
+								<li>- 사용기간 : 발급일로부터 7일</li>
+							</ul>
+							<p class="notice-title">타임월렛 주의사항</p>
+							<ul>
+								<li>- 본 매장 어디서든 사용가능 (단, 역사점은 불가능)</li>
+								<li>- 타 쿠폰과 중복사용 불가</li>
+								<li>- 예약 필수</li>
+								<li>- 주말 및 공휴일 제외</li>
+								<li>- 사용기간 : 발급일로부터 7일</li>
+							</ul>
+						</div>
+						<!-- //notice -->
+					</div>
+					<!-- //view-info -->
+				</div>
+				<!-- //view-coupon-txt -->
+				<div class="notice-agreebox">
+					<div class="inp-check"><!-- When you select addclass active -->
+						<input type="checkbox" id="check1" name="noticeAgree" />
+						<label for="check1">
+							<span class="box"><em class="box-dot"></em></span>
+							<span class="text">위 주의사항에 동의합니다.</span>
+						</label>
+					</div>
+					<div class="btn-wrap">
+						<a class="btn-type3" href="javascript:void(0);">교환하기</a><!-- addClass : active -->
+					</div>
+				</div>
+				<!--// notice-agreebox -->
+			</div>
+			<!-- //contentsScroll -->
+		</section>
+		<!-- //contents -->
+
+
+
+	</section>
+
+	<div id="errors"></div>
+	<div class="shadow" style="display:none;"></div>
+	<!-- js remote -->
+	<script src="http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyAbifDvTwZeJGRnq1OUxoArY2yYJ98fXKY"></script>
+
+	<!--
+	<script src="/front-src/release/js/library/react-0.13.3.min.js"></script>
+	<script src="/front-src/release/js/library/react-with-addons-0.13.3.min.js"></script>
+	-->
+	<script src="/front-src/release/js/library/lazy.min.js"></script>
+
+	<!-- gMap -->
+	<script src="/front-src/release/js/plugin/gmaps.min.js"></script>
+
+	<!-- msg -->
+	<script src="/front-src/release/js/msg.js"></script>
+
+	<!-- twUi -->
+	<script src="/front-src/release/js/twUi.js"></script>
+
+
+
+	<script>
+		var scriptUrl="/front-src/release/js/";
+
+		twCommonUi.scriptLoadNext(
+			[
+				scriptUrl+'plugin/json2.js',
+				scriptUrl+'library/router.js',
+				scriptUrl+'library/reqwest.js',
+				scriptUrl+'plugin/interact.min.js',
+				scriptUrl+'library/pageslider-react.js',
+				scriptUrl+'plugin/slick.min.js',
+				scriptUrl+'plugin/jquery.storage.js',
+				scriptUrl+'plugin/lazysizes.min.js',
+				scriptUrl+'plugin/jquery.easings.js',
+				scriptUrl+'plugin/jquery.transit.js',
+				//scriptUrl+'twRouter.js'
+
+			],function() {
+			}
+		);
+	</script>
+</body>
+</html>

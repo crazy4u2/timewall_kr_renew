@@ -1,0 +1,56 @@
+
+[
+  {
+    "ResultCode": 1,
+    "ResultData": [
+      {
+        "d_idx": 1,
+        "d_image_s": "",
+        "d_image": "",
+        "d_organization": "유니세프",
+        "d_addr": "",
+        "d_url": "",
+        "d_phone": "",
+        "d_info": "",
+        "d_regdate": "",
+        "d_status": ""
+      },
+      {
+        "d_idx": 2,
+        "d_image_s": "",
+        "d_image": "",
+        "d_organization": "초록우산 어린이 재단",
+        "d_addr": "",
+        "d_url": "",
+        "d_phone": "",
+        "d_info": "",
+        "d_regdate": "",
+        "d_status": ""
+      },
+      {
+        "d_idx": 3,
+        "d_image_s": "",
+        "d_image": "",
+        "d_organization": "컴패션",
+        "d_addr": "",
+        "d_url": "",
+        "d_phone": "",
+        "d_info": "",
+        "d_regdate": "",
+        "d_status": ""
+      },
+      {
+        "d_idx": 4,
+        "d_image_s": "",
+        "d_image": "",
+        "d_organization": "굿네이버스",
+        "d_addr": "",
+        "d_url": "",
+        "d_phone": "",
+        "d_info": "",
+        "d_regdate": "",
+        "d_status": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no, address=no, email=no" /><!-- telephone, address, email autolink is not work -->
+	<title></title>
+	<script src="/front-src/release/js/library/jquery.min.js"></script>
+	<script src="/front-src/release/js/plugin/slick.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/front-src/release/css/timewallet.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		// simple include function for basic ui(view only) dev.
+		var include = function(obj){
+			jQuery.ajax({
+				url: 'front-src/release/html/'+obj+'.html',
+				success: function(data){
+					jQuery('.'+obj).html(data);
+					console.log(obj+' include ok');
+				}
+			});
+		};
+
+		var launch = function() {
+			include('header');
+			include('sidebar');
+		};
+		launch();
+
+		jQuery(document).ready(function(){
+			
+		});
+	</script>
+</head>
+<body>
+	<section class="container coupon gray-wrap">
+		<header class="header">
+			<!-- header-menu 나와야 함 -->
+		</header>
+		<!-- contents -->
+		<section class="contents">
+			<div class="contentsScroll">
+				<!-- use-top-wrap coupon -->
+				<div class="use-top-wrap coupon">
+					<div class="use-top-wrap-inner fix">
+						<div class="coupon-kind plus"><span class="hanareum" style="background-image:url(/front-src/release/images/han.jpg);">한아름 제휴</span>coupon 플러스</div><!-- 한아름 제휴사일 경우 hanareum 가 추가됨 -->
+						<!--<div class="coupon-kind freebies ">coupon 사은품</div>
+						<div class="coupon-kind free">coupon 무료</div>
+						<div class="coupon-kind discount">coupon 할인</div>-->
+						<div class="text">
+							<strong>아메리카노 50%할인</strong>
+							<p><span>2015-06-30</span>부터 <span>2015-09-30</span>까지</p>
+						</div>
+					</div>
+				</div>
+				<!-- //use-top-wrap coupon -->
+				<!-- payment-wrap -->
+				<div class="payment-wrap">
+					<div class="roundbox">
+						<div class="roundbox-inner">
+							<div class="coupon-explain">
+								<p>아메리카노를 여러분께 절반의 가격으로 마구마구 쏩니다! 아늑한 분위기에서 더 저렴하고  더 편안하게 즐기세요!</p>
+								<div class="message fix">
+									<span class="shop-name">스타벅스 강남 2호점 스타벅스 강남 2호점스타벅스 강남 2호점스타벅스 강남 2호점스타벅스 강남 2호점스타벅스 강남 2호점</span><span class="min">1매 <em>60min</em></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="roundbox">
+						<div class="roundbox-inner">
+							<div class="use-button">
+								<span class="title">사용하기</span>
+								<p>자세한 사용방법은 아래를 확인하세요. </p>
+								<div class="btn-use">
+									<a href="javascript:void(0);">사용하기</a><!-- 클릭시 addClass : active -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="roundbox">
+						<div class="roundbox-inner">
+							<div class="use-way">
+								<span class="title">사용방법</span>
+								<div class="img-explain">
+									<ol class="fix">
+										<li>블루투스 ON</li>
+										<li>단말기 제시</li>
+										<li>비콘태그</li>
+									</ol>
+								</div>
+								<ol class="text-explain">
+									<li>1) 단말기의 블루투스 기능을 켜주세요.</li>
+									<li>2) 점원의 안내에 따라 단말기를 제시하세요.</li>
+									<li>3) 비콘과 단말기가 통신 후 결제가 완료됩니다.</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- //payment-wrap -->
+			</div>
+			<!-- //contentsScroll -->
+		</section>
+		<!-- //contents -->
+
+
+
+	</section>
+
+	<div id="errors"></div>
+	<div class="shadow" style="display:none;"></div>
+	<!-- js remote -->
+	<script src="http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyAbifDvTwZeJGRnq1OUxoArY2yYJ98fXKY"></script>
+
+	<!--
+	<script src="/front-src/release/js/library/react-0.13.3.min.js"></script>
+	<script src="/front-src/release/js/library/react-with-addons-0.13.3.min.js"></script>
+	-->
+	<script src="/front-src/release/js/library/lazy.min.js"></script>
+
+	<!-- gMap -->
+	<script src="/front-src/release/js/plugin/gmaps.min.js"></script>
+
+	<!-- msg -->
+	<script src="/front-src/release/js/msg.js"></script>
+
+	<!-- twUi -->
+	<script src="/front-src/release/js/twUi.js"></script>
+
+
+
+	<script>
+		var scriptUrl="/front-src/release/js/";
+
+		twCommonUi.scriptLoadNext(
+			[
+				scriptUrl+'plugin/json2.js',
+				scriptUrl+'library/router.js',
+				scriptUrl+'library/reqwest.js',
+				scriptUrl+'plugin/interact.min.js',
+				scriptUrl+'library/pageslider-react.js',
+				scriptUrl+'plugin/slick.min.js',
+				scriptUrl+'plugin/jquery.storage.js',
+				scriptUrl+'plugin/lazysizes.min.js',
+				scriptUrl+'plugin/jquery.easings.js',
+				scriptUrl+'plugin/jquery.transit.js',
+				//scriptUrl+'twRouter.js'
+
+			],function() {
+			}
+		);
+	</script>
+</body>
+</html>

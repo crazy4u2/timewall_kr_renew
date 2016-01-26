@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no, address=no, email=no" /><!-- telephone, address, email autolink is not work -->
+	<title></title>
+	<script src="/front-src/release/js/library/jquery.min.js"></script>
+	<script src="/front-src/release/js/plugin/slick.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/front-src/release/css/timewallet.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		// simple include function for basic ui(view only) dev.
+		var include = function(obj){
+			jQuery.ajax({
+				url: 'front-src/release/html/'+obj+'.html',
+				success: function(data){
+					jQuery('.'+obj).html(data);
+					console.log(obj+' include ok');
+				}
+			});
+		};
+
+		var launch = function() {
+			include('header');
+			include('sidebar');
+		};
+		launch();
+
+		jQuery(document).ready(function(){
+			//공지사항 높이
+			jQuery('.notice-list').height(
+				jQuery(window).height() - jQuery('.header').height()
+			);
+			//공지사항 아코디언 효과
+			jQuery('.notice-list .accordion-title').on('tap',function(e) {
+				var _$this=jQuery(this);
+				var _$accordionInfoView = _$this.next('.info-view');
+				var _$accordionHeight = _$accordionInfoView.children('.info-view-inner').height();
+
+				if( _$accordionInfoView.height() == 0){
+					jQuery('.notice-list ul li').removeClass('active');
+					jQuery('.notice-list ul li .info-view').height(0);
+					_$this.parent('li').addClass('active');
+					_$accordionInfoView.css({
+						'height' : _$accordionHeight + 10
+					});
+				} else{
+					_$this.parent('li').removeClass('active');
+					_$accordionInfoView.css({
+						'height' : 0
+					});
+				}
+				e.stopImmediatePropagation();
+			});
+		});
+	</script>
+</head>
+<body>
+<section class="container notice">
+	<header class="header">
+		<!-- header-menu 나와야 함 -->
+	</header>
+	<!-- contents -->
+	<section class="contents">
+		<div class="notice-list">
+			<ul>
+				<li>
+					<!-- 노출되는 타이틀 영역 -->
+					<a class="accordion-title" href="javascript:void(0);">
+						<span class="new">N</span><!-- 새로운 글일때 나타남 -->
+						<span class="date">2015-06-27</span>
+						<span class="title">[공지] Time wallet Ver 1.0 출시 안내</span>
+						<i class="fa fa-caret-down"></i>
+					</a>
+					<!-- //노출되는 타이틀 영역 -->
+					<!-- 숨겨진 내용 영역 -->
+					<div class="info-view">
+						<div class="info-view-inner">
+							<div class="notice-text">
+								<img src="/front-src/release/images/img_notice.jpg" alt="" />
+								<br />
+								공지사항 기재시 사이즈 사십 색상 육오육오육오 입니다.
+							</div>
+						</div>
+					</div>
+					<!-- //숨겨진 내용 영역 -->
+				</li>
+				<li>
+					<!-- 노출되는 타이틀 영역 -->
+					<a class="accordion-title" href="javascript:void(0);">
+						<!-- <span class="new">N</span>새로운 글일때 나타남 -->
+						<span class="date">2015-06-27</span>
+						<span class="title">[이벤트] 타임월렛 가맹점 100만개 돌파 기념 이벤트!</span>
+						<i class="fa fa-caret-down"></i>
+					</a>
+					<!-- //노출되는 타이틀 영역 -->
+					<!-- 숨겨진 내용 역역 -->
+					<div class="info-view">
+						<div class="info-view-inner">
+							<div class="notice-text">
+								<img src="/front-src/release/images/img_notice.jpg" alt="" />
+								<br />
+								공지사항 기재시 사이즈 사십 색상 육오육오육오 입니다.
+							</div>
+						</div>
+					</div>
+					<!-- //숨겨진 내용 역역 -->
+				</li>
+				<li>
+					<!-- 노출되는 타이틀 영역 -->
+					<a class="accordion-title" href="javascript:void(0);">
+						<!-- <span class="new">N</span>새로운 글일때 나타남 -->
+						<span class="date">2015-06-27</span>
+						<span class="title">[이벤트] 타임월렛 가맹점 100만개 돌파 기념 이벤트!</span>
+						<i class="fa fa-caret-down"></i>
+					</a>
+					<!-- //노출되는 타이틀 영역 -->
+					<!-- 숨겨진 내용 역역 -->
+					<div class="info-view">
+						<div class="info-view-inner">
+							<div class="notice-text">
+								<img src="/front-src/release/images/img_notice.jpg" alt="" />
+								<br />
+								공지사항 기재시 사이즈 사십 색상 육오육오육오 입니다.
+							</div>
+						</div>
+					</div>
+					<!-- //숨겨진 내용 역역 -->
+				</li>
+				<li>
+					<!-- 노출되는 타이틀 영역 -->
+					<a class="accordion-title" href="javascript:void(0);">
+						<!-- <span class="new">N</span>새로운 글일때 나타남 -->
+						<span class="date">2015-06-27</span>
+						<span class="title">[이벤트] 타임월렛 가맹점 100만개 돌파 기념 이벤트!</span>
+						<i class="fa fa-caret-down"></i>
+					</a>
+					<!-- //노출되는 타이틀 영역 -->
+					<!-- 숨겨진 내용 역역 -->
+					<div class="info-view">
+						<div class="info-view-inner">
+							<div class="notice-text">
+								<img src="/front-src/release/images/img_notice.jpg" alt="" />
+								<br />
+								공지사항 기재시 사이즈 사십 색상 육오육오육오 입니다.
+							</div>
+						</div>
+					</div>
+					<!-- //숨겨진 내용 역역 -->
+				</li>
+				<li>
+					<!-- 노출되는 타이틀 영역 -->
+					<a class="accordion-title" href="javascript:void(0);">
+						<!-- <span class="new">N</span>새로운 글일때 나타남 -->
+						<span class="date">2015-06-27</span>
+						<span class="title">[이벤트] 타임월렛 가맹점 100만개 돌파 기념 이벤트!</span>
+						<i class="fa fa-caret-down"></i>
+					</a>
+					<!-- //노출되는 타이틀 영역 -->
+					<!-- 숨겨진 내용 역역 -->
+					<div class="info-view">
+						<div class="info-view-inner">
+							<div class="notice-text">
+								<img src="/front-src/release/images/img_notice.jpg" alt="" />
+								<br />
+								공지사항 기재시 사이즈 사십 색상 육오육오육오 입니다.
+							</div>
+						</div>
+					</div>
+					<!-- //숨겨진 내용 역역 -->
+				</li>
+				<li>
+					<!-- 노출되는 타이틀 영역 -->
+					<a class="accordion-title" href="javascript:void(0);">
+						<!-- <span class="new">N</span>새로운 글일때 나타남 -->
+						<span class="date">2015-06-27</span>
+						<span class="title">[이벤트] 타임월렛 가맹점 100만개 돌파 기념 이벤트!</span>
+						<i class="fa fa-caret-down"></i>
+					</a>
+					<!-- //노출되는 타이틀 영역 -->
+					<!-- 숨겨진 내용 역역 -->
+					<div class="info-view">
+						<div class="info-view-inner">
+							<div class="notice-text">
+								<img src="/front-src/release/images/img_notice.jpg" alt="" />
+								<br />
+								공지사항 기재시 사이즈 사십 색상 육오육오육오 입니다.
+							</div>
+						</div>
+					</div>
+					<!-- //숨겨진 내용 역역 -->
+				</li>
+				<li>
+					<!-- 노출되는 타이틀 영역 -->
+					<a class="accordion-title" href="javascript:void(0);">
+						<!-- <span class="new">N</span>새로운 글일때 나타남 -->
+						<span class="date">2015-06-27</span>
+						<span class="title">[이벤트] 타임월렛 가맹점 100만개 돌파 기념 이벤트!</span>
+						<i class="fa fa-caret-down"></i>
+					</a>
+					<!-- //노출되는 타이틀 영역 -->
+					<!-- 숨겨진 내용 역역 -->
+					<div class="info-view">
+						<div class="info-view-inner">
+							<div class="notice-text">
+								<img src="/front-src/release/images/img_notice.jpg" alt="" />
+								<br />
+								공지사항 기재시 사이즈 사십 색상 육오육오육오 입니다.
+							</div>
+						</div>
+					</div>
+					<!-- //숨겨진 내용 역역 -->
+				</li>
+			</ul>
+		</div>
+	</section>
+	<!-- //contents -->
+
+
+
+</section>
+
+<div id="errors"></div>
+<div class="shadow" style="display:none;"></div>
+<!-- js remote -->
+<script src="http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyAbifDvTwZeJGRnq1OUxoArY2yYJ98fXKY"></script>
+
+<!--
+<script src="/front-src/release/js/library/react-0.13.3.min.js"></script>
+<script src="/front-src/release/js/library/react-with-addons-0.13.3.min.js"></script>
+-->
+<script src="/front-src/release/js/library/lazy.min.js"></script>
+
+<!-- gMap -->
+<script src="/front-src/release/js/plugin/gmaps.min.js"></script>
+
+<!-- msg -->
+<script src="/front-src/release/js/msg.js"></script>
+
+<!-- twUi -->
+<script src="/front-src/release/js/twUi.js"></script>
+
+
+
+<script>
+	var scriptUrl="/front-src/release/js/";
+
+	twCommonUi.scriptLoadNext(
+		[
+			scriptUrl+'plugin/json2.js',
+			scriptUrl+'library/router.js',
+			scriptUrl+'library/reqwest.js',
+			scriptUrl+'plugin/interact.min.js',
+			scriptUrl+'library/pageslider-react.js',
+			scriptUrl+'plugin/slick.min.js',
+			scriptUrl+'plugin/jquery.storage.js',
+			scriptUrl+'plugin/lazysizes.min.js',
+			scriptUrl+'plugin/jquery.easings.js',
+			scriptUrl+'plugin/jquery.transit.js',
+			//scriptUrl+'twRouter.js'
+
+		],function() {
+		}
+	);
+</script>
+</body>
+</html>

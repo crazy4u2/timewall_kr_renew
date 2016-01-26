@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no, address=no, email=no" /><!-- telephone, address, email autolink is not work -->
+	<title></title>
+	<script src="/front-src/release/js/library/jquery.min.js"></script>
+	<script src="/front-src/release/js/plugin/slick.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/front-src/release/css/timewallet.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		// simple include function for basic ui(view only) dev.
+		var include = function(obj){
+			jQuery.ajax({
+				url: 'front-src/release/html/'+obj+'.html',
+				success: function(data){
+					jQuery('.'+obj).html(data);
+					console.log(obj+' include ok');
+				}
+			});
+		};
+
+		var launch = function() {
+			include('header');
+			include('sidebar');
+		};
+		launch();
+
+		jQuery(document).ready(function(){
+			//common-tab
+			jQuery('.common-tab ul li a').on('tap',function(e) {
+				var _$this=jQuery(this);
+				jQuery('.common-tab a').removeClass('active');
+				_$this.addClass('active');
+				e.stopImmediatePropagation();
+			});
+			//이용내역 리스트 높이
+			jQuery('.used-list').height(
+				jQuery(window).height() - jQuery('.header').height() - jQuery('.common-tab').height() - jQuery('.used-del').height()
+			);
+		});
+	</script>
+</head>
+<body>
+<section class="container used">
+	<header class="header">
+		<!-- header-menu 나와야 함 -->
+	</header>
+	<!-- contents -->
+	<section class="contents">
+		<!-- common-tab -->
+		<div class="common-tab count-3 coin-donate-tab">
+			<ul class="fix">
+				<li><a class="min active" href="javascript:void(0);">min</a></li>
+				<li><a class="coin" href="javascript:void(0);">coin</a></li>
+				<li><a class="coupon" href="javascript:void(0);">쿠폰</a></li>
+			</ul>
+		</div>
+		<!-- //common-tab -->
+		<div class="used-del">
+			<label for="allCheck" class="all-check"><input type="checkbox" id="allCheck" />전체선택</label>
+			<a class="all-del" href="javascript:void(0);">삭제</a>
+		</div>
+
+		<!-- TODO : 쿠폰탭을 작업하면서 .used-wrap 안에서 레이아웃 수정내역있습니다.
+		1. 기존 : .used-balloons 밑에 .inp-check에 옴
+		<li class="used-wrap fix">
+			<div class="tag save"><span>적립</span></div>
+			<span class="shop-logo" style="background-image:url(/front-src/release/images/shop_logo_sample1.png);"></span>
+			<div class="used-balloons">
+				<span class="used-date">2015-06-27 13:10</span>
+				<p class="shop-name">스타벅스 강남 2호점</p>
+				<div class="substance"><span><em>41</em>min</span> 적립하였습니다.</div>
+			</div>
+			<div class="inp-check">
+				<input type="checkbox" id="check1" name="mycheck" /><label for="check1"><span class="box"><em class="box-dot"></em></span></label>
+			</div>
+		</li>
+
+		2. 수정 : .used-balloons 안에 .inp-check에 포함시킴
+		<li class="used-wrap fix">
+			<div class="tag save"><span>적립</span></div>
+			<span class="shop-logo" style="background-image:url(/front-src/release/images/shop_logo_sample1.png);"></span>
+			<div class="used-balloons">
+				<span class="used-date">2015-06-27 13:10</span>
+				<p class="shop-name">스타벅스 강남 2호점</p>
+				<div class="substance"><span><em>41</em>min</span> 적립하였습니다.</div>
+				<div class="inp-check">
+					<input type="checkbox" id="check1" name="mycheck" /><label for="check1"><span class="box"><em class="box-dot"></em></span></label>
+				</div>
+			</div>
+		</li>
+		-->
+
+		<div class="common-tab-contents" style="display:none;">
+			<div class="used-list">
+				<!-- 데이터가 없을 때
+                <div class="no-data">
+                    <div class="no-data-ment">
+                        <p class="text-type2">이용 내역이 없습니다.</p>
+                    </div>
+                </div>
+                  -->
+				<ul>
+					<li class="used-wrap fix">
+						<div class="tag save"><span>적립</span></div>
+						<span class="shop-logo" style="background-image:url(/front-src/release/images/shop_logo_sample1.png);"></span><!-- 매장 로고가 없을 경우 이미지 :  shop_logo_empty.png -->
+						<div class="used-balloons">
+							<span class="used-date">2015-06-27 13:10</span>
+							<p class="shop-name">스타벅스 강남 2호점</p>
+							<div class="substance"><span><em>41</em>min</span> 적립하였습니다.</div>
+							<div class="inp-check">
+								<input type="checkbox" id="check1" name="mycheck" /><label for="check1"><span class="box"><em class="box-dot"></em></span></label>
+							</div>
+						</div>
+					</li>
+					<li class="used-wrap fix">
+						<div class="tag ex"><span>교환</span></div>
+						<span class="shop-logo" style="background-image:url(/front-src/release/images/shop_logo_empty.png"></span><!-- 매장 로고가 없을 경우 이미지 :  shop_logo_empty.png -->
+						<div class="used-balloons">
+							<span class="used-date">2015-06-27 13:10</span>
+							<p class="shop-name">스타벅스 강남 2호점</p>
+							<div class="substance"><span><em>41</em>min</span>을 <span><em>80</em>coin</span>으로 교환하였습니다.</div>
+							<div class="inp-check">
+								<input type="checkbox" id="check2" name="mycheck" /><label for="check2"><span class="box"><em class="box-dot"></em></span></label>
+							</div>
+						</div>
+					</li>
+					<li class="used-wrap fix">
+						<div class="tag use"><span>사용</span></div>
+						<span class="shop-logo" style="background-image:url(/front-src/release/images/shop_logo_sample1.png);"></span><!-- 매장 로고가 없을 경우 이미지 :  shop_logo_empty.png -->
+						<div class="used-balloons">
+							<span class="used-date">2015-06-27 13:10</span>
+							<p class="shop-name">스타벅스 강남 2호점스타벅스 강남 2호점스타벅스 강남 2호점스타벅스 강남 2호점스타벅스 강남 2호점스타벅스 강남 2호점</p>
+							<div class="substance"><span><em>41</em>min</span>으로 <span>비오는날 아메리카노 50%할인 쿠폰</span>을 구매하였습니다.</div>
+							<div class="inp-check">
+								<input type="checkbox" id="check3" name="mycheck" /><label for="check3"><span class="box"><em class="box-dot"></em></span></label>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- //used-list -->
+		</div>
+		<div class="common-tab-contents" style="display:none;">
+			<div class="used-list">
+				<!-- 데이터가 없을 때
+                <div class="no-data">
+                    <div class="no-data-ment">
+                        <p class="text-type2">이용 내역이 없습니다.</p>
+                    </div>
+                </div>
+                  -->
+				<ul>
+					<li class="used-wrap fix">
+						<div class="tag save"><span>적립</span></div>
+						<span class="shop-logo" style="background-image:url(/front-src/release/images/shop_logo_sample1.png);"></span><!-- 매장 로고가 없을 경우 이미지 :  shop_logo_empty.png -->
+						<div class="used-balloons">
+							<span class="used-date">2015-06-27 13:10</span>
+							<p class="shop-name">스타벅스 강남 2호점</p>
+							<div class="substance"><span><em>41</em>min</span> 적립하였습니다.</div>
+							<div class="inp-check">
+								<input type="checkbox" id="check1" name="mycheck" /><label for="check1"><span class="box"><em class="box-dot"></em></span></label>
+							</div>
+						</div>
+					</li>
+					<li class="used-wrap fix">
+						<div class="tag ex"><span>교환</span></div>
+						<span class="shop-logo" style="background-image:url(/front-src/release/images/shop_logo_empty.png"></span><!-- 매장 로고가 없을 경우 이미지 :  shop_logo_empty.png -->
+						<div class="used-balloons">
+							<span class="used-date">2015-06-27 13:10</span>
+							<p class="shop-name">스타벅스 강남 2호점</p>
+							<div class="substance"><span><em>41</em>min</span>을 <span><em>80</em>coin</span>으로 교환하였습니다.</div>
+							<div class="inp-check">
+								<input type="checkbox" id="check2" name="mycheck" /><label for="check2"><span class="box"><em class="box-dot"></em></span></label>
+							</div>
+						</div>
+					</li>
+					<li class="used-wrap fix">
+						<div class="tag use"><span>사용</span></div>
+						<span class="shop-logo" style="background-image:url(/front-src/release/images/shop_logo_sample1.png);"></span><!-- 매장 로고가 없을 경우 이미지 :  shop_logo_empty.png -->
+						<div class="used-balloons">
+							<span class="used-date">2015-06-27 13:10</span>
+							<p class="shop-name">스타벅스 강남 2호점스타벅스 강남 2호점스타벅스 강남 2호점스타벅스 강남 2호점스타벅스 강남 2호점스타벅스 강남 2호점</p>
+							<div class="substance"><span><em>41</em>min</span>으로 <span>비오는날 아메리카노 50%할인 쿠폰</span>을 구매하였습니다.</div>
+							<div class="inp-check">
+								<input type="checkbox" id="check3" name="mycheck" /><label for="check3"><span class="box"><em class="box-dot"></em></span></label>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- //used-list -->
+		</div>
+		<div class="common-tab-contents" style="display:block;">
+			<div class="used-list">
+				<!-- 데이터가 없을 때
+                <div class="no-data">
+                    <div class="no-data-ment">
+                        <p class="text-type2">이용 내역이 없습니다.</p>
+                    </div>
+                </div>
+                  -->
+				<ul>
+					<li class="used-wrap fix">
+						<div class="tag use"><span>사용</span></div>
+						<span class="shop-logo" style="background-image:url(/front-src/release/images/shop_logo_sample1.png);"></span><!-- 매장 로고가 없을 경우 이미지 :  shop_logo_empty.png -->
+						<div class="used-balloons">
+							<span class="used-date">2015-06-27 13:10</span>
+							<p class="shop-name">스타벅스 강남 2호점스타벅스 강남 2호점스타벅스 강남 2호점스타벅스 강남 2호점스타벅스 강남 2호점스타벅스 강남 2호점</p>
+							<div class="substance"><span><em>41</em>min</span>으로 <span>비오는날 아메리카노 50%할인 쿠폰</span>을 구매하였습니다.</div>
+							<div class="inp-check">
+								<input type="checkbox" id="check3" name="mycheck" /><label for="check3"><span class="box"><em class="box-dot"></em></span></label>
+							</div>
+						</div>
+						<div class="usage">
+							<span class="usage-date">2015-08-10 17:13</span><span class="usage-complete">쿠폰 사용완료</span>
+						</div>
+					</li>
+					<li class="used-wrap fix">
+						<div class="tag ex"><span>교환</span></div>
+						<span class="shop-logo" style="background-image:url(/front-src/release/images/shop_logo_empty.png"></span><!-- 매장 로고가 없을 경우 이미지 :  shop_logo_empty.png -->
+						<div class="used-balloons">
+							<span class="used-date">2015-06-27 13:10</span>
+							<p class="shop-name">스타벅스 강남 2호점</p>
+							<div class="substance"><span><em>41</em>min</span>을 <span><em>80</em>coin</span>으로 교환하였습니다.</div>
+							<div class="inp-check">
+								<input type="checkbox" id="check2" name="mycheck" /><label for="check2"><span class="box"><em class="box-dot"></em></span></label>
+							</div>
+						</div>
+						<div class="usage">
+							<!-- 사용내역이 없으면 빈칸 -->
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- //used-list -->
+		</div>
+	</section>
+	<!-- //contents -->
+
+
+
+</section>
+
+<div id="errors"></div>
+<div class="shadow" style="display:none;"></div>
+<!-- js remote -->
+<script src="http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyAbifDvTwZeJGRnq1OUxoArY2yYJ98fXKY"></script>
+
+<!--
+<script src="/front-src/release/js/library/react-0.13.3.min.js"></script>
+<script src="/front-src/release/js/library/react-with-addons-0.13.3.min.js"></script>
+-->
+<script src="/front-src/release/js/library/lazy.min.js"></script>
+
+<!-- gMap -->
+<script src="/front-src/release/js/plugin/gmaps.min.js"></script>
+
+<!-- msg -->
+<script src="/front-src/release/js/msg.js"></script>
+
+<!-- twUi -->
+<script src="/front-src/release/js/twUi.js"></script>
+
+
+
+<script>
+	var scriptUrl="/front-src/release/js/";
+
+	twCommonUi.scriptLoadNext(
+		[
+			scriptUrl+'plugin/json2.js',
+			scriptUrl+'library/router.js',
+			scriptUrl+'library/reqwest.js',
+			scriptUrl+'plugin/interact.min.js',
+			scriptUrl+'library/pageslider-react.js',
+			scriptUrl+'plugin/slick.min.js',
+			scriptUrl+'plugin/jquery.storage.js',
+			scriptUrl+'plugin/lazysizes.min.js',
+			scriptUrl+'plugin/jquery.easings.js',
+			scriptUrl+'plugin/jquery.transit.js',
+			//scriptUrl+'twRouter.js'
+
+		],function() {
+		}
+	);
+</script>
+</body>
+</html>

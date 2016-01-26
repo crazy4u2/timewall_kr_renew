@@ -1,0 +1,1401 @@
+<!-- 기부하기 성공 -->
+<section class="modal modal-small modal-donate-complete">
+	<div class="modal-inner">
+		<div class="modal-header icon-type4"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<p class="text-type1">Coin 기부가 성공적으로 처리되었습니다.</p>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type1" href="javascript:void(0);">확인</a>
+		</div>
+	</div>
+</section>
+<!--//기부하기 성공  -->
+
+<!-- 기부하기 -->
+<section class="modal modal-small modal-donate">
+	<div class="modal-inner">
+		<div class="modal-header">
+			<div class="modal-donate-coin">5,000 coin</div>
+		</div>
+		<!-- modal content -->
+		<div class="modal-content">
+
+			<div class="modal-donate-org">유니세프한국위원회</div>
+			<div class="text-type1">기부하시겠습니까?</div>
+
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">취소</a>
+				<a class="btn-type1" href="javascript:void(0);">확인</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--//기부하기  -->
+
+
+
+<!-- 튜토리얼 모달 -->
+<script type="text/javascript">
+	//TODO : setting_tutorial.html의 스크립트와 같습니다.
+	jQuery(document).ready(function(){
+		//TODO : 튜토리얼 높이
+		jQuery('.tutorial-wrap .tutorial-cont').height(
+			jQuery(window).height() - 45
+		);
+		//TODO : 튜토리얼 slick
+		if(jQuery('.tutorial-wrap').size()>0) {
+			jQuery('.tutorial-slick').slick({
+				dots: true
+			});
+		}
+	});
+</script>
+<section class="modal modal-full modal-tutorial">
+	<div class="modal-inner">
+		<div class="modal-content">
+			<div class="content-header">
+				<a class="no-tutorial" href="javascript:void(0);">다시보지않기</a>
+				<a class="btn-close" href="javascript:void(0);">닫기</a>
+			</div>
+			<div class="tutorial-wrap">
+				<div class="tutorial-slick">
+					<div class="tutorial-cont" style="background-image: url(/front-src/release/images/img_tutorial_01.png)">
+						<div class="hide">
+							<strong>위치기반, 쉬운 검색!</strong>
+							<p>지도를 보고 가장 가까운 가맹점을 찾아가 보세요!</p>
+						</div>
+					</div>
+					<div class="tutorial-cont" style="background-image: url(/front-src/release/images/img_tutorial_02.png)">
+						<div class="hide">
+							<strong>자동 체크인과 쉬운 적립!</strong>
+							<p>가맹점에 들어서면 자동으로 시간이 적립됩니다</p>
+						</div>
+					</div>
+					<div class="tutorial-cont" style="background-image: url(/front-src/release/images/img_tutorial_03.png)">
+						<div class="hide">
+							<strong>적립된 시간을 현금처럼!</strong>
+							<p>이렇게 모인 시간을 현금처럼 사용 가능한 코인으로 바꾸세요!</p>
+						</div>
+					</div>
+					<div class="tutorial-cont" style="background-image: url(/front-src/release/images/img_tutorial_04.png)">
+						<div class="hide">
+							<strong>그리고 다양한 혜택을!</strong>
+							<p>원하는 가맹점을 찾아가 코인을 현금 대신 사용하세요!</p>
+						</div>
+					</div>
+					<div class="tutorial-cont" style="background-image: url(/front-src/release/images/img_tutorial_05.png)">
+						<div class="hide">
+							<strong>그리고 다양한 혜택을!</strong>
+							<p>또한 적립된 시간을 이용해 마음에 드는 쿠폰으로 교환하세요!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //tutorial-wrap -->
+		</div>
+	</div>
+</section>
+<!-- //튜토리얼 모달 -->
+<!-- 회원정보 변경 완료 -->
+<section class="modal modal-small modal-info-change-complete">
+	<div class="modal-inner">
+		<div class="modal-header icon-type4"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<p class="text-type1">탈퇴되었습니다.<br />초기화면으로 돌아갑니다.</p>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type1" href="javascript:void(0);">확인</a>
+		</div>
+	</div>
+</section>
+<!--//회원정보 변경 완료  -->
+
+<!-- 본인확인 -->
+<section class="modal modal-password-alter">
+	<div class="modal-inner">
+		<div class="modal-header icon-type7"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="text-type1">본인확인</div>
+			<div class="modal-inputgroup">
+				<label for="present-password">비밀번호</label>
+				<div class="inp-type1">
+					<input type="password" id="present-password" placeholder="* 비밀번호 입력(영,숫자 혼합 8~15자리)" value="" />
+				</div>
+			</div>
+			<div class="forget-password">비밀번호를 잊으셨나요? <i class="fa fa-unlock-alt"></i></div>
+			<p class="text-type4 left">* 번호형식이 잘못되었습니다.</p>
+			<!-- <p class="text-type4 left">* 비밀번호가 틀렸습니다.</p>-->
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">취소</a>
+				<a class="btn-type1" href="javascript:void(0);">탈퇴하기</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--//본인확인 -->
+
+<!-- 탈퇴하기 -->
+<section class="modal modal-member-drop">
+	<div class="modal-inner">
+		<div class="modal-header icon-type1"><p class="text">탈퇴하기</p></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<div class="drop-notice">
+					<p class="text-type1">
+						서비스 탈퇴를 하시면 현재 보유하고 계신 <span>min</span>과 <span>coin</span> 및 <span>쿠폰</span>은 모두 소멸되며 재발행이 불가능합니다. <br />타입월렛 이용 기록은 모두 삭제되며 삭제된 데이터는 복구가 불가합니다.
+					</p>
+					<p class="really">정말로 탈퇴하시겠습니까?</p>
+				</div>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<div class="btnbox">
+				<a class="btn-type1" href="javascript:void(0);">확인 및 탈퇴</a>
+				<a class="btn-type2" href="javascript:void(0);">취소</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--//탈퇴하기 -->
+
+<!-- 회원정보 변경 입력 -->
+<section class="modal modal-member-info-change">
+	<div class="modal-inner">
+		<div class="modal-header icon-type7"><p class="text">회원정보 변경</p></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="inputbox-group fix">
+				<p class="input-title">성별</p>
+				<div class="inp-radio active"><!-- When you select addclass active -->
+					<input type="radio" id="rdo1" /><label for="rdo1"><span class="box"><em class="box-dot"></em></span><span class="text">남자</span></label>
+				</div>
+				<div class="inp-radio">
+					<input type="radio" id="rdo2" /><label for="rdo2"><span class="box"><em class="box-dot"></em></span><span class="text">여자</span></label>
+				</div>
+			</div>
+			<!-- birthday -->
+			<p class="input-title">생년월일</p>
+			<div class="selectbox-group fix">
+				<div class="select-type1 year">
+					<select id="sel1">
+						<option value=""></option>
+						<option value="1982">1982</option>
+						<option value="1981">1981</option>
+						<option value="1980">1980</option>
+						<option value="1979">1979</option>
+					</select>
+					<label for="sel1" class="right">년</label>
+				</div>
+				<div class="select-type1 month">
+					<select id="sel2">
+						<option value=""></option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select>
+					<label for="sel2" class="right">월</label>
+				</div>
+				<div class="select-type1 date">
+					<select>
+						<option value=""></option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+						<option value="24">24</option>
+						<option value="25">25</option>
+						<option value="26">26</option>
+						<option value="27">27</option>
+						<option value="28">28</option>
+						<option value="29">29</option>
+						<option value="30">30</option>
+						<option value="31">31</option>
+					</select>
+					<label class="right">일</label>
+				</div>
+			</div>
+			<!--// birthday -->
+			<!-- region -->
+			<p class="input-title">거주지역</p>
+			<div class="inp-type1 region">
+				<a href="javascript:void(0);"><i class="fa fa-caret-right"></i></a>
+				<input type="text" placeholder="" value="" />
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">취소</a>
+				<a class="btn-type1" href="javascript:void(0);">확인</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--//회원정보 변경 입력 -->
+
+<!-- 회원정보 변경 완료 -->
+<section class="modal modal-small modal-info-change-complete">
+	<div class="modal-inner">
+		<div class="modal-header icon-type4"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<span class="text-type1">회원정보가 변경되었습니다.</span>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type1" href="javascript:void(0);">확인</a>
+		</div>
+	</div>
+</section>
+<!--//회원정보 변경 완료  -->
+
+<!-- 비밀번호 변경 입력 -->
+<section class="modal modal-password-alter">
+	<div class="modal-inner">
+		<div class="modal-header icon-type7"><p class="text">비밀번호 변경</p></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="modal-inputgroup">
+				<label for="present-password">현재비밀번호</label>
+				<div class="inp-type1">
+					<input type="password" id="present-password" placeholder="* 비밀번호 입력(영,숫자 혼합 8~15자리)" value="" />
+				</div>
+			</div>
+			<div class="modal-inputgroup">
+				<label for="new-password">새로운 비빌번호</label>
+				<div class="inp-type1">
+					<input type="password" id="new-password" placeholder="* 비밀번호 입력(영,숫자 혼합 8~15자리)" value="" />
+				</div>
+			</div>
+			<div class="modal-inputgroup">
+				<label for="new-password-again">비빌번호 확인</label>
+				<div class="inp-type1">
+					<input type="password" id="new-password-again" placeholder="* 비밀번호 입력(영,숫자 혼합 8~15자리)" value="" />
+				</div>
+			</div>
+			<p class="text-type4 left">* 비밀번호가 틀렸습니다.</p>
+			<!-- <p class="text-type4 left">* 형식에 맞지 않습니다.</p>
+			<p class="text-type4 left">* 이전번호와 동일합니다. 다시입력해주세요.</p>
+			<p class="text-type4 left">* 비밀번호가 일치하지 않습니다.</p> -->
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">취소</a>
+				<a class="btn-type1" href="javascript:void(0);">확인</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--//비밀번호 변경 입력 -->
+<!-- 비밀번호 변경 완료 -->
+<section class="modal modal-small modal-password-complete">
+	<div class="modal-inner">
+		<div class="modal-header icon-type4"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<span class="text-type1">비밀번호가 변경되었습니다.</span>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type1" href="javascript:void(0);">확인</a>
+		</div>
+	</div>
+</section>
+<!--//비밀번호 변경 완료  -->
+
+<!-- 타임월렛 공유하기 -->
+<section class="modal modal-share">
+	<div class="modal-inner">
+		<!-- modal content -->
+		<div class="modal-content">
+			<ul class="share-list fix">
+				<li><a class="sms" href="javascript:void(0);"><span class="hide">문자</span></a></li>
+				<li><a class="email" href="javascript:void(0);"><span class="hide">이메일</span></a></li>
+				<li><a class="facebook" href="javascript:void(0);"><span class="hide">페이스북</span></a></li>
+				<li><a class="twitter" href="javascript:void(0);"><span class="hide">트위터</span></a></li>
+				<li><a class="kakao-stroy" href="javascript:void(0);"><span class="hide">카카오스토리</span></a></li>
+				<li><a class="line" href="javascript:void(0);"><span class="hide">LINE</span></a></li>
+				<li><a class="kakako-talk" href="javascript:void(0);"><span class="hide">카카오톡</span></a></li>
+				<li><a class="evernote" href="javascript:void(0);"><span class="hide">에버노트</span></a></li>
+				<li><a class="googleplus" href="javascript:void(0);"><span class="hide">구글플러스</span></a></li>
+				<li><a class="skype" href="javascript:void(0);"><span class="hide">스카이프</span></a></li>
+				<li><a class="linked-in" href="javascript:void(0);"><span class="hide">Linked In</span></a></li>
+				<li><a class="clipboard" href="javascript:void(0);"><span class="hide">클립보드</span></a></li>
+			</ul>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type2" href="javascript:void(0);">취소</a>
+		</div>
+	</div>
+</section>
+<!--//타임월렛 공유하기 -->
+<!-- 코인사용 불가능 매장 -->
+<section class="modal modal-small modal-nosearch-beacon">
+	<div class="modal-inner">
+		<div class="modal-header icon-type1"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<p class="text-type1">코인사용이 불가능한 매장입니다.</p>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">취소</a>
+				<a class="btn-type1" href="javascript:void(0);">다시시도</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--//코인사용 불가능 매장 -->
+<!-- 결제 비콘찾기 실패 -->
+<section class="modal modal-small modal-beacon-nosearch">
+	<div class="modal-inner">
+		<div class="modal-header icon-type3"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<p class="text-type1">결제 비콘찾기 실패 <br />다시 시도하시겠습니까?</p>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">취소</a>
+				<a class="btn-type1" href="javascript:void(0);">다시시도</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--//결제 비콘찾기 실패 -->
+<!-- 결제 비콘찾기 3회 실패 -->
+<section class="modal modal-small modal-nosearch-three">
+	<div class="modal-inner">
+		<div class="modal-header icon-type3"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<p class="text-type1">결제 비콘찾기 3회 실패</p><br><br>
+				<p class="text-type5">비밀번호 입려방식으로 변경하시겠습니까?</p>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">취소</a>
+				<a class="btn-type1" href="javascript:void(0);">확인</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--//결제 비콘찾기 3회 실패 -->
+<!-- 비콘결제 비밀번호 입력 -->
+<section class="modal modal-beacon-password">
+	<div class="modal-inner">
+		<div class="modal-header icon-type7"><p class="text">가맹점 정보를 입력하세요</p></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="modal-inputgroup">
+				<label for="shop-number">가맹점 번호</label>
+				<div class="inp-type1">
+					<input type="number" id="shop-number" placeholder="" value="" />
+				</div>
+			</div>
+			<div class="modal-inputgroup">
+				<label for="shop-passowrd">가맹점 비밀 번호</label>
+				<div class="inp-type1">
+					<input type="password" id="shop-password" placeholder="" value="" />
+				</div>
+			</div>
+			<p class="text-type4 left">* 비밀번호가 일치하지 않습니다.</p>
+			<!--<p class="text-type4 left">* 가맹점 번호가 일치하지 않습니다.</p>
+			<p class="text-type4 left">* 번호형식이 맞지 않습니다.</p>-->
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">취소</a>
+				<a class="btn-type1" href="javascript:void(0);">확인</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--//비콘결제 비밀번호 입력 -->
+<!--// 코인사용 결제완료 모달 -->
+<section class="modal modal-full modal-coin-complete">
+	<div class="modal-inner">
+		<div class="modal-content">
+			<div class="content-header">
+				<h3>코인사용</h3>
+			</div>
+			<div class="bg-use-step"></div>
+			<div class="use-step-wrap">
+				<div class="roundbox">
+					<div class="top-text">
+						<strong>결제 완료</strong>
+						고객님께 확인을 부탁드립니다
+					</div>
+					<div class="complete">
+						<div class="shop-name">스타벅스 강남2호점스타벅스 강남2호점스타벅스 강남2호점스타벅스 강남2호점스타벅스 강남2호점</div>
+						<div class="use-complete"><span><em>5,000</em>coin</span> 사용완료</div>
+					</div>
+					<div class="bottombox">
+						<div class="remain">사용 후 잔액 : <span><em>3,700</em>coin</span></div>
+					</div>
+					<div class="btnbox">
+						<a href="javascript:void(0);">확인</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--// 코인사용 결제완료 모달 -->
+<!--// 쿠폰사용 결제완료 모달 -->
+<section class="modal modal-full modal-coupon-complete">
+	<div class="modal-inner">
+		<div class="modal-content">
+			<div class="content-header">
+				<h3>쿠폰사용</h3>
+			</div>
+			<div class="bg-use-step"></div>
+			<div class="use-step-wrap">
+				<div class="roundbox">
+					<div class="top-text">
+						<div class="coupon-kind plus"><span class="hanareum" style="background-image:url(/front-src/release/images/han.jpg);">한아름 제휴</span>coupon 플러스</div><!-- 한아름 제휴사일 경우 hanareum 가 추가됨 -->
+						<!--<div class="coupon-kind freebies ">coupon 사은품</div>
+                        <div class="coupon-kind free">coupon 무료</div>
+                        <div class="coupon-kind discount">coupon 할인</div>-->
+						<strong>사용완료!</strong>
+						고객님께 확인을 부탁드립니다
+					</div>
+					<div class="complete">
+						<div class="shop-name">스타벅스 강남2호점</div>
+						<div class="coupon-use-number">쿠폰 NO : <span>00000-00000-00000-00000</span></div>
+					</div>
+					<div class="bottombox">
+						<div class="text">
+							<strong>아메리카노50%할인</strong>
+							<p>
+								아메리카노를 여러분께 절반의 가격으로 마구마구 쏩니다!
+								아늑한 분위기에서 더 저렴하고  더 편안하게 즐기세요!
+							</p>
+						</div>
+					</div>
+					<div class="btnbox">
+						<a href="javascript:void(0);">확인</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--// 쿠폰사용 결제완료 모달 -->
+<!-- 코인교환 팝업 -->
+<section class="modal modal-small modal-coin-exchange">
+	<div class="modal-inner">
+		<div class="modal-header icon-type6">
+			코인교환
+			<a class="btn-modal-close" href="javascript:void(0);"><span class="팝업 창 닫기"></span></a>
+		</div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="numberbox min">
+				<div class="numberbox-inner">
+					<input type="text" class="write-number" value="40" />
+					<span class="unit">min</span>
+				</div>
+			</div>
+			<div class="numberbox coin">
+				<div class="numberbox-inner">
+					<input type="text" class="write-number" value="1200" />
+					<span class="unit">coin</span>
+				</div>
+			</div>
+			<p class="text-type3">코인으로 교환하시겠습니까?</p>
+		</div>
+		<a class="btn-exchange-modal" href="javascript:void(0);"><span class="교환버튼"></span></a>
+	</div>
+</section>
+<!-- //코인교환 팝업 -->
+<!-- 로그인 및 회원가입 필요 -->
+<section class="modal modal-small modal-need-join">
+	<div class="modal-inner">
+		<div class="modal-header icon-type3"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<span class="text-type1">쿠폰을 사용하기 위해서는 <br />로그인이 필요합니다.</span>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">로그인</a>
+				<a class="btn-type1" href="javascript:void(0);">회원가입</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--//로그인 및 회원가입 필요 -->
+<!-- min이 부족합니다 -->
+<section class="modal modal-small modal-not-enought">
+	<div class="modal-inner">
+		<div class="modal-header icon-type3"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<span class="text-type1">min이 부족합니다.</span>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type1" href="javascript:void(0);">확인</a>
+		</div>
+	</div>
+</section>
+<!--//min이 부족합니다 -->
+<!-- 쿠폰교환하기 -->
+<section class="modal modal-coupon-exchange">
+	<div class="modal-inner">
+		<div class="modal-header">
+			<div class="coupon-kind plus"><span class="hanareum" style="background-image:url(/front-src/release/images/han.jpg);">한아름 제휴</span>coupon 플러스</div>
+			<!--<div class="coupon-kind freebies ">coupon 사은품</div>
+			<div class="coupon-kind free">coupon 무료</div>
+			<div class="coupon-kind discount">coupon 할인</div>-->
+		</div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<p class="coupon-detail">3만원이상 구매고객 텀블러 증정</p>
+				<p class="exchange-min"><strong><span>60</span>min</strong></p>
+				<p class="text-type1">교환하시겠습니까?</p>
+				<p class="text-type5">교환된 쿠폰은 나의쿠폰에서 확인가능합니다.</p>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer fix">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">취소</a>
+				<a class="btn-type1" href="javascript:void(0);">확인</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--// 쿠폰교환하기 -->
+<!-- 쿠폰 교환 완료 -->
+<section class="modal modal-small modal-exchange-complete">
+	<div class="modal-inner">
+		<div class="modal-header icon-type4"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<span class="text-type1">교환이 완료되었습니다.</span>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">닫기</a>
+				<a class="btn-type1" href="javascript:void(0);">바로사용</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--//쿠폰 교환 완료  -->
+
+<!-- number format is invalid -->
+<section class="modal modal-small modal-wrongform">
+	<div class="modal-inner">
+		<div class="modal-header icon-type1"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<span class="text-type1">번호형식이 올바르지 않습니다.</span>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type1" href="javascript:void(0);">확인</a>
+		</div>
+	</div>
+</section>
+<!--// number format is invalid -->
+<!-- 인증 제한 횟수 초과  -->
+<section class="modal modal-small modal-auth-exceeds">
+	<div class="modal-inner">
+		<div class="modal-header icon-type1"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<span class="text-type1">인증 제한 횟수 초과</span><br /><br />
+				<p class="text-type3">10분 후 재시도 부탁드립니다.</p>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type1" href="javascript:void(0);">확인</a>
+		</div>
+	</div>
+</section>
+<!--// 인증 제한 횟수 초과  -->
+<!-- certification number input -->
+<section class="modal modal-cert">
+	<div class="modal-inner">
+		<div class="modal-header icon-type2"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<p class="text-type2">010-1234-4322</p>
+				<p class="text-type3">전송된 인증번호 5자리를 입력해주세요.</p>
+			</div>
+			<div class="num-area">
+				<input type="number" value="01248" />
+			</div>
+			<div class="time-area">
+				<div class="valid">유효입력시간
+					<span class="time">00:59</span>
+				</div>
+				<!-- 입력제한 시간 초과시 나타 남
+				<p class="overtime text-type4">입력 제한 시간 초과 다시 진행해 주세요.</p>
+				<p class="error-number text-type4">잘못된 인증번호 입니다.</p> -->
+				<p class="delay-number text-type4">전송시간이 지연될 수 있습니다.<br /> 조금만 기다려주세요.</p>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer fix">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">취소</a>
+				<a class="btn-type3" href="javascript:void(0);">확인</a><!-- 인증번호 5개 모두 입력 시 class="active" 더해짐-->
+			</div>
+		</div>
+	</div>
+</section>
+<!--// certification number input -->
+<!-- in history -->
+<section class="modal modal-already-reg">
+	<div class="modal-inner">
+		<div class="modal-header icon-type3"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<p class="text-type2">010-1234-4322</p>
+				<p class="text-type4"><span class="date">2015. 6. 21</span> 가입내역이 있습니다.</p>
+				<p class="text-type5">재가입시 기존정보는 모두 삭제됩니다.</p>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer fix">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">로그인</a>
+				<a class="btn-type1" href="javascript:void(0);">재가입</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--// in history -->
+<!-- drop out -->
+<section class="modal modal-drop">
+	<div class="modal-inner">
+		<div class="modal-header icon-type3"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<p class="text-type2">010-1234-4322</p>
+				<p class="text-type4"><span>2015. 6. 21 22:00:00</span><br />탈퇴 처리중입니다.</p>
+				<p class="text-type5">남은 탈퇴 대기시간 <span class="time"> 21:59 </span></p>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer fix">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">닫기</a>
+				<a class="btn-type1" href="javascript:void(0);">탈퇴취소</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--// drop out -->
+<!--  drop cancel -->
+<section class="modal modal-small modal-drop-cancel">
+	<div class="modal-inner">
+		<div class="modal-header icon-type4"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<span class="text-type1">탈퇴가 취소되었습니다.</span>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type1" href="javascript:void(0);">확인</a>
+		</div>
+	</div>
+</section>
+<!--// drop cancel -->
+<!-- certification complete -->
+<section class="modal modal-small modal-cer-complete">
+	<div class="modal-inner">
+		<div class="modal-header icon-type4"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<span class="text-type1">인증완료</span>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type1" href="javascript:void(0);">확인</a>
+		</div>
+	</div>
+</section>
+<!--// certification complete -->
+<!-- wrong number -->
+<section class="modal modal-small modal-wrong-number">
+	<div class="modal-inner">
+		<div class="modal-header icon-type3"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<span class="text-type1">비밀번호가 틀렸습니다.</span>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type1" href="javascript:void(0);">확인</a>
+		</div>
+	</div>
+</section>
+<!--// wrong number -->
+<!-- number auth -->
+<section class="modal modal-small modal-alreay-auth">
+	<div class="modal-inner">
+		<div class="modal-header icon-type1"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<p class="text-type2">010-1234-4322</p>
+				<span class="text-type4">가입된 정보가 없습니다.</span>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type1" href="javascript:void(0);">확인</a>
+		</div>
+	</div>
+</section>
+<!-- //number auth -->
+<!-- temporary number sent -->
+<section class="modal modal-small modal-temp-number">
+	<div class="modal-inner">
+		<div class="modal-header icon-type4"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<span class="text-type1">임시비밀번호를 발송하였습니다.</span>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type1" href="javascript:void(0);">확인</a>
+		</div>
+	</div>
+</section>
+<!--// temporary number sent -->
+<!-- Choose region -->
+<section class="modal modal-location">
+	<div class="modal-inner">
+		<div class="modal-contents">
+			<div class="location-header">
+				<h3>지역설정</h3>
+				<a class="btn-location-close" href="javascript:void(0);">닫기</a>
+			</div>
+			<div class="list-location">
+				<ul>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">서울특별시<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">강원도<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">경기도<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">경상남도<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">경상북도<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">광주광역시<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">대구광역시<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">대전광역시<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">부산광역시<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">세종특별자치시<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">울산광역시<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">인천광역시<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">전라남도<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">전라북도<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">제주특별자치도<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">충청남도<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+					<li>
+						<div class="select"><a href="javascript:void(0);" class="city">충청북도<i class="fa fa-caret-down"></i></a></div>
+						<ul class="sub">
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+							<li><a href="javascript:void(0);" class="state">강동구</a></li>
+							<li><a href="javascript:void(0);" class="state">송파구</a></li>
+							<li><a href="javascript:void(0);" class="state">서초구</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--// selcet location -->
+<!-- 재가입 휴대폰인증 -->
+<section class="modal modal-phone-cert">
+	<div class="modal-inner">
+		<div class="modal-header icon-type2"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<p class="text-type1">휴대폰 인증</p>
+				<div class="cert">
+					<div class="inp-type1"><input type="tel" placeholder="* 휴대폰 번호" /></div>
+					<a href="javascript:void(0);" class="btn-modal-cert modal-cert"><span>인증하기</span></a>
+				</div>
+				<p class="text-type5 left">휴대폰 인증을 하셔야 재가입 할 수 있습니다.</p>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type2" href="javascript:void(0);">닫기</a>
+		</div>
+	</div>
+</section>
+<!-- //재가입 휴대폰인증 -->
+<!-- 최초 10min알림 팝업 비회원 -->
+<section class="modal modal-10min-stranger">
+	<div class="modal-inner">
+		<div class="modal-header icon-type5"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<p class="text-type2">10min 적립 성공!</p>
+				<p class="text-type5">스타벅스 강남 2호점</p>
+				<div class="text-type3"><em>10min</em>은 <em>100coin</em>으로 교환가능하며, <br />
+					coin은 지정된 가맹점에서 현금처럼사용이 가능합니다.
+				</div>
+				<p class="text-type4">현재 비회원 상태입니다. <br /> 코인교환은 로그인 후 가능합니다.</p>
+				<p class="text-type5">* 메뉴에서 회원가입을 해주세요</p>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type1" href="javascript:void(0);">확인</a>
+		</div>
+	</div>
+</section>
+<!-- //최초 10min알림 팝업 비회원 -->
+<!-- 최초 10min알림 팝업 회원 -->
+<section class="modal modal-10min-member">
+	<div class="modal-inner">
+		<div class="modal-header icon-type5"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<p class="text-type2">10min 적립 성공!</p>
+				<p class="text-type5">스타벅스 강남 2호점</p>
+				<div class="text-type3"><em>10min</em>은 <em>100coin</em>으로 교환가능하며, <br />
+					coin은 지정된 가맹점에서 현금처럼사용이 가능합니다.
+				</div>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer fix">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">취소</a>
+				<a class="btn-type1" href="javascript:void(0);">코인교환</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //최초 10min알림 팝업 회원 -->
+<!-- 리뷰작성하기 -->
+<section class="modal modal-review">
+	<div class="modal-inner">
+		<!-- modal content -->
+		<div class="modal-content">
+			<p class="text-type1">리뷰작성</p>
+			<div class="star-score">
+				<span class="star">
+					<strong class="rate" style="width:0;"></strong>
+					<!--
+					<strong style="width:0%;"></strong>
+					<strong style="width:10%;"></strong>
+					<strong style="width:20%;"></strong>
+					<strong style="width:30%;"></strong>
+					<strong style="width:40%;"></strong>
+					<strong style="width:50%;"></strong>
+					<strong style="width:60%;"></strong>
+					<strong style="width:70%;"></strong>
+					<strong style="width:80%;"></strong>
+					<strong style="width:90%;"></strong>
+					<strong style="width:100%;"></strong>
+					-->
+				</span>
+			</div>
+			<div class="textarea">
+				<textarea placeholder="다른 분들을 위해 가게의 리뷰를 남겨주세요.(최대 140자)"></textarea>
+			</div>
+			<p class="text-type5 left">*사진은 1장만 등록할 수 있습니다.</p>
+			<div class="select-pic">
+				<div class="pic">
+					<a href="javascript:void(0);" class="btn-shoot"><i class="fa fa-camera"></i><span>촬영</span></a>
+					<a href="javascript:void(0);" class="btn-upload"><i class="fa fa-picture-o"></i><span>앨범</span></a>
+					<span class="upload-pic">
+						<!-- <img src="/front-src/release/images/shop_img.jpg" class="source-img" alt="" /> -->
+					</span>
+					<a href="javascript:void(0);" class="btn-remove"><i class="fa fa-times"></i><span>이미지 삭제</span></a>
+					<img src="" class="result-img" alt="" />
+					<input type="file" class="filename" id="1" style="display:none;" />
+				</div>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer fix">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">취소</a>
+				<a class="btn-type1" href="javascript:void(0);">등록하기</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--// 리뷰작성하기 -->
+<!-- 리뷰작성 대상 아님  -->
+<section class="modal modal-small modal-review-notice">
+	<div class="modal-inner">
+		<div class="modal-header icon-type1"></div>
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="message">
+				<p class="text-type1">리뷰 작성 대상이 아닙니다.</p>
+				<p class="text-type5">해당 매장 쿠폰사용 및 10min이상 적립 고객만 가능</p>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer">
+			<a class="btn-type1" href="javascript:void(0);">확인</a>
+		</div>
+	</div>
+</section>
+<!--// 리뷰작성 대상 아님  -->
+<!-- 신고하기 -->
+<section class="modal modal-report">
+	<div class="modal-inner">
+		<!-- modal content -->
+		<div class="modal-content">
+			<p class="text-type1">신고하기</p>
+			<div class="report-table">
+				<table>
+					<caption></caption>
+					<colgroup>
+						<col style="width:80px;" />
+						<col style="width:*;" />
+					</colgroup>
+					<tbody>
+					<tr>
+						<th scope="row">내&nbsp;&nbsp;&nbsp;용</th>
+						<td>알바가 싸가지가!...</td>
+					</tr>
+					<tr>
+						<th scope="row">작성자</th>
+						<td>**51</td>
+					</tr>
+					<tr>
+						<th scope="row">사&nbsp;&nbsp;&nbsp;유</th>
+						<td>
+							<div class="inputbox-group">
+								<div class="inp-radio active">
+									<input type="radio" id="rdo1" name="reason" checked="checked" /><label for="rdo1"><span class="box"><em class="box-dot"></em></span><span class="text">욕설 / 비방</span></label>
+								</div>
+								<div class="inp-radio">
+									<input type="radio" id="rdo2" name="reason"><label for="rdo2" /><span class="box"><em class="box-dot"></em></span><span class="text">개인정보 유출</span></label>
+								</div>
+								<div class="inp-radio">
+									<input type="radio" id="rdo3" name="reason"><label for="rdo3" /><span class="box"><em class="box-dot"></em></span><span class="text">광고 / 홍보</span></label>
+								</div>
+								<div class="inp-radio">
+									<input type="radio" id="rdo4" name="reason"><label for="rdo4" /><span class="box"><em class="box-dot"></em></span><span class="text">도배 / 기타</span></label>
+								</div>
+							</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="textarea">
+				<textarea placeholder="140자까지 입력할 수 있습니다."></textarea>
+			</div>
+		</div>
+		<!-- modal-footer-->
+		<div class="modal-footer fix">
+			<div class="btnbox">
+				<a class="btn-type2" href="javascript:void(0);">취소</a>
+				<a class="btn-type1" href="javascript:void(0);">신고하기</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--// 신고하기 -->
+<!-- 모달 지도 -->
+<section class="modal modal-map">
+	<div class="modal-inner">
+		<!-- modal content -->
+		<div class="modal-content">
+			<div class="content-header">
+				<h3>스타벅스강남 2호점</h3>
+				<a class="btn-close" href="javascript:void(0);">닫기</a>
+			</div>
+			<div class="modal-map-area">
+				지도영역
+			</div>
+		</div>
+	</div>
+</section>
+<!-- 샵 갤러리 뷰 -->
+<section class="modal modal-gallery">
+	<div class="modal-inner">
+		<div class="modal-content">
+			<div class="content-header">
+				<h3>스타벅스강남 2호점</h3>
+				<a class="btn-close" href="javascript:void(0);">닫기</a>
+			</div>
+			<div class="shop-gallery">
+				<div class="slider slider-shop-gallery">
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_0.jpg" alt="" /></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_1.jpg" alt="" /></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_2.jpg" alt="" /></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_3.jpg" alt="" /></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_4.jpg" alt="" /></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_0.jpg" alt="" /></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_1.jpg" alt="" /></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_2.jpg" alt="" /></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_3.jpg" alt="" /></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_4.jpg" alt="" /></div>
+				</div>
+			</div>
+			<div class="gallery-thumb">
+				<div class="slider slider-shop-gallery-nav">
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_thumb_0.jpg" alt="" /><span></span></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_thumb_1.jpg" alt="" /><span></span></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_thumb_2.jpg" alt="" /><span></span></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_thumb_3.jpg" alt="" /><span></span></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_thumb_4.jpg" alt="" /><span></span></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_thumb_0.jpg" alt="" /><span></span></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_thumb_1.jpg" alt="" /><span></span></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_thumb_2.jpg" alt="" /><span></span></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_thumb_3.jpg" alt="" /><span></span></div>
+					<div class="thumb"><img src="/front-src/release/images/shop_gallery_thumb_4.jpg" alt="" /><span></span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //샵 갤러리 뷰 -->
+<!-- 매장상세에서 왼쪽 상단 아이콘 탭시 나오는 아이콘 설명 모달 -->
+<section class="modal modal-full modal-icon-explain">
+	<div class="modal-inner">
+		<div class="modal-content">
+			<div class="content-header">
+				<a class="btn-close" href="javascript:void(0);">닫기</a>
+			</div>
+			<div class="explainbox">
+				<ul>
+					<li>
+						<div class="icon explain-premium"></div>
+						<div class="txt">
+							<strong>타임코인</strong>
+							<p>적 립한 시간(min)을 코인으로 교환할 수 있는 프리미엄 매장을 표시합니다.</p>
+						</div>
+					</li>
+					<li>
+						<div class="icon min-save"></div>
+						<div class="txt">
+							<strong>시간적립</strong>
+							<p>매장에 방문 시 자동으로 고객님의 기기와 연동해 시간(min)적립 가능 여부를 표시합니다.</p>
+						</div>
+					</li>
+					<li>
+						<div class="icon coupon"></div>
+						<div class="txt">
+							<strong>쿠폰사용</strong>
+							<p>매장에서 사용 가능한 쿠폰의 발행 여부와 현재 구매할 수 있는 쿠폰의 유무를 표시합니다.</p>
+						</div>
+					</li>
+					<li>
+						<div class="icon coin"></div>
+						<div class="txt">
+							<strong>코인사용</strong>
+							<p>타임월렛을 통해 적립된 코인을 현금처럼 사용할 수 있는 매장을 표시합니다.</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--// 매장상세에서 왼쪽 상단 아이콘 탭시 나오는 아이콘 설명 모달 -->
+<!-- 매장상세에서 코인 상태 설명 물음표 탭 시 나오는 모달 -->
+<section class="modal modal-full modal-state-explain">
+	<div class="modal-inner">
+		<div class="modal-content">
+			<div class="content-header">
+				<a class="btn-close" href="javascript:void(0);">닫기</a>
+			</div>
+			<div class="explainbox">
+				<ul>
+					<li>
+						<div class="icon max-coin"></div>
+						<div class="txt"><span>매장에서 획득 가능한 최대 코인</span></div>
+					</li>
+					<li>
+						<div class="icon min"></div>
+						<div class="txt"><span>코인교환이 가능한 최대시간(min)</span></div>
+					</li>
+					<li>
+						<div class="icon day"></div>
+						<div class="txt"><span>다음 코인교환 기회까지 남은기간</span></div>
+					</li>
+					<li>
+						<div class="icon coin-exchange"></div>
+						<div class="txt"><span>코인교환 페이지 이동 버튼</span></div>
+					</li>
+					<li>
+						<div class="icon coin-use"></div>
+						<div class="txt"><span>코인사용 페이지 이동 버튼</span></div>
+					</li>
+				</ul>
+				<div class="add-txt">
+					타임월렛은 지정된 매장에서 머무른 시간(min)을 적립하고 적립된 시간(min)으로 다양한 혜택을 누릴 수 있습니다. <br />
+					또한 프리미엄 매장에서는 적립된 시간(min)을 현금처럼 사용가 능한 코인(coin)으로 교환하여 사용할 수 있습니다.
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--// 매장상세에서 코인 상태 설명 물음표 탭 시 나오는 모달 -->
+
+
+
+
+

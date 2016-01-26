@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no, address=no, email=no" /><!-- telephone, address, email autolink is not work -->
+	<title></title>
+	<script src="/front-src/release/js/library/jquery.min.js"></script>
+	<script src="/front-src/release/js/plugin/slick.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/front-src/release/css/timewallet.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		// simple include function for basic ui(view only) dev.
+		var include = function(obj){
+			jQuery.ajax({
+				url: 'front-src/release/html/'+obj+'.html',
+				success: function(data){
+					jQuery('.'+obj).html(data);
+					console.log(obj+' include ok');
+				}
+			});
+		};
+
+		var launch = function() {
+			include('header');
+			include('sidebar');
+		};
+		launch();
+
+		jQuery(document).ready(function(){
+			
+		});
+	</script>
+</head>
+<body>
+	<section class="container menu">
+		<header class="header">
+			<!-- header-other 나와야 함 -->
+		</header>
+		<!-- contents -->
+		<section class="contents">
+			<div class="contentsScroll">
+				<!-- menu-min-coin -->
+				<div class="menu-min-coin fix"><!-- 비회원 일시 addClass : not-member -->
+					<!-- menubox -->
+					<div class="menubox">
+						<div class="min"><!-- btn-coin-exchange 클릭시 addClass : active -->
+							<div class="show-number">
+								<p>나의 min</p>
+								<strong class="my-min">14,510</strong>
+							</div>
+							<a class="btn-coin-exchange" href="http://www.daum.net">
+								<i class="fa fa-hourglass-end"></i>
+							</a>
+						</div>
+					</div>
+					<!-- //menubox -->
+					<!-- menubox -->
+					<div class="menubox">
+						<div class="need-login">
+							<a href="javascript:void(0);">로그인</a>
+							<a href="javascript:void(0);">회원가입</a>
+						</div>
+						<div class="coin">
+							<div class="coin-button">
+								<a class="btn-coin-useful" href="http://www.naver.com">코인사용 가능</a>
+							</div>
+							<div class="show-number">
+								<p>나의 coin</p>
+								<strong class="my-coin">3,500</strong>
+							</div>
+							<div class="onoffswitch-wrap">
+								<span class="onoffswitch">
+									<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="push2" checked="checked">
+									<label class="onoffswitch-label" for="push2">
+										<span class="onoffswitch-inner"></span>
+										<span class="onoffswitch-switch"></span>
+									</label>
+								</span>
+							</div>
+							<!-- //onoffswitch-wrap -->
+						</div>
+					</div>
+					<!-- //menubox -->
+				</div>
+				<!-- //menu-min-coin -->
+				<!-- menu-link-box -->
+				<div class="menu-link-box">
+					<ul class="fix">
+						<li><a class="active" href="javascript:void(0);">나의월렛</a></li>
+						<li><a href="javascript:void(0);">나의쿠폰</a></li>
+						<li><a href="javascript:void(0);">쿠폰교환</a></li>
+						<li><a href="javascript:void(0);">즐겨찾기</a></li>
+						<li><a href="javascript:void(0);">이용내역</a></li>
+						<li><a href="javascript:void(0);">기부하기</a></li>
+						<li><a href="javascript:void(0);">공지사항</a></li>
+						<li><a href="javascript:void(0);">환경설정</a></li>
+					</ul>
+				</div>
+				<!-- //menu-link-box -->
+			</div>
+			<!-- //contentsScroll -->
+		</section>
+		<!-- //contents -->
+
+
+
+	</section>
+
+	<div id="errors"></div>
+	<div class="shadow"></div>
+	<!-- js remote -->
+	<script src="http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyAbifDvTwZeJGRnq1OUxoArY2yYJ98fXKY"></script>
+
+	<!--
+	<script src="/front-src/release/js/library/react-0.13.3.min.js"></script>
+	<script src="/front-src/release/js/library/react-with-addons-0.13.3.min.js"></script>
+	-->
+	<script src="/front-src/release/js/library/lazy.min.js"></script>
+
+	<!-- gMap -->
+	<script src="/front-src/release/js/plugin/gmaps.min.js"></script>
+
+	<!-- msg -->
+	<script src="/front-src/release/js/msg.js"></script>
+
+	<!-- twUi -->
+	<script src="/front-src/release/js/twUi.js"></script>
+
+
+
+	<script>
+		var scriptUrl="/front-src/release/js/";
+
+		twCommonUi.scriptLoadNext(
+			[
+				scriptUrl+'plugin/json2.js',
+				scriptUrl+'library/router.js',
+				scriptUrl+'library/reqwest.js',
+				scriptUrl+'plugin/interact.min.js',
+				scriptUrl+'library/pageslider-react.js',
+				scriptUrl+'plugin/slick.min.js',
+				scriptUrl+'plugin/jquery.storage.js',
+				scriptUrl+'plugin/lazysizes.min.js',
+				scriptUrl+'plugin/jquery.easings.js',
+				scriptUrl+'plugin/jquery.transit.js',
+				//scriptUrl+'twRouter.js'
+
+			],function() {
+			}
+		);
+	</script>
+</body>
+</html>

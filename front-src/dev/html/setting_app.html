@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no, address=no, email=no" /><!-- telephone, address, email autolink is not work -->
+	<title></title>
+	<script src="/front-src/release/js/library/jquery.min.js"></script>
+	<script src="/front-src/release/js/plugin/slick.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/front-src/release/css/timewallet.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		// simple include function for basic ui(view only) dev.
+		var include = function(obj){
+			jQuery.ajax({
+				url: 'front-src/release/html/'+obj+'.html',
+				success: function(data){
+					jQuery('.'+obj).html(data);
+					console.log(obj+' include ok');
+				}
+			});
+		};
+
+		var launch = function() {
+			include('header');
+			include('sidebar');
+		};
+		launch();
+
+		jQuery(document).ready(function(){
+			// 환경 설정 높이
+			jQuery('.settingScroll').height(
+				jQuery(window).height() - jQuery('.header').height()
+			);
+		});
+	</script>
+</head>
+<body>
+	<section class="container setting">
+		<header class="header">
+			<!-- header-menu 나와야 함 -->
+		</header>
+		<!-- contents -->
+		<section class="contents">
+			<div class=" settingScroll">
+				<dl class="setting-app-item">
+					<dt>coin 자동교환 설정</dt>
+					<dd>
+						<p>자동교환 설정 시 coin으로 교환할 수 있는 min 발생 시 자동으로 교환할 수 있습니다.</p>
+						<div class="onoffswitch-wrap">
+							<span class="onoffswitch">
+								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="push1" />
+								<label class="onoffswitch-label" for="push1">
+									<span class="onoffswitch-inner"></span>
+									<span class="onoffswitch-switch"></span>
+								</label>
+							</span>
+						</div>
+					</dd>
+				</dl>
+				<dl class="setting-app-item">
+					<dt>알림 설정</dt>
+					<dd>
+						<p>체크인, 체크아웃, 코인 교환 등의 내용을 실시간으로 알려드립니다. 소리/진동/무음 설정은 휴대폰 설정과 동일하게 적용됩니다.</p>
+						<div class="onoffswitch-wrap">
+							<span class="onoffswitch">
+								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="push2" />
+								<label class="onoffswitch-label" for="push2">
+									<span class="onoffswitch-inner"></span>
+									<span class="onoffswitch-switch"></span>
+								</label>
+							</span>
+						</div>
+					</dd>
+				</dl>
+				<dl class="setting-app-item">
+					<dt>자동체크인</dt>
+					<dd>
+						<p>체크인, 체크아웃, 코인 교환 등의 내용을 실시간으로 알려드립니다. 소리/진동/무음 설정은 휴대폰 설정과 동일하게 적용됩니다.</p>
+						<div class="onoffswitch-wrap">
+							<span class="onoffswitch">
+								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="push3" />
+								<label class="onoffswitch-label" for="push3">
+									<span class="onoffswitch-inner"></span>
+									<span class="onoffswitch-switch"></span>
+								</label>
+							</span>
+						</div>
+					</dd>
+				</dl>
+				<dl class="setting-app-item">
+					<dt>푸시 알림 설정</dt>
+					<dd>
+						<p>푸시 알림 설정시 쿠폰 및 min 적립 관련한 정보와 다양한 혜택에 대한 정보를 받아 보실 수 있습니다.</p>
+						<div class="onoffswitch-wrap">
+							<span class="onoffswitch">
+								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="push4" />
+								<label class="onoffswitch-label" for="push4">
+									<span class="onoffswitch-inner"></span>
+									<span class="onoffswitch-switch"></span>
+								</label>
+							</span>
+						</div>
+					</dd>
+				</dl>
+			</div>
+			<!-- //settingScroll -->
+		</section>
+		<!-- //contents -->
+
+
+
+	</section>
+
+	<div id="errors"></div>
+	<div class="shadow" style="display:none;"></div>
+	<!-- js remote -->
+	<script src="http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyAbifDvTwZeJGRnq1OUxoArY2yYJ98fXKY"></script>
+
+	<!--
+	<script src="/front-src/release/js/library/react-0.13.3.min.js"></script>
+	<script src="/front-src/release/js/library/react-with-addons-0.13.3.min.js"></script>
+	-->
+	<script src="/front-src/release/js/library/lazy.min.js"></script>
+
+	<!-- gMap -->
+	<script src="/front-src/release/js/plugin/gmaps.min.js"></script>
+
+	<!-- msg -->
+	<script src="/front-src/release/js/msg.js"></script>
+
+	<!-- twUi -->
+	<script src="/front-src/release/js/twUi.js"></script>
+
+
+
+	<script>
+		var scriptUrl="/front-src/release/js/";
+
+		twCommonUi.scriptLoadNext(
+			[
+				scriptUrl+'plugin/json2.js',
+				scriptUrl+'library/router.js',
+				scriptUrl+'library/reqwest.js',
+				scriptUrl+'plugin/interact.min.js',
+				scriptUrl+'library/pageslider-react.js',
+				scriptUrl+'plugin/slick.min.js',
+				scriptUrl+'plugin/jquery.storage.js',
+				scriptUrl+'plugin/lazysizes.min.js',
+				scriptUrl+'plugin/jquery.easings.js',
+				scriptUrl+'plugin/jquery.transit.js',
+				//scriptUrl+'twRouter.js'
+
+			],function() {
+			}
+		);
+	</script>
+</body>
+</html>

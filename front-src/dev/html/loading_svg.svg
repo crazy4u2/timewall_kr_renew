@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 612 792" style="enable-background:new 0 0 612 792;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.2;fill:#1A1A1A;}
+	.st1{fill:#FFFFFF;}
+	.st2{fill:#181919;}
+	.second {
+		-webkit-transform: rotate(360deg);
+		-webkit-transform-origin:50% 91.5%;
+		-webkit-transition-duration: 1s;
+		-webkit-transition-delay: now;
+		-webkit-animation-timing-function: linear;
+		-webkit-animation-iteration-count: infinite;
+	}
+
+	@-webkit-keyframes second /* Safari and Chrome */ {
+      from {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      to {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes second {
+      from {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      to {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    .second {
+      -webkit-animation: second 2s linear infinite;
+      -moz-animation: second 2s linear infinite;
+      -ms-animation: second 2s linear infinite;
+      -o-animation: second 2s linear infinite;
+      animation: second 2s linear infinite;
+    }
+</style>
+<ellipse id="XMLID_820_" class="st0" cx="308.4" cy="604.5" rx="183.8" ry="40.1"/>
+<circle id="XMLID_674_" class="st1" cx="306" cy="361.4" r="230.8"/>
+<path id="XMLID_671_" class="st2" d="M306,602.4c-132.9,0-241-108.1-241-241s108.1-241,241-241s241,108.1,241,241
+	S438.9,602.4,306,602.4z M306,140.8c-121.6,0-220.6,99-220.6,220.6S184.4,582,306,582s220.6-99,220.6-220.6S427.6,140.8,306,140.8z"
+	/>
+<path id="XMLID_669_" class="st2" d="M306,198.4c-1.6,0-2.9-1.3-2.9-2.9v-34.2c0-1.6,1.3-2.9,2.9-2.9s2.9,1.3,2.9,2.9v34.2
+	C308.9,197.1,307.6,198.4,306,198.4z"/>
+<path id="XMLID_667_" class="st2" d="M188.7,247c-0.7,0-1.5-0.3-2.1-0.9l-24.2-24.2c-1.1-1.1-1.1-3,0-4.1c1.1-1.1,3-1.1,4.1,0
+	l24.2,24.2c1.1,1.1,1.1,3,0,4.1C190.2,246.7,189.4,247,188.7,247z"/>
+<path id="XMLID_665_" class="st2" d="M140.1,364.3h-34.2c-1.6,0-2.9-1.3-2.9-2.9c0-1.6,1.3-2.9,2.9-2.9h34.2c1.6,0,2.9,1.3,2.9,2.9
+	C143,363,141.7,364.3,140.1,364.3z"/>
+<path id="XMLID_655_" class="st2" d="M164.5,505.8c-0.7,0-1.5-0.3-2.1-0.9c-1.1-1.1-1.1-3,0-4.1l24.2-24.2c1.1-1.1,3-1.1,4.1,0
+	c1.1,1.1,1.1,3,0,4.1L166.5,505C166,505.5,165.2,505.8,164.5,505.8z"/>
+<path id="XMLID_650_" class="st2" d="M306,564.4c-1.6,0-2.9-1.3-2.9-2.9v-34.2c0-1.6,1.3-2.9,2.9-2.9s2.9,1.3,2.9,2.9v34.2
+	C308.9,563.1,307.6,564.4,306,564.4z"/>
+<path id="XMLID_648_" class="st2" d="M447.5,505.8c-0.7,0-1.5-0.3-2.1-0.9l-24.2-24.2c-1.1-1.1-1.1-3,0-4.1c1.1-1.1,3-1.1,4.1,0
+	l24.2,24.2c1.1,1.1,1.1,3,0,4.1C449,505.5,448.3,505.8,447.5,505.8z"/>
+<path id="XMLID_646_" class="st2" d="M506.1,364.3h-34.2c-1.6,0-2.9-1.3-2.9-2.9c0-1.6,1.3-2.9,2.9-2.9h34.2c1.6,0,2.9,1.3,2.9,2.9
+	C509.1,363,507.8,364.3,506.1,364.3z"/>
+<path id="XMLID_632_" class="st2" d="M423.3,247c-0.7,0-1.5-0.3-2.1-0.9c-1.1-1.1-1.1-3,0-4.1l24.2-24.2c1.1-1.1,3-1.1,4.1,0
+	c1.1,1.1,1.1,3,0,4.1l-24.2,24.2C424.8,246.7,424.1,247,423.3,247z"/>
+<path id="XMLID_623_" class="st2 second" d="M309,211.4c-0.3-3.7-5.7-3.7-6,0l-11.7,147.9c0,8.1,6.6,14.7,14.7,14.7s14.7-6.6,14.7-14.7
+	L309,211.4z" />
+
+
+
+</svg>
+
+
+

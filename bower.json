@@ -1,0 +1,26 @@
+{
+  "name": "timewallet_ui_v1.0_kr",
+  "version": "1.0.0",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "1.11.2",
+    "lodash": "~3.8.0",
+    "html5shiv": "~3.7.2",
+    "d3": "~3.5.5",
+    "interact": "~1.2.4",
+    "jquery.transit": "~0.9.12",
+    "swiper": "~3.0.7",
+    "slick.js": "~1.5.5",
+    "transition-to-from-auto": "~0.1.1"
+  },
+  "dependencies": {
+    "JIC": "~1.1.1"
+  }
+}

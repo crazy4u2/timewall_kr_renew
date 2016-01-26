@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no, address=no, email=no" /><!-- telephone, address, email autolink is not work -->
+	<title></title>
+	<script src="/front-src/release/js/library/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/front-src/release/css/timewallet.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<script>
+		// simple include function for basic ui(view only) dev.
+		var include = function(obj){
+			jQuery.ajax({
+				url: 'front-src/release/html/'+obj+'.html',
+				success: function(data){
+					jQuery('.'+obj).html(data);
+					console.log(obj+' include ok');
+				}
+			});
+		};
+
+		var launch = function() {
+			include('header');
+			include('sidebar');
+		};
+		launch();
+
+		jQuery(document).ready(function(){
+			
+		});
+	</script>
+</head>
+<body>
+	<section class="container shop-list">
+		<header class="header">
+			<!-- header-other 나와야 함 -->
+		</header>
+		<section class="contents">
+			<div class="search-wordbox">
+				<div class="search-wordbox-inner fix">
+					<a class="btn-shop-search" href="javascript:void(0);"><i class="fa fa-search"></i></a>
+					<span class="inp-type2"><input type="search" placeholder="검색어를 입력하세요" value="" /></span>
+				</div>
+			</div>
+			<!-- 검색 기록 -->
+			<div class="search-result" >
+				<div class="delet-all">
+					<a class="btn-history-hidden" href="javascript:void(0);"><span>숨김</span></a>
+					<a class="btn-search-clear" href="javascript:void(0);"><span>모두</span></a>
+				</div>
+				<div class="search-history">
+					<ul>
+						<li><a class="search-word" href="javascript:void(0);">스타벅스</a><a class="btn-del" href="javascript:void(0);">삭제</a></li>
+						<li><a class="search-word" href="javascript:void(0);">aaaaa</a><a class="btn-del" href="javascript:void(0);">삭제</a></li>
+						<li><a class="search-word" href="javascript:void(0);">카페베네</a><a class="btn-del" href="javascript:void(0);">삭제</a></li>
+						<li><a class="search-word" href="javascript:void(0);">스타벅스</a><a class="btn-del" href="javascript:void(0);">삭제</a></li>
+						<li><a class="search-word" href="javascript:void(0);">스타벅스</a><a class="btn-del" href="javascript:void(0);">삭제</a></li>
+						<li><a class="search-word" href="javascript:void(0);">aaaaa</a><a class="btn-del" href="javascript:void(0);">삭제</a></li>
+						<li><a class="search-word" href="javascript:void(0);">카페베네</a><a class="btn-del" href="javascript:void(0);">삭제</a></li>
+						<li><a class="search-word" href="javascript:void(0);">스타벅스</a><a class="btn-del" href="javascript:void(0);">삭제</a></li>
+						<li><a class="search-word" href="javascript:void(0);">스타벅스</a><a class="btn-del" href="javascript:void(0);">삭제</a></li>
+						<li><a class="search-word" href="javascript:void(0);">aaaaa</a><a class="btn-del" href="javascript:void(0);">삭제</a></li>
+					</ul>
+					<!-- 최근 검색된 매장이 없을 경우
+					<div class="no-data">
+						<div class="no-data-ment">
+							<p>최근 검색된 매장이없습니다.</p>
+						</div>
+					</div> -->
+				</div>
+			</div>
+			<div class="search-complete">
+				<!-- 검색된 매장이 없을 경우
+				<div class="no-data">
+					<div class="no-data-ment">
+						<p>검색된 매장이 없습니다.</p>
+					</div>
+				</div>-->
+				<!-- 검색 결과 -->
+				<!-- item-list -->
+				<div class="item-list fix">
+					<div class="item">
+						<span class="coin-premium">프리미엄 코인 매장</span><!-- 프리미엄 코인 매장일 경우 생김 -->
+						<span class="shop-logo" style="background-image:url(/front-src/release/images/shop_logo_sample1.png);"></span><!-- 매장 로고가 없을 경우 이미지 :  shop_logo_empty.png -->
+					</div>
+					<div class="balloons">
+						<strong class="shop-name">커피</strong>
+						<div class="item-use">
+							<p class="use-no"><strong>쿠폰</strong><span>등록된 쿠폰이 없습니다.</span></p>
+							<p><strong>코인</strong><span>10min &times; 300coin</span></p>
+						</div>
+						<ul class="item-icons fix">
+							<li class="min-save">min 적립</li><!-- 비활성 시 li 태그에 addclass : no -->
+							<li class="coupon no">쿠폰사용</li>
+							<li a class="coin">코인교환</li>
+							<li class="remain">매장</li>
+						</ul>
+						<div class="bookmark active">
+							<a href="javascript:void(0)"><i class="fa fa-heart-o"></i><span class="num">1</span></a>
+						</div>
+						<div class="distance fix">
+							<span class="meter">10m</span>
+							<span class="floor">1F</span>
+						</div>
+					</div>
+				</div>
+				<!-- //item-list -->
+				<!-- item-list -->
+				<div class="item-list fix">
+					<div class="item">
+						<span class="coin-premium">프리미엄 코인 매장</span><!-- 프리미엄 코인 매장일 경우 생김 -->
+						<span class="shop-logo" style="background-image:url(/front-src/release/images/shop_logo_sample2.png);"></span><!-- 매장 로고가 없을 경우 이미지 :  shop_logo_empty.png -->
+					</div>
+					<div class="balloons">
+						<strong class="shop-name">커피</strong>
+						<div class="item-use">
+							<p class="use-no"><strong>쿠폰</strong><span>등록된 쿠폰이 없습니다.</span></p>
+							<p><strong>코인</strong><span>10min &times; 300coin</span></p>
+						</div>
+						<ul class="item-icons fix">
+							<li class="min-save">min 적립</li><!-- 비활성 시 li 태그에 addclass : no -->
+							<li class="coupon no">쿠폰사용</li>
+							<li a class="coin">코인교환</li>
+							<li class="remain">매장</li>
+						</ul>
+						<div class="bookmark active">
+							<a href="javascript:void(0)"><i class="fa fa-heart-o"></i><span class="num">1</span></a>
+						</div>
+						<div class="distance fix">
+							<span class="meter">10m</span>
+							<span class="floor">1F</span>
+						</div>
+					</div>
+				</div>
+				<!-- //item-list -->
+				<!-- item-list -->
+				<div class="item-list fix">
+					<div class="item">
+						<span class="coin-premium">프리미엄 코인 매장</span><!-- 프리미엄 코인 매장일 경우 생김 -->
+						<span class="shop-logo" style="background-image:url(/front-src/release/images/shop_logo_sample3.png);"></span><!-- 매장 로고가 없을 경우 이미지 :  shop_logo_empty.png -->
+					</div>
+					<div class="balloons">
+						<strong class="shop-name">커피</strong>
+						<div class="item-use">
+							<p class="use-no"><strong>쿠폰</strong><span>등록된 쿠폰이 없습니다.</span></p>
+							<p><strong>코인</strong><span>10min &times; 300coin</span></p>
+						</div>
+						<ul class="item-icons fix">
+							<li class="min-save">min 적립</li><!-- 비활성 시 li 태그에 addclass : no -->
+							<li class="coupon no">쿠폰사용</li>
+							<li a class="coin">코인교환</li>
+							<li class="remain">매장</li>
+						</ul>
+						<div class="bookmark active">
+							<a href="javascript:void(0)"><i class="fa fa-heart-o"></i><span class="num">1</span></a>
+						</div>
+						<div class="distance fix">
+							<span class="meter">10m</span>
+							<span class="floor">1F</span>
+						</div>
+					</div>
+				</div>
+				<!-- //item-list -->
+			</div>
+			<!-- //search-complete -->
+		</section>
+		<!-- //contents -->
+
+
+
+
+
+	</section>
+
+	<div id="errors"></div>
+	<div class="shadow"></div>
+	<!-- js remote -->
+	<script src="http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyAbifDvTwZeJGRnq1OUxoArY2yYJ98fXKY"></script>
+
+	<!--
+	<script src="/front-src/release/js/library/react-0.13.3.min.js"></script>
+	<script src="/front-src/release/js/library/react-with-addons-0.13.3.min.js"></script>
+	-->
+	<script src="/front-src/release/js/library/lazy.min.js"></script>
+
+	<!-- gMap -->
+	<script src="/front-src/release/js/plugin/gmaps.min.js"></script>
+
+	<!-- msg -->
+	<script src="/front-src/release/js/msg.js"></script>
+
+	<!-- twUi -->
+	<script src="/front-src/release/js/twUi.js"></script>
+
+
+
+	<script>
+		var scriptUrl="/front-src/release/js/";
+
+		twCommonUi.scriptLoadNext(
+			[
+				scriptUrl+'plugin/json2.js',
+				scriptUrl+'library/router.js',
+				scriptUrl+'library/reqwest.js',
+				scriptUrl+'plugin/interact.min.js',
+				scriptUrl+'library/pageslider-react.js',
+				scriptUrl+'plugin/slick.min.js',
+				scriptUrl+'plugin/jquery.storage.js',
+				scriptUrl+'plugin/lazysizes.min.js',
+				scriptUrl+'plugin/jquery.easings.js',
+				scriptUrl+'plugin/jquery.transit.js',
+				scriptUrl+'twRouter.js'
+
+			],function() {
+			}
+		);
+	</script>
+</body>
+</html>
