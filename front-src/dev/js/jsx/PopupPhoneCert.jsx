@@ -1,4 +1,5 @@
 var PopupPhoneCert = React.createClass({
+    certData : {},
     getInitialState : function()
     {
         var state =
@@ -17,15 +18,33 @@ var PopupPhoneCert = React.createClass({
     {
         UI.closePopup( this );
     },
-    onShow : function() {
+    checkCertNum : function() {
+        var _this = this;
+        _this.certData.auth_num = jQuery('.num-area input').val();
+        MODEL.get(API.CHECK_SMS, _this.certData, function(ret) {
+            var respData = ret.data[0];
+            if(ret.success && respData.ResultCode == 1) { // 정상응답이 왔을 경우
+                var returnData = _this.certData.auth_num;
+                jQuery('.header').data('authNum',_this.certData.auth_num);
+                twCommonUi.stopValidTime('.valid .time');
 
+                UI.closePopup( this );
+                setTimeout(function(){
+
+                },300);
+            }
+        });
+    },
+    onShow : function( param ) {
+        var _this = this;
+        _this.certData = param;
     },
     render : function() {
         var _hide={
             display:'none'
         };
         return (
-            <section className="modal modal-cert" style={this.props.style}>
+            <section className="modal modal-cert">
                 <div className="modal-inner">
                     <div className="modal-header icon-type2"></div>
 
@@ -51,7 +70,7 @@ var PopupPhoneCert = React.createClass({
                     <div className="modal-footer fix">
                         <div className="btnbox">
                             <a className="btn-type2 btn-cancel" onClick={this.onBtnCancel} href="javascript:void(0);">취소</a>
-                            <a className="btn-type3 btn-confirm" href="javascript:void(0);">확인</a>
+                            <a className="btn-type3 btn-confirm" onClick={this.checkCertNum} href="javascript:void(0);">확인</a>
                         </div>
                     </div>
                 </div>

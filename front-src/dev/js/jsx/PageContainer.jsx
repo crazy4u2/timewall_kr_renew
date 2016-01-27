@@ -60,7 +60,7 @@ var PageContents = React.createClass
     render : function()
     {
         return (
-            <div className="page-contents">{this.props.children}</div>
+            <div className={"page-contents "+this.props.className}>{this.props.children}</div>
         )
     }
 });
