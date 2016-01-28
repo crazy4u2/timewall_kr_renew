@@ -303,3 +303,55 @@ var CHECKIN_INFO = (function()
         init : _init
     }
 }());
+
+// 위치 정보
+var GPS = (function()
+{
+    var _lati = '';
+    var _longi = '';
+
+    function _init()
+    {
+        BRIDGE.getUserLocation( function( loc )
+        {
+            GPS.lati = loc.LATI;
+            GPS.longi = loc.LONGI;
+        });
+    }
+
+    function _getRegionName( lati, longi, callback )
+    {
+        var geocoder = new google.maps.Geocoder();
+        var latlng = { lat:parseFloat(lati), lng:parseFloat(longi) };
+        geocoder.geocode( {location:latlng}, function( results, status )
+        {
+            if( status == google.maps.GeocoderStatus.OK )
+            {
+                console.log( '지역명 확인결과 : ', results );
+                if( results[0] )
+                {
+                    var ret = { success:true, regionName:results[0].address_components[1].short_name };
+                    callback( ret );
+                }
+            }
+            else
+            {
+                callback( { success:false, regionName:''} );
+            }
+        });
+    }
+
+    function _getCurrentRegionName( callback )
+    {
+        _getRegionName( GPS.lati, GPS.longi, callback );
+    }
+
+    return {
+        lati : _lati,
+        longi :_longi,
+        getRegionName : _getRegionName,
+        getCurrentRegionName : _getCurrentRegionName,
+        init :_init
+    }
+
+}());

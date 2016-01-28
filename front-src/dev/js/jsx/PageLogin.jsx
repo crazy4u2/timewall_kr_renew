@@ -24,7 +24,7 @@ var PageLogin = React.createClass({
     {
         UI.registerPage( this.props.pageName, this );
     },
-    openCert : function() {
+    openCert : function() { // 인증번호 입력 모달을 띄우는 곳
         var _phone=jQuery('.cert .phone').val(),
             _this = this;
         if(twMember.getValidPhone(_phone)) {
@@ -33,7 +33,7 @@ var PageLogin = React.createClass({
             };
             MODEL.get(API.SEND_SMS_FOR_LOGIN, _data, function(ret) {
                 var respData = ret.data[0];
-                if(ret.success && respData.ResultCode == 1) {
+                if (ret.success && respData.ResultCode == 1) { // 정상응답.
                     console.log(ret);
                     twCommonUi.setValidTime('.valid .time', 1, function () {
                         /* 입력 시간이 지난 후 콜백 실행 */
@@ -55,6 +55,8 @@ var PageLogin = React.createClass({
                     };
 
                     UI.openPopup('POP_PHONE_CERT', certData);
+                } else if (ret.success && respData.ResultCode == -50001) { // 인증하기 5번 클릭 시 10분 블럭
+                    UI.openPopup('POP_AUTH_EXCEEDS');
                 }
             });
         } else {

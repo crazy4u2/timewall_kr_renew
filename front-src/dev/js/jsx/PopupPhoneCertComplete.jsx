@@ -1,4 +1,4 @@
-var PopupModalInvalid = React.createClass({
+var PopupPhoneCertComplete = React.createClass({
     getInitialState : function() {
         var state =
         {

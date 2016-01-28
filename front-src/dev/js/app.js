@@ -5,6 +5,7 @@ var APP = ( function()
 {
     function _start()
     {
+        GPS.init();
         USER.init( function() // 유저정보 설정.( 앱으로 부터 index 를 얻어서 서버로 부터 유저 상세정보 설정 )
         {
             // 콜백 형태로 실행하는 것은 유저정보가 모두 설정된 다음에 다음 프로세스를 진행하기 위함.
