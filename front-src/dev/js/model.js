@@ -9,7 +9,7 @@ var API =
     JOIN : '/User/Set_Userinfo_Insert',
     JOIN_TEMPORARILY : '/User/Set_Userinfo_Tempuser_Insert',
     TEMP_USER_LOGIN : '/User/Set_Userinfo_Tempuser_Join',
-    TEMO_USER_JOIN : '/User/Set_Userinfo_Tempuser_Transfer',
+    TEMP_USER_JOIN : '/User/Set_Userinfo_Tempuser_Transfer',
     USER_INFO : '/User/Get_Userinfo',
     LOGIN : '/User/Set_Userinfo_Login',
     REJOIN : '/User/Set_Userinfo_Hold',

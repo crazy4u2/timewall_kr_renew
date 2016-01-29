@@ -325,6 +325,49 @@ var UI = (function()
     };
 }());
 
+var device = device || {};
+device = ( function() {
+    return {
+        chkDevice: {
+            Android: function () {
+                return navigator.userAgent.match(/Android/i);
+            },
+            BlackBerry: function () {
+                return navigator.userAgent.match(/BlackBerry/i);
+            },
+            iOS: function () {
+                return navigator.userAgent.match(/iPhone|iPod/i);
+            },
+            iPAD: function () {
+                return navigator.userAgent.match(/iPad/i);
+            },
+            Opera: function () {
+                return navigator.userAgent.match(/Opera Mini/i);
+            },
+            Windows: function () {
+                return navigator.userAgent.match(/IEMobile/i);
+            },
+            Mobile: function () {
+                return (chkDevice.Android() || chkDevice.BlackBerry() || chkDevice.iOS() || chkDevice.Opera() || chkDevice.Windows());
+            }
+        },
+        checkDeviceType: function () {
+            if (device.chkDevice.Android())
+                deviceType = "android";
+            else if (device.chkDevice.iOS())
+                deviceType = "ios";
+            else if (device.chkDevice.iPAD())
+                deviceType = "ipad";
+            else
+                deviceType = "unknown";
+
+            jQuery('html').addClass(deviceType);
+
+            return deviceType;
+        }
+    }
+})();
+
 var twMember = twMember || {};
 twMember = (function() {
     return {

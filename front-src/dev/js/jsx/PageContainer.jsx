@@ -36,6 +36,8 @@ var PageContainer = React.createClass(
                     <PageJoin pageName="JOIN" />
                     <PageLogin pageName="LOGIN" />
                     <PageExchangeCoin pageName="EXCHANGE_COIN" />
+                    <PageSearchPassword pageName="SEARCH_PASSWORD" />
+                    <PageLoginComplete pageName="LOGIN_COMPLETE" />
                 </div>
 //            </div>
         );
