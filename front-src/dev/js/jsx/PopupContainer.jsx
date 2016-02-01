@@ -28,6 +28,7 @@ var PopupContainer = React.createClass(
                     <PopupWrongPassword popName="POP_WRONG_PASSWORD" style={_hide} />
                     <PopupAuthExceeds popName="POP_AUTH_EXCEEDS" style={_hide} />
                     <PopupNoMemberInfo popName="POP_NO_MEMBER_INFO" style={_hide} />
+                    <PopupSendPassword popName="POP_SEND_PASSWORD" style={_hide} />
                 </div>
             </div>
         );

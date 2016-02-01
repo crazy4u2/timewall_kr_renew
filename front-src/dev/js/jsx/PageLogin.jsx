@@ -25,7 +25,7 @@ var PageLogin = React.createClass({
         UI.registerPage( this.props.pageName, this );
     },
     openCert : function() { // 인증번호 입력 모달을 띄우는 곳
-        var _phone=jQuery('.cert .phone').val(),
+        var _phone=jQuery('.cert .phone-login').val(),
             _this = this;
         if(twMember.getValidPhone(_phone)) {
             var _data = {
@@ -64,11 +64,11 @@ var PageLogin = React.createClass({
         }
     },
     goLogin : function () { // 로그인 버튼 클릭 시 로그인 실행.
-        //console.log();
+        var _this = this;
         var _bSaveMember = twCommonUi.checkEnableJoinButton({
-            'phone':jQuery('.cert .phone').val(),
+            'phone':jQuery('.cert .phone-login').val(),
             'rePhone':jQuery('.phone-check .re-phone').val(), // 기존 휴대폰번호 입력
-            'auth_num':_this.authNum,
+            'auth_num':jQuery('.header').data('authNum'),
             'loginPassword':jQuery('.inp-type1 .password').val()
         },jQuery('.twMember_login .btn-start'),'login');
 
@@ -115,7 +115,7 @@ var PageLogin = React.createClass({
                                 'app_id': deviceInfo.APP_ORG_ID,
                                 'os_type': _os_type,
                                 'auth_idx': _this.authIdx,
-                                'auth_num': _this.authNum
+                                'auth_num': jQuery('.header').data('authNum')
                             };
 
                             // 유저 상황에 맞는 호출 api 설정
@@ -130,8 +130,10 @@ var PageLogin = React.createClass({
 
                             MODEL.get(_url, _data, function(ret) {
                                 var respData = ret.data[0];
-
+                                console.log(respData);
+                                console.log(ret);
                                 if(ret.success && respData.ResultCode == 1) { // 정상응답. 로그인 성공
+                                    var u_idx = respData.u_idx;
                                     UI.slidePage('LOGIN_COMPLETE', u_idx);
 
                                 } else if (ret.success && respData.ResultCode == -40000) { // 가입정보 없음.
@@ -190,7 +192,10 @@ var PageLogin = React.createClass({
         },1);
     },
     onShow : function() {
-
+        jQuery('.contents').css({
+            'padding-left':10,
+            'padding-right':10
+        });
     },
     render : function()
     {
@@ -206,7 +211,7 @@ var PageLogin = React.createClass({
 
                         <div className="member-contents error-log">
                             <div className="cert">
-                                <div className="inp-type1"><input type="tel" pattern="[0-9]{10}" className="phone" maxLength="11" placeholder="* 휴대폰 번호" /></div>
+                                <div className="inp-type1"><input type="tel" pattern="[0-9]{10}" className="phone-login" maxLength="11" placeholder="* 휴대폰 번호" /></div>
                                 <a href="javascript:void(0);" onClick={this.openCert} className="btn-modal-cert modal-cert"><span>인증하기</span></a>
                             </div>
 
@@ -219,8 +224,8 @@ var PageLogin = React.createClass({
                                 <input type="password" onKeyUp={this.passwordValidation} className="password" placeholder="* 비밀번호 입력(영,숫자 혼합 8~15자리)" />
                             </div>
                             <div className="forget-password fix">
-                                <a href="#/member-search-pass" className="fl" onClick={UI.slidePage.bind(this, 'SEARCH_PASSWORD')} >비밀번호를 잊으셨나요? <i className="fa fa-unlock-alt"></i></a>
-                                <a href="#/member-join" className="fr" onClick={UI.slidePage.bind(this, 'JOIN')}>회원가입하기</a>
+                                <a href="javascript:void(0);" className="fl" onClick={UI.slidePage.bind(this, 'SEARCH_PASSWORD')} >비밀번호를 잊으셨나요? <i className="fa fa-unlock-alt"></i></a>
+                                <a href="javascript:void(0);" className="fr" onClick={UI.slidePage.bind(this, 'JOIN')}>회원가입하기</a>
                             </div>
                         </div>
 

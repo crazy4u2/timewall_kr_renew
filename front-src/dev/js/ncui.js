@@ -122,7 +122,7 @@ var UI = (function()
         {
             _firstShowFlagList[pageName] = true;
             if( typeof nextPage.onShowFirst == 'function' )
-                nextPage.onShowFirst();
+                nextPage.onShowFirst(param);
         }
 
         // onShow 가 정의 되어 있으면 페이지가 보여질때 호출해 준다.

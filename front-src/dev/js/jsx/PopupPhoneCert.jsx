@@ -35,6 +35,7 @@ var PopupPhoneCert = React.createClass({
                 if(ret.success && respData.ResultCode == 1) { // 정상응답이 왔을 경우
                     var returnData = _this.certData.auth_num;
                     jQuery('.header').data('authNum',_this.certData.auth_num);
+                    _this.authNum = _this.certData.auth_num;
                     twCommonUi.stopValidTime('.valid .time');
                     UI.closePopup(_this);
                     setTimeout(function(){
@@ -70,7 +71,7 @@ var PopupPhoneCert = React.createClass({
             display:'none'
         };
         return (
-            <section className="modal modal-cert">
+            <section className="modal modal-cert" style={this.props.style}>
                 <div className="modal-inner">
                     <div className="modal-header icon-type2"></div>
 
