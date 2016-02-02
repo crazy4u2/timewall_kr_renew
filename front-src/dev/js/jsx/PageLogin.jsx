@@ -27,6 +27,9 @@ var PageLogin = React.createClass({
     openCert : function() { // 인증번호 입력 모달을 띄우는 곳
         var _phone=jQuery('.cert .phone-login').val(),
             _this = this;
+
+        jQuery('.modal.modal-cert .num-area input').val('');
+
         if(twMember.getValidPhone(_phone)) {
             var _data = {
                 'auth_phone':_phone
@@ -55,7 +58,7 @@ var PageLogin = React.createClass({
                     };
 
                     UI.openPopup('POP_PHONE_CERT', certData);
-                } else if (ret.success && respData.ResultCode == -50001) { // 인증하기 5번 클릭 시 10분 블럭
+                } else if (ret.success && respData.ResultCode == -50002) { // 인증하기 5번 클릭 시 10분 블럭, 로그인
                     UI.openPopup('POP_AUTH_EXCEEDS');
                 }
             });
@@ -69,13 +72,13 @@ var PageLogin = React.createClass({
             'phone':jQuery('.cert .phone-login').val(),
             'rePhone':jQuery('.phone-check .re-phone').val(), // 기존 휴대폰번호 입력
             'auth_num':jQuery('.header').data('authNum'),
-            'loginPassword':jQuery('.inp-type1 .password').val()
+            'loginPassword':jQuery('.inp-type1 .password-login').val()
         },jQuery('.twMember_login .btn-start'),'login');
 
         if (_bSaveMember.bResult) {
 
-            var _password = jQuery('.password').val(),
-                _phone = jQuery('.phone').val(),
+            var _password = jQuery('.password-login').val(),
+                _phone = jQuery('.phone-login').val(),
                 _new_phone = jQuery('.re-phone').val(),
                 _os_type= 0,
                 _url='',
@@ -115,13 +118,14 @@ var PageLogin = React.createClass({
                                 'app_id': deviceInfo.APP_ORG_ID,
                                 'os_type': _os_type,
                                 'auth_idx': _this.authIdx,
-                                'auth_num': jQuery('.header').data('authNum')
+                                //'auth_num': jQuery('.header').data('authNum')
+                                'auth_num' : _this.authNum
                             };
-
+                            console.log(_data);
                             // 유저 상황에 맞는 호출 api 설정
                             if (!user) { // 없는 로그인
                                 _url = API.LOGIN;
-                            } else if (user.u_status == 0) { //임시 유저의 로그인
+                            } else if (user == 0) { //임시 유저의 로그인
                                 _url = API.TEMP_USER_JOIN;
                                 _data["u_idx"] = userIndex;
                             } else { //기타(1,-1,-2,-3,-4) 유저의 로그인
@@ -191,6 +195,14 @@ var PageLogin = React.createClass({
 
         },1);
     },
+    setAuthNum : function (authNum) {
+        var _this = this;
+        _this.authNum = authNum;
+    },
+    setAuthIdx : function (authIdx) {
+        var _this = this;
+        _this.authIdx = authIdx;
+    },
     onShow : function() {
         jQuery('.contents').css({
             'padding-left':10,
@@ -221,7 +233,7 @@ var PageLogin = React.createClass({
                             <p className="comment">휴대폰 번호가 변경되지 않은 고객께서는 동일한 번호를 입력해주세요.</p>
 
                             <div className="inp-type1">
-                                <input type="password" onKeyUp={this.passwordValidation} className="password" placeholder="* 비밀번호 입력(영,숫자 혼합 8~15자리)" />
+                                <input type="password" onKeyUp={this.passwordValidation} className="password-login" placeholder="* 비밀번호 입력(영,숫자 혼합 8~15자리)" />
                             </div>
                             <div className="forget-password fix">
                                 <a href="javascript:void(0);" className="fl" onClick={UI.slidePage.bind(this, 'SEARCH_PASSWORD')} >비밀번호를 잊으셨나요? <i className="fa fa-unlock-alt"></i></a>

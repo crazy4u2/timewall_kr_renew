@@ -18,7 +18,8 @@ var UI = (function()
     var _pageContainer;
     var _app;
 
-    var _defaultPage = 'LOGIN';
+    //var _defaultPage = 'SHOP_LIST'; // 취향과 상황에 맞게 설정
+    var _defaultPage = 'JOIN';
     var _firstShowFlagList = {};
 
 
@@ -52,6 +53,7 @@ var UI = (function()
     function _registerPopup( key, component )
     {
         _popupComponentList[key] = component;
+        _firstShowFlagList[key] = false;
     }
 
     function _registerPage( key, component )
@@ -71,23 +73,27 @@ var UI = (function()
     }
 
     // 모든 페이지 랜더 및 설정
-    function _init( className )
+    function _init( className, callback )
     {
         _setViewSize();
-        _renderAllComponents( className );
-        _hideAllPage();
-        _setPage( _defaultPage );
+        _renderAllComponents( className, function()
+        {
+            _hideAllPage();
+            _setPage( _defaultPage );
+            callback();
+        });
+
 
         //$('.page-use-coin').css('-webkit-transform', 'translate(0px,100px)');
 
         window.addEventListener( 'resize', _onResize );
     }
 
-    function _renderAllComponents( className )
+    function _renderAllComponents( className, callback )
     {
         var klass = className || 'app-container';
         var container = container || document.getElementsByClassName(klass)[0];
-        _app = DOM.render( R.createElement( App, {viewSize:{width:_size.width, height:_size.height}} ), container );
+        _app = DOM.render( R.createElement( App, {viewSize:{width:_size.width, height:_size.height}} ), container, callback );
     }
 
     function _movePageTo( component, x, y )
@@ -117,18 +123,6 @@ var UI = (function()
         var nextPage = _pageComponentList[pageName];
         var viewSize = UI.getViewSize();
 
-        // 처음 보여질 경우 onShowFirst 함수 호출해줌.
-        if( !_firstShowFlagList[pageName] )
-        {
-            _firstShowFlagList[pageName] = true;
-            if( typeof nextPage.onShowFirst == 'function' )
-                nextPage.onShowFirst(param);
-        }
-
-        // onShow 가 정의 되어 있으면 페이지가 보여질때 호출해 준다.
-        if( typeof nextPage.onShow == 'function' )
-            nextPage.onShow( param );
-
         //console.log( 'slidePage[ ', _curPage.props.pageName,' =>', nextPage.props.pageName ,']' );
 
         _movePageTo( nextPage, 0+viewSize.width, 0 );
@@ -138,6 +132,31 @@ var UI = (function()
 
         _addHistory( pageName, param );
         _curPage = nextPage;
+
+
+
+        // 처음 보여질 경우 onShowFirst 함수 호출해줌.
+        if( !_firstShowFlagList[pageName] )
+        {
+            _firstShowFlagList[pageName] = true;
+            if( typeof nextPage.onShowFirst == 'function' )
+                nextPage.onShowFirst();
+        }
+
+        // 페이지 슬라이딩 전 onBeforeShow 가 정의 되어 있으면 호출해준다.
+        if( typeof nextPage.onBeforeShow == 'function' )
+        {
+            nextPage.onBeforeShow( param );
+        }
+
+        // 페이지 슬라이딩 후 onShow 가 정의 되어 있으면 호출해준다.
+        if( typeof nextPage.onShow == 'function' )
+        {
+            setTimeout( function()
+            {
+                nextPage.onShow( param );
+            }, 300 );
+        }
     }
 
     function _slideBack()
@@ -151,13 +170,24 @@ var UI = (function()
         var prevPageName = _history[_history.length-2].pageName;
         var prevPage = _pageComponentList[prevPageName];
 
-        var history = _history.pop();
+        _history.pop();
+        var history = _history[_history.length-1];
 
-        // onShow 가 정의 되어 있으면 페이지가 보여질때 호출해 준다.
+        // 슬라이딩 전에 onBeforeShow 가 정이되어 있으면 파라미터와 같이 호출해준다.
+        if( typeof prevPage.onBeforeShow == 'function' )
+        {
+            prevPage.onBeforeShow( history.param );
+        }
+
+        // 슬라이딩 후에 onShow가 정의 되어 있으면 파라미터와 같이 호출해준다.
         if( typeof prevPage.onShow == 'function' )
-            prevPage.onShow( history.param );
+        {
+            setTimeout( function()
+            {
+                prevPage.onShow( history.param );
+            }, 300 );
+        }
 
-        //console.log( 'slideBack[ ', _curPage.props.pageName,' =>', prevPage.props.pageName ,']' );
 
         var viewSize = UI.getViewSize();
 
@@ -186,7 +216,13 @@ var UI = (function()
                 component.onShowFirst();
         }
 
-        // onShow 가 정의 되어 있으면 페이지가 보여질때 호출해 준다.
+        // 페이지 슬라이딩 전에 onBeforeShow 가 정의 되어 있으면 파라미터와 같이 호출해 준다.
+        if( typeof component.onBeforeShow == 'function' )
+        {
+            component.onBeforeShow( param );
+        }
+
+        // 페이지 슬라이딩 후에 onShow 가 정의되어 있으면 파라미터와 같이 호출해준다.
         if( typeof component.onShow == 'function' )
             component.onShow( param );
 
@@ -250,6 +286,15 @@ var UI = (function()
             popComponent = key;
         }
 
+        var popName = popComponent.props.popName;
+        if( !_firstShowFlagList[popName] )
+        {
+            _firstShowFlagList[popName] = true;
+
+            if( typeof popComponent.onShowFirst == 'function' )
+                popComponent.onShowFirst( param );
+        }
+
         if( typeof popComponent.onShow == 'function' ) {
             popComponent.onShow( param );
         }
@@ -286,14 +331,14 @@ var UI = (function()
         $el.transition({scale:1},0).transition({scale:0.7, y:'-50%', opacity:0.0}, 200, 'snap' );
 
         $popBackground.animate(
-        {
-            opacity : 0
-        }, 300, function()
-        {
-            $popBackground.css('display', 'none' );
-            $popContainer.css( 'display', 'none');
-            $el.css( 'display', 'none' );
-        });
+            {
+                opacity : 0
+            }, 300, function()
+            {
+                $popBackground.css('display', 'none' );
+                $popContainer.css( 'display', 'none');
+                $el.css( 'display', 'none' );
+            });
     }
 
     return {

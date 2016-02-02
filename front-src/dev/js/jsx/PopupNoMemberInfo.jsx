@@ -32,7 +32,7 @@ var PopupNoMemberInfo = React.createClass({
                     </div>
 
                     <div className="modal-footer">
-                        <a className="btn-type1" href="javascript:void(0);">확인</a>
+                        <a className="btn-type1" onClick={this.onBtnCancel} href="javascript:void(0);">확인</a>
                     </div>
                 </div>
             </section>

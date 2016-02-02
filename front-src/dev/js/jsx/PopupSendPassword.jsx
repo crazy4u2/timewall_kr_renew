@@ -13,6 +13,9 @@ var PopupSendPassword = React.createClass({
 
     onBtnCancel : function() {
         UI.closePopup( this );
+        setTimeout(function(){
+            UI.slideBack();
+        },200);
     },
     onShow : function() {
 
@@ -31,7 +34,7 @@ var PopupSendPassword = React.createClass({
                     </div>
 
                     <div className="modal-footer">
-                        <a className="btn-type1" href="javascript:void(0);">확인</a>
+                        <a className="btn-type1" onClick={this.onBtnCancel} href="javascript:void(0);">확인</a>
                     </div>
                 </div>
             </section>

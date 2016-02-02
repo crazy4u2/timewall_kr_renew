@@ -34,8 +34,18 @@ var PopupPhoneCert = React.createClass({
 
                 if(ret.success && respData.ResultCode == 1) { // 정상응답이 왔을 경우
                     var returnData = _this.certData.auth_num;
+
+                    UI.getPage('LOGIN').setAuthNum(_this.certData.auth_num);
+                    UI.getPage('JOIN').setAuthNum(_this.certData.auth_num);
+                    UI.getPage('SEARCH_PASSWORD').setAuthNum(_this.certData.auth_num);
+
+                    UI.getPage('LOGIN').setAuthIdx(_this.certData.auth_idx);
+                    UI.getPage('JOIN').setAuthIdx(_this.certData.auth_idx);
+                    UI.getPage('SEARCH_PASSWORD').setAuthIdx(_this.certData.auth_idx);
+                    /* // 기존에 간단(?)하게 값을 넘기던 구문.
                     jQuery('.header').data('authNum',_this.certData.auth_num);
-                    _this.authNum = _this.certData.auth_num;
+                    jQuery('.header').data('authIdx',_this.certData.auth_idx);
+                    */
                     twCommonUi.stopValidTime('.valid .time');
                     UI.closePopup(_this);
                     setTimeout(function(){

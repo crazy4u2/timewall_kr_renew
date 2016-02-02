@@ -23,7 +23,9 @@ var PageSearchPassword = React.createClass({
     openCert : function () { // 인증번호 입력 모달 띄우기.
         var _phone=jQuery('.cert .phone-find-pw').val(),
             _this = this;
-        console.log(_phone);
+
+        jQuery('.modal.modal-cert .num-area input').val('');
+
         if(twMember.getValidPhone(_phone)) {
             var _data = {
                 'auth_phone': _phone
@@ -62,6 +64,14 @@ var PageSearchPassword = React.createClass({
             UI.openPopup('POP_MODAL_INVALID');
         }
     },
+    setAuthNum : function (authNum) {
+        var _this = this;
+        _this.authNum = authNum;
+    },
+    setAuthIdx : function (authIdx) {
+        var _this = this;
+        _this.authIdx = authIdx;
+    },
     getTempPassword : function (){
         var _this = this;
         var _bSaveMember = twCommonUi.checkEnableJoinButton({
@@ -88,7 +98,8 @@ var PageSearchPassword = React.createClass({
             _data = {
                 'auth_phone': _phone,
                 'auth_idx': _this.authIdx,
-                'auth_num': jQuery('.header').data('authNum'),
+                //'auth_num': jQuery('.header').data('authNum'),
+                'auth_num': _this.authNum,
                 'userMail': _mail
             };
 

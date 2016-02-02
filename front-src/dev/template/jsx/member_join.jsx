@@ -245,7 +245,7 @@ var MemberJoin = React.createClass({
                                                         'auth_idx': _this.authIdx,
                                                         'auth_phone': _phone,
                                                         'auth_num': _authNum,
-                                                        'auth_type': _this.authType
+                                                        'auth_type': '4' // 재가입용 인증 종류는 4번.
                                                     }
                                                 })
                                                 .then(function (resp) {
@@ -357,7 +357,7 @@ var MemberJoin = React.createClass({
                                             e.stopPropagation();
                                             twCommonUi.hideModal(_$modal);
                                         });
-                                    } else if (resp[0].ResultCode == '-30000') { //인증하기 5번 클릭 시 10분 블럭
+                                    } else if (resp[0].ResultCode == '-30000') { // 인증번호 오류
                                         twCommonUi.stopValidTime('.valid .time');
                                         jQuery('.modal.modal-cert .time-area .text-type4').hide();
                                         jQuery('.modal.modal-cert .time-area .error-number').show();
@@ -532,20 +532,9 @@ var MemberJoin = React.createClass({
                 }
 
                 _webBridge.osType=_os_type;
-                console.log('브릿지 전');
-                BRIDGE.getUserInfo( function( userInfo ) {
-                    console.log('브릿지 1차');
-                    BRIDGE.getDeviceInfo( function( deviceInfo) {
-                        console.log('브릿지 2차');
-                        /*TODO : 앱 붙으면 지워야 할 코드*/
-                        /*if (device.checkDeviceType() == 'android') {
-                         userIndex=2;
-                         } else if (device.checkDeviceType() == 'ios') {
-                         userIndex=1;
-                         } else {
-                         userIndex=0;
-                         }*/
 
+                BRIDGE.getUserInfo( function( userInfo ) {
+                    BRIDGE.getDeviceInfo( function( deviceInfo) {
                         /*
                          * user.userState status value
                          * 0 : 임시회원 ,1: 정상회원, -1 : 탈퇴 요청, -2: 탈퇴 완료 (계정 삭제), -3: 블럭 , -4 : 임시회원 데이터이전 완료
@@ -554,68 +543,78 @@ var MemberJoin = React.createClass({
                             u_idx: userInfo.INDEX
                         };
 
-                        _data = {
-                            'pwd': _password,
-                            'pwd2': _rePassword,
-                            'phone': _this.phone,
-                            'birth_year': _year,
-                            'birth_month': _month,
-                            'birth_day': _day,
-                            'email': '',
-                            'sex': _sex,
-                            'addr': _addr,
-                            'device_id': deviceInfo.DEVICE_ORG_ID,
-                            'app_id': deviceInfo.APP_ORG_ID,
-                            'os_type': _os_type,
-                            'auth_idx': _this.authIdx,
-                            'auth_num': _this.authNum
-
-                        };
-                        console.log(userInfo.INDEX);
-                        if (userInfo.INDEX=="-1") { //없는 회원 가입
-                            _url = loc[0].api[2];
-                        } else {
-                            _url = loc[0].api[6];
-                            _data["u_idx"] = userInfo.INDEX
-                        }
-                        /*
-                         else { //기타(1,-1,-2,-3,-4) 유저의 회원 가입
-                         _url = loc[0].api[2];
-                         }
-                         */
-
-                        console.log(
-                            'phone=', _this.phone,
-                            '_password=', jQuery('.password').val(),
-                            '_rePassword=', jQuery('.re-password').val(),
-                            '_year=', jQuery('#sel1 option:selected').val(),
-                            '_month=', jQuery('#sel2 option:selected').val(),
-                            '_day=', jQuery('#sel3 option:selected').val(),
-                            '_sex=', _this.sex,
-                            '_addr=', jQuery('.region input').val(),
-                            '_os_type=', _os_type,
-                            'auth_idx=', _this.authIdx,
-                            'authNum=', _this.authNum
-                        );
-
                         reqwest({
-                            url: _url, //회원 가입
-                            method: loc[0].method,
-                            type: loc[0].type,
-                            data: _data
+                            url: loc[1].api[3], //유저정보
+                            method: 'post',
+                            type: 'json',
+                            data: _data_idx
                         })
                         .then(function (resp) {
-                            console.log(resp);
-                            /*************************
-                             resp.ResultCode
-                             '1'=success
-                             '-1'=fail
-                             *************************/
                             if (resp[0].ResultCode == '1') {
-                                //회원가입 완료 후 u_idx를 전역에서 사용할 수 있게 localstorage에 저장
-                                window.location.href = loc[3].hash + "/" + resp[0].u_idx;
-                            } else if (resp[0].ResultCode == '-10000') { // 파라미터오류인데 보통 인증번호를 입력하지 않을 경우 나타남.
-                                jQuery('error-log').append('<p class="comment notice">* 인증번호를 입력하세요.</p>');
+                                var user = resp[0].ResultData.u_status;
+
+                                _data = {
+                                    'pwd': _password,
+                                    'pwd2': _rePassword,
+                                    'phone': _this.phone,
+                                    'birth_year': _year,
+                                    'birth_month': _month,
+                                    'birth_day': _day,
+                                    'email': '',
+                                    'sex': _sex,
+                                    'addr': _addr,
+                                    'device_id': deviceInfo.DEVICE_ORG_ID,
+                                    'app_id': deviceInfo.APP_ORG_ID,
+                                    'os_type': _os_type,
+                                    'auth_idx': _this.authIdx,
+                                    'auth_num': _this.authNum
+                                };
+
+                                if (user == -1 || user == 1 || user == -2 || user == -3 || user == -4 || !user){
+                                    _url = loc[0].api[2];
+                                } else if (user ==0) {
+                                    _url = loc[0].api[6];
+                                    _data["u_idx"] = userInfo.INDEX
+                                }
+
+                                console.log(
+                                    'phone=', _this.phone,
+                                    '_password=', jQuery('.password').val(),
+                                    '_rePassword=', jQuery('.re-password').val(),
+                                    '_year=', jQuery('#sel1 option:selected').val(),
+                                    '_month=', jQuery('#sel2 option:selected').val(),
+                                    '_day=', jQuery('#sel3 option:selected').val(),
+                                    '_sex=', _this.sex,
+                                    '_addr=', jQuery('.region input').val(),
+                                    '_os_type=', _os_type,
+                                    'auth_idx=', _this.authIdx,
+                                    'authNum=', _this.authNum
+                                );
+
+                                reqwest({
+                                    url: _url, //회원 가입
+                                    method: loc[0].method,
+                                    type: loc[0].type,
+                                    data: _data
+                                })
+                                .then(function (resp) {
+                                    console.log(resp);
+                                    /*************************
+                                     resp.ResultCode
+                                     '1'=success
+                                     '-1'=fail
+                                     *************************/
+                                    if (resp[0].ResultCode == '1') {
+                                        //회원가입 완료 후 u_idx를 전역에서 사용할 수 있게 localstorage에 저장
+                                        window.location.href = loc[3].hash + "/" + resp[0].u_idx;
+                                    } else if (resp[0].ResultCode == '-10000') { // 파라미터오류인데 보통 인증번호를 입력하지 않을 경우 나타남.
+                                        jQuery('error-log').append('<p class="comment notice">* 인증번호를 입력하세요.</p>');
+                                    }
+                                })
+                                .fail(function (err, msg) {
+                                    console.log(err);
+                                    jQuery('#errors').html('response::::' + err.response + '<br />status::::' + err.status + '<br />statusText::::' + err.statusText)
+                                });
                             }
                         })
                         .fail(function (err, msg) {
@@ -623,7 +622,6 @@ var MemberJoin = React.createClass({
                             jQuery('#errors').html('response::::' + err.response + '<br />status::::' + err.status + '<br />statusText::::' + err.statusText)
                         });
                     });
-
                 });
             } else {
                 //입력 내용 및 인증이 제대로 통과되지 않았다면 해당 메세지 및 포커스 이동
