@@ -16,13 +16,16 @@ var PopupReJoinCert = React.createClass({
         UI.closePopup( this );
     },
     getCertNumber : function() {
-        var _this = this;
-
-        MODLE.get(API.SEND_SMS_FOR_REJOIN, _this.phone, function(ret) {
+        var _this = this,
+            _data = {
+                'auth_phone' : _this._phone
+            };
+        console.log(_data);
+        MODEL.get(API.SEND_SMS_FOR_REJOIN, _data, function(ret) {
             var respData = ret.data[0];
 
             if (ret.success && respData.ResultCode == 1) { // 정상응답.
-                UI.closePopup( this );
+                UI.closePopup( _this );
 
                 twCommonUi.setValidTime('.valid .time', 1, function () {
                     /* 입력 시간이 지난 후 콜백 실행 */
@@ -43,7 +46,9 @@ var PopupReJoinCert = React.createClass({
                     'auth_phone': _this._phone,
                     'auth_type': _this.authType
                 };
-                UI.openPopup('POP_PHONE_CERT', certData);
+                setTimeout(function(){
+                    UI.openPopup('POP_PHONE_CERT', certData);
+                },300);
             } else if (ret.success && respData.ResultCode == -50004) { // 재가입 요청 sms인증 5회 광클로 인한 10분 블럭
                 UI.openPopup('POP_AUTH_EXCEEDS');
             }

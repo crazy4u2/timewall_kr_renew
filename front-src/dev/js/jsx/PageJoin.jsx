@@ -138,6 +138,9 @@ var PageJoin = React.createClass({
     setLocation : function( loc ) {
 
     },
+    goJoin : function() {
+
+    },
     render : function() {
         return (
             <div className="page page-join member" style={this.context.viewSize}>
@@ -197,14 +200,14 @@ var PageJoin = React.createClass({
 
                             <div className="inp-type1 region">
                                 <a href="javascript:void(0);" onClick={this.showLocation}>&nbsp;</a>
-                                <input type="text" placeholder="* 거주지역설정" value="" />
+                                <input type="text" placeholder="* 거주지역설정" value="강원도 강릉시" />
                             </div>
 
                         </div>
                     </div>
 
                     <div className="member-footer">
-                        <a href="javascript:void(0);" className="btn-start active"><span>가입하기</span></a>
+                        <a href="javascript:void(0);" onClick={this.goJoin} className="btn-start active"><span>가입하기</span></a>
                     </div>
                 </PageContents>
             </div>

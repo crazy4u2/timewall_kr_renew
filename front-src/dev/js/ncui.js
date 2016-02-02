@@ -18,7 +18,7 @@ var UI = (function()
     var _pageContainer;
     var _app;
 
-    //var _defaultPage = 'SHOP_LIST'; // 취향과 상황에 맞게 설정
+    //var _defaultPage = 'SHOP_LIST'; // 취향과 상황에 맞게 설정.....
     var _defaultPage = 'JOIN';
     var _firstShowFlagList = {};
 
@@ -324,6 +324,9 @@ var UI = (function()
 
         var $popBackground = $('.popup-background' );
         var $popContainer = $('.popup-container-wrapper');
+
+        if( typeof popComponent.onClose == 'function' )
+            popComponent.onClose();
 
         var el = ReactDOM.findDOMNode( popComponent );
         var $el = $(el);

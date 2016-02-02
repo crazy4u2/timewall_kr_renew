@@ -52,7 +52,7 @@ var PopupSelectLocation = React.createClass(
             });
         },
 
-        onBtnOk : function()
+        onBtnOk : function() // 샘플코드
         {
             var pageJoin = UI.getPage( 'JOIN' );
             pageJoin.setLocation( '가원도' );
@@ -67,10 +67,47 @@ var PopupSelectLocation = React.createClass(
         onBtnCity : function( event )
         {
             var cityTag = ReactDOM.findDOMNode( event.target );
-            if( $(cityTag).parents('li').find('.sub li').size() > 0 )
+            var $cityTag = $(cityTag);
+
+            if( $cityTag.parents('li').find('.sub li').size() > 0 )
             {
+                if( !$cityTag.attr('class')  )
+                    $cityTag = $cityTag.closest('a');
+
+                if( !$cityTag.attr('class').match('state') )
+                {
+                    if( $cityTag.closest('li').attr('class').match('active') ) // 아코디언 열려있을 경우
+                    {
+                        $cityTag.closest('li').removeClass('active').find('ul').height(0);
+                    }
+                    else // 닫혀 있을경우
+                    {
+                        // 기존 열려있던 탭 닫기
+                        $('.list-location').find('.active').find('ul').height(0).end().removeClass('active');
+
+                        var cntLi = $cityTag.closest('li').find('li').size();
+                        if( cntLi % 2 == 0 )
+                            cntLi = cntLi / 2;
+                        else
+                            cntLi = Math.floor( cntLi / 2 ) + 1;
+
+                        $cityTag.closest('li').find('ul').height( ( $cityTag.closest('li').find('li').outerHeight()) * cntLi );
+                        $cityTag.closest('li').addClass('active');
+                    }
+                }
+                else
+                {
+
+                }
 
             }
+        },
+
+        onClose : function()
+        {
+            // 팝업이 닫힐때 열려있는 탭 닫기.
+            var listContainer = ReactDOM.findDOMNode( this.refs['list-location'] );
+            $(listContainer).find( '.siList').removeClass('active').find('ul').height(0);
         },
 
         render : function()
@@ -96,8 +133,8 @@ var PopupSelectLocation = React.createClass(
                     var bGuListExist = (typeof info.guList != 'undefined')?true:false;
                     return(
                         <li className="siList" key={idx} >
-                            <div className="select" onClick={self.onBtnCity}>
-                                <a href="javascript:void(0);" className="city">{info.si}
+                            <div className="select" >
+                                <a href="javascript:void(0);" className="city" onClick={self.onBtnCity}>{info.si}
                                     { (info.guList.length >1 )&& <i className="fa fa-caret-down"></i>}
                                 </a>
                             </div>
@@ -118,7 +155,7 @@ var PopupSelectLocation = React.createClass(
                                 <h3>지역설정</h3>
                                 <a className="btn-location-close" href="javascript:void(0);" onClick={UI.closePopup.bind(self, self)}>닫기</a>
                             </div>
-                            <div className="list-location">
+                            <div className="list-location" ref="list-location">
                                 <ul>
                                     { self.state.cityList.length != 0 && cityListLayout()}
                                 </ul>

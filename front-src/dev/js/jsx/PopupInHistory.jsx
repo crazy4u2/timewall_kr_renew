@@ -13,13 +13,14 @@ var PopupInHistory = React.createClass({
     },
     goReJoin : function() {
         UI.closePopup( this );
-
+        var _this = this;
         var _$modal = jQuery('.modal.modal-phone-cert');
 
         _$modal.find('.message .text-type2').text(this._phone);
         _$modal.find('.inp-type1').text(this._phone);
-
-        UI.openPopup('POP_REJOIN_CERT', this._phone);
+        setTimeout(function(){
+            UI.openPopup('POP_REJOIN_CERT', _this._phone);
+        },300);
     },
     goLogin : function() {
         UI.closePopup( this );
