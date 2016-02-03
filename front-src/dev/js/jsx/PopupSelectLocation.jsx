@@ -1,5 +1,6 @@
 var PopupSelectLocation = React.createClass(
     {
+        callback : null,
         getInitialState: function ()
         {
             var state =
@@ -47,6 +48,7 @@ var PopupSelectLocation = React.createClass(
                         cityList.push({si:list[i].si, guList:[{gu:list[i].gu, idx:list[i].idx, addr:list[i].addr}]});
                     }
                 }
+                console.log( 'citylist : ', cityList );
                 self.setState( {cityList:cityList});
 
             });
@@ -59,48 +61,9 @@ var PopupSelectLocation = React.createClass(
 
         },
 
-        onShow : function()
+        onShow : function( callback )
         {
-
-        },
-
-        onBtnCity : function( event )
-        {
-            var cityTag = ReactDOM.findDOMNode( event.target );
-            var $cityTag = $(cityTag);
-
-            if( $cityTag.parents('li').find('.sub li').size() > 0 )
-            {
-                if( !$cityTag.attr('class')  )
-                    $cityTag = $cityTag.closest('a');
-
-                if( !$cityTag.attr('class').match('state') )
-                {
-                    if( $cityTag.closest('li').attr('class').match('active') ) // 아코디언 열려있을 경우
-                    {
-                        $cityTag.closest('li').removeClass('active').find('ul').height(0);
-                    }
-                    else // 닫혀 있을경우
-                    {
-                        // 기존 열려있던 탭 닫기
-                        $('.list-location').find('.active').find('ul').height(0).end().removeClass('active');
-
-                        var cntLi = $cityTag.closest('li').find('li').size();
-                        if( cntLi % 2 == 0 )
-                            cntLi = cntLi / 2;
-                        else
-                            cntLi = Math.floor( cntLi / 2 ) + 1;
-
-                        $cityTag.closest('li').find('ul').height( ( $cityTag.closest('li').find('li').outerHeight()) * cntLi );
-                        $cityTag.closest('li').addClass('active');
-                    }
-                }
-                else
-                {
-
-                }
-
-            }
+            this.callback = callback;
         },
 
         onClose : function()
@@ -110,17 +73,47 @@ var PopupSelectLocation = React.createClass(
             $(listContainer).find( '.siList').removeClass('active').find('ul').height(0);
         },
 
+        onClickDistrict : function( city, district, event )
+        {
+            var cityName = this.state.cityList[city].si;
+            var districtName = this.state.cityList[city].guList[district].gu;
+            var region = cityName + ' ' + districtName;
+            if( cityName == districtName )
+                region = cityName;
+
+            UI.closePopup( this );
+            if( typeof this.callback == 'function' )
+                this.callback( region );
+        },
+
+        onClickCity : function( city, event )
+        {
+            var $city = $( ReactDOM.findDOMNode( this.refs['city_'+city] ) );
+            var $list = $( ReactDOM.findDOMNode( this.refs['list-location']) );
+
+            if( !$city.attr('class').match('active') )
+                $list.find('.active').find('ul').height(0).end().removeClass('active');
+
+            $city.toggleClass( ' active' );
+
+            var districtHeight = 0;
+            if( $city.attr('class').match('active') ) // active 면 아래 '구' 부분을 보여준다.
+                districtHeight = Math.round( this.state.cityList[city].guList.length / 2 ) * 40; // li 높이 40px;
+
+            $city.find( 'ul ').height( districtHeight );
+        },
+
         render : function()
         {
             var self = this;
 
-            var guListLayout = function( idx )
+            var guListLayout = function( cityIndex )
             {
-                return self.state.cityList[idx].guList.map( function( info, idx )
+                return self.state.cityList[cityIndex].guList.map( function( info, guIndex )
                 {
                     return (
-                        <li key={idx}>
-                            { (info.gu.length > 1 ) && <a href="javascript:void(0);" className="state">{info.gu}</a>}
+                        <li key={guIndex} onClick={self.onClickDistrict.bind( null, cityIndex, guIndex )}>
+                            <a href="javascript:void(0);" className="state">{info.gu}</a>
                         </li>
                     );
                 });
@@ -132,10 +125,10 @@ var PopupSelectLocation = React.createClass(
                 {
                     var bGuListExist = (typeof info.guList != 'undefined')?true:false;
                     return(
-                        <li className="siList" key={idx} >
-                            <div className="select" >
-                                <a href="javascript:void(0);" className="city" onClick={self.onBtnCity}>{info.si}
-                                    { (info.guList.length >1 )&& <i className="fa fa-caret-down"></i>}
+                        <li className="siList" key={idx} ref={"city_"+idx}>
+                            <div className="select" onClick={self.onClickCity.bind(null, idx)}>
+                                <a href="javascript:void(0);" className="city" >{info.si}
+                                    <i className="fa fa-caret-down"></i>
                                 </a>
                             </div>
                             <ul className="sub">

@@ -133,10 +133,10 @@ var PageJoin = React.createClass({
         });
     },
     showLocation : function() {
-        UI.openPopup('POP_SELECT_LOCATION');
+        UI.openPopup('POP_SELECT_LOCATION', this.setLocation );
     },
-    setLocation : function( loc ) {
-
+    setLocation : function( address ) {
+        console.log( address );
     },
     goJoin : function() {
         var _this = this;

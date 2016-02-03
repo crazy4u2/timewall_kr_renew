@@ -19,7 +19,7 @@ var UI = (function()
     var _app;
 
     //var _defaultPage = 'SHOP_LIST'; // 취향과 상황에 맞게 설정.....
-    var _defaultPage = 'JOIN';
+    var _defaultPage = 'NOTICE';
     var _firstShowFlagList = {};
 
 
