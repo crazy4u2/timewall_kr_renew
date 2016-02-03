@@ -20,8 +20,11 @@ var PageLoginComplete = React.createClass({
     },
     setUserIdx : function () {
         var _this = this;
-        jQuery.localStorage.set('userIdx',_this._userIdx);
+        jQuery.localStorage.set('userIdx', _this._userIdx);
         BRIDGE.userLogined(_this._userIdx);
+        /*setTimeout(function(){
+            UI.slidePage('SHOP-LIST');
+        },200);*/
     },
     render : function () {
 

@@ -139,7 +139,118 @@ var PageJoin = React.createClass({
 
     },
     goJoin : function() {
+        var _this = this;
+        var _bSaveMember=twCommonUi.checkEnableJoinButton({
+            'phone':jQuery('.cert .phone-join').val(),
+            'auth_num':_this.authNum,
+            'password':jQuery('.inp-type1 .password-join').val(),
+            'rePassword':jQuery('.inp-type1 .re-password-join').val(),
+            'sex':_this.sex,
+            'year':jQuery('#sel1').val(),
+            'month':jQuery('#sel2').val(),
+            'day':jQuery('#sel3').val(),
+            'area':jQuery('.region-join input').val()
+        },jQuery('.twMember_join .btn-start'));
 
+        if(_bSaveMember.bResult) {
+            //입력 내용 및 인증을 거쳤다면 회원 가입 절차를 밟는다.
+
+            var _password = jQuery('.password-join').val(),
+                _rePassword = jQuery('.re-password-join').val(),
+                _phone = jQuery('.phone-join').val(),
+                _year = jQuery('#sel1 option:selected').val(),
+                _month = jQuery('#sel2 option:selected').val(),
+                _day = jQuery('#sel3 option:selected').val(),
+                _sex = _this.sex,
+                _addr = jQuery('.region-join input').val(),
+                _os_type = 0,
+                _url = '',
+                _data = {};
+
+            if (device.checkDeviceType() == 'android') {
+                _os_type = 1;
+            } else if (device.checkDeviceType() == 'ios') {
+                _os_type = 2;
+            } else {
+                _os_type = 0;
+            }
+
+            //_webBridge.osType = _os_type;
+
+            BRIDGE.getUserInfo( function( userInfo ) {
+                BRIDGE.getDeviceInfo( function( deviceInfo) {
+                    /*
+                     * user.userState status value
+                     * 0 : 임시회원 ,1: 정상회원, -1 : 탈퇴 요청, -2: 탈퇴 완료 (계정 삭제), -3: 블럭 , -4 : 임시회원 데이터이전 완료
+                     */
+                    var _data_idx = {
+                        u_idx: userInfo.INDEX
+                    };
+
+                    MODEL.get(API.USER_INFO, _data_idx, function(ret) { // 회원정보 조회.
+                        var respData = ret.data[0];
+
+                        if(ret.success && respData.ResultCode == 1) { // 정상응답.
+                            var user = respData.ResultData.u_status;
+                            _data = {
+                                'pwd': _password,
+                                'pwd2': _rePassword,
+                                'phone': _phone,
+                                'birth_year': _year,
+                                'birth_month': _month,
+                                'birth_day': _day,
+                                'email': '',
+                                'sex': _sex,
+                                'addr': _addr,
+                                'device_id': deviceInfo.DEVICE_ORG_ID,
+                                'app_id': deviceInfo.APP_ORG_ID,
+                                'os_type': _os_type,
+                                'auth_idx': _this.authIdx,
+                                'auth_num': _this.authNum
+                            };
+
+                            if (user == -1 || user == 1 || user == -2 || user == -3 || user == -4 || !user){
+                                _url = API.JOIN;
+                            } else if (user ==0) {
+                                _url = API.TEMP_USER_LOGIN;
+                                _data["u_idx"] = userInfo.INDEX
+                            }
+
+                            console.log(
+                                'phone=', _this.phone,
+                                '_password=', jQuery('.password-join').val(),
+                                '_rePassword=', jQuery('.re-password-join').val(),
+                                '_year=', jQuery('#sel1 option:selected').val(),
+                                '_month=', jQuery('#sel2 option:selected').val(),
+                                '_day=', jQuery('#sel3 option:selected').val(),
+                                '_sex=', _this.sex,
+                                '_addr=', jQuery('.region-join input').val(),
+                                '_os_type=', _os_type,
+                                'auth_idx=', _this.authIdx,
+                                'authNum=', _this.authNum
+                            );
+
+                            MODEL.get(_url, _data, function(ret) {
+                                var respData = ret.data[0];
+                                console.log(respData);
+                                console.log(ret);
+
+                                if(ret.success && respData.ResultCode == 1) { // 정상응답. 로그인 성공
+                                    var u_idx = respData.u_idx;
+                                    UI.slidePage('JOIN_COMPLETE', u_idx);
+
+                                } else if (ret.success && respData.ResultCode == 1) { // 파라미터오류인데 보통 인증번호를 입력하지 않을 경우 나타남.
+                                    jQuery('error-log').append('<p class="comment notice">* 인증번호를 입력하세요.</p>');
+                                }
+                            });
+                        }
+                    });
+
+                });
+            });
+        }   else {
+            //입력 내용 및 인증이 제대로 통과되지 않았다면 해당 메세지 및 포커스 이동
+        }
     },
     render : function() {
         return (
@@ -198,7 +309,7 @@ var PageJoin = React.createClass({
                                 </div>
                             </div>
 
-                            <div className="inp-type1 region">
+                            <div className="inp-type1 region region-join">
                                 <a href="javascript:void(0);" onClick={this.showLocation}>&nbsp;</a>
                                 <input type="text" placeholder="* 거주지역설정" value="강원도 강릉시" />
                             </div>
