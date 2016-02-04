@@ -39,7 +39,6 @@ var PageContainer = React.createClass(
                     <PageJoin pageName="JOIN" />
                     <PageLogin pageName="LOGIN" />
                     <PageSearchPassword pageName="SEARCH_PASSWORD" />
-                    <PageNotice pageName="NOTICE" />
                 </div>
 //            </div>
         );

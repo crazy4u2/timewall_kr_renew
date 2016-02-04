@@ -1,19 +1,18 @@
 var PageNotice = React.createClass({
     loading : false,
-    url : API.NOTICE_LIST,
     contextTypes : {
         viewSize : React.PropTypes.object
     },
     getInitialState : function() {
-        return { page:1, list:[''], 'searchText' : '' };
+        return { page:1, list:[''], 'searchText' : '', totalPage:1 };
     },
     componentDidMount : function() {
         UI.registerPage( this.props.pageName, this );
     },
-    getNoticeList : function(_data) {
+    getNoticeList : function(_data, callback) {
         var _this = this;
 
-        MODEL.get(_this.url, _data, function(ret) {
+        MODEL.get(API.NOTICE_LIST, _data, function(ret) {
             var respData = ret.data[0];
             if(ret.success && respData.ResultCode == 1) {
                 var list = respData.ResultData,
@@ -26,22 +25,62 @@ var PageNotice = React.createClass({
 
                 _this.loading = false;
                 callback(result);
+            } else { // 오료
+                alert( '오류[ResultCode :'+ret.data[0].ResultCode+']' );
+                console.log( '오류[ResultCode :', ret.data[0].ResultCode,']' );
+                _this.loading = false;
+                callback( null );
             }
+        });
+    },
+    onScrollEnd : function() {
+        var _this = this;
+
+        if(_this.loading) {
+            return;
+        }
+
+        if (_this.state.page >= _this.state.totalPage) {
+            return;
+        }
+        _data = {
+            page : _this.state.page + 1,
+            searchText : _this.state.searchText
+        };
+        this.getNoticeList( _data, function( ret ) {
+            if( ret == null ) // 로딩 실패
+                return;
+
+            var changingState = {
+                totalPage : ret.totalPage,
+                list : _this.state.list.concat(ret.list),
+                page : _this.state.page + 1
+            };
+            _this.setState( changingState );
         });
     },
     onShow : function() {
         var _this = this;
+        _data = {
+            page : _this.state.page,
+            searchText : _this.state.searchText
+        };
+        this.getNoticeList( _data, function( ret ) {
+            if( ret == null ) // 로딩 실패
+                return;
+
+            var changingState = {
+                totalPage : ret.totalPage,
+                list : ret.list
+            };
+            _this.setState( changingState );
+        });
 
         jQuery('.twNotice .visibleList').css({
             'height':jQuery(window).height() - jQuery('.header').height()
         });
 
-        _data = {
-            page : _this.state.page,
-            searchText : _this.state.searchText
-        };
-
-        jQuery(document.body).on('tap', '.accordion-title', function(e){
+        jQuery(document.body).on('click', '.accordion-title', function(e){
             var _$this=jQuery(this);
             var _$accordionInfoView = _$this.next('.info-view');
             var _$accordionHeight = _$accordionInfoView.children('.info-view-inner').height();
@@ -62,9 +101,20 @@ var PageNotice = React.createClass({
             e.stopImmediatePropagation();
         });
     },
+    componentDidUpdate : function () {
+        var _this = this;
+        var noticeListContainer = ReactDOM.findDOMNode(this.refs['noticeListContainer']);
+        jQuery(noticeListContainer).unbind( 'scroll').bind( 'scroll', function() {
 
+            var _$this = jQuery(this);
+            if( _$this.scrollTop() + _$this.innerHeight() >= _$this[0].scrollHeight ) {
+                console.log('스크롤 진입');
+                _this.onScrollEnd();
+            }
+        });
+    },
     render : function() {
-        var _this=this;
+        var _this=this,
         createItem = function (noticeList,idx) {
             console.log(noticeList);
             var _rownum = null,
@@ -106,13 +156,13 @@ var PageNotice = React.createClass({
         };
 
         var _contents=null;
-        _contents=<NoticeList />;
+        _contents=<PageNotice />;
 
         return (
             <div className="page page-notice" style={this.context.viewSize}>
                 <PageHeader title="공지사항" />
-                <PageContents className="contents notice-list twNotice">
-                    <ul style={scrollEnableProps} className="visibleList">
+                <PageContents className="contents notice-list twNotice" onScrollEnd={this.onScrollEnd} >
+                    <ul style={scrollEnableProps} className="visibleList" ref="noticeListContainer">
                         {list}
                         {empty}
                     </ul>
@@ -128,8 +178,10 @@ var NoticeListEmpty = React.createClass({
         _contentsEmpty = <NoticeListEmpty />;
 
         return (
-            <li className="no-list">
+            <li className="no-data">
+                <div className="no-data-ment">
                 공지사항이 없습니다.
+                </div>
             </li>
         )
     }

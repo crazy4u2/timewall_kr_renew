@@ -1,26 +1,19 @@
-var PageSettings = React.createClass(
-{
-    getInitialState : function()
-    {
-        var state =
-        {
+var PageSettings = React.createClass({
+    contextTypes : {
+        viewSize : React.PropTypes.object
+    },
+    getInitialState : function() {
+        var state = {
 
         };
         return state;
     },
 
-    contextTypes :
-    {
-        viewSize : React.PropTypes.object
-    },
-
-    componentDidMount : function()
-    {
+    componentDidMount : function() {
         UI.registerPage( this.props.pageName, this );
     },
 
-    render : function()
-    {
+    render : function() {
         return (
             <div className="page page-settings" style={this.context.viewSize}>
                 <PageHeader title="환경설정" />
