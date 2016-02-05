@@ -111,7 +111,11 @@ var PageJoin = React.createClass({
                 /***************
                  * set month
                  **************/
-                twMember.setSelectMonth(twMember.getCurrentDate().nowMonth,jQuery('#sel2'));
+                jQuery('#sel2, #sel3').empty();
+                setTimeout(function(){
+                    twMember.setSelectMonth(twMember.getCurrentDate().nowMonth,jQuery('#sel2'));
+                },200);
+
             } else {
                 jQuery('#sel2').empty();
             }
@@ -311,7 +315,7 @@ var PageJoin = React.createClass({
 
                             <div className="inp-type1 region region-join">
                                 <a href="javascript:void(0);" onClick={this.showLocation}>&nbsp;</a>
-                                <input type="text" placeholder="* 거주지역설정" value="강원도 강릉시" />
+                                <input type="text" placeholder="* 거주지역설정" value="" />
                             </div>
 
                         </div>

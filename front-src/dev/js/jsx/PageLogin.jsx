@@ -138,6 +138,7 @@ var PageLogin = React.createClass({
                                 console.log(ret);
                                 if(ret.success && respData.ResultCode == 1) { // 정상응답. 로그인 성공
                                     var u_idx = respData.u_idx;
+                                    BRIDGE.userLogined( u_idx );
                                     UI.slidePage('LOGIN_COMPLETE', u_idx);
 
                                 } else if (ret.success && respData.ResultCode == -40000) { // 가입정보 없음.

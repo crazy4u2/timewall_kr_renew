@@ -17,7 +17,6 @@ DOM 대략 적인 구조
         <Alert />
         <Confirm />
  */
-
 var App = React.createClass(
 {
     getInitialState : function()

@@ -3,8 +3,8 @@
  */
 var CONF =
 {
-
-
+    defaultPage : 'BOOKMARK',
+    userIndex : 295
 
 
 

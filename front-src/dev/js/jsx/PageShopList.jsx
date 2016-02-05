@@ -36,7 +36,7 @@ var PageShopList = React.createClass(
         {
             if( ret.success )
             {
-                console.log( 'list : ', ret.data[0].ResultData );
+                //console.log( 'list : ', ret.data[0].ResultData );
                 if( ret.data[0].ResultCode == 1 )
                 {
                     var list = ret.data[0].ResultData;
@@ -540,7 +540,7 @@ var ShopList = React.createClass(
             <div className="shoplist-shoplist-container" ref="shoplistContainer">
                 { this.props.list.length == 0 && emptyLayout() }
                 { this.props.list.length != 0 && listLayout() }
-                <div className="shoplist-cover" ref="shoplist-cover" onTouchStart={self.onTouchStart}></div>
+                <div className="shoplist-cover" ref="shoplist-cover" onTouchStart={self.onTouchStart} style={{display:'none'}}></div>
             </div>
         );
     }

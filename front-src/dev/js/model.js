@@ -102,98 +102,199 @@ var MODEL = (function()
         }
 
         $.ajax(
+            {
+                type : 'POST',
+                url : url,
+                data : param,
+                dataType : 'json',
+                success : function( data )
+                {
+                    if( typeof callback == 'function' )
+                    {
+                        var ret = {
+                            success : true,
+                            error : 0,
+                            data : data
+                        };
+                        callback( ret );
+                    }
+
+                },
+                error : function( xhr, status, error )
+                {
+                    if( xhr.status == 500 )
+                    {
+                        var ret = {
+                            success : false,
+                            error : xhr.status,
+                            data : null
+                        };
+                        if( typeof callback == 'function' )
+                            callback( ret );
+
+                        alert( '서버통신 오류[500] 콘솔 확인: ' + url );
+                        console.log( '==================================================' );
+                        console.log( '[서버통신 500 오류]' );
+                        console.log( '      URL : ', url );
+                        console.log( '      파라미터 : ', param );
+                        console.log( '==================================================' );
+                        return;
+                    }
+                    else if( xhr.status == 404 )
+                    {
+                        var ret = {
+                            success : false,
+                            error : xhr.status,
+                            data : null
+                        };
+                        if( typeof callback == 'function' )
+                            callback( ret );
+
+                        alert( '서버통신 오류[404] 콘솔확인 : ' + url );
+                        console.log( '==================================================' );
+                        console.log( '[서버통신 404 오류] ' );
+                        console.log( '      URL :', url );
+                        console.log( '==================================================' );
+                        return;
+                    }
+                    else if( xhr.status == 400 )
+                    {
+                        var ret = {
+                            success : false,
+                            error : xhr.status,
+                            data : null
+                        };
+                        if( typeof callback == 'function' )
+                            callback( ret );
+
+                        alert( '서버통신 오류[400] 콘솔확인 : ' + url );
+                        console.log( '==================================================' );
+                        console.log( '[서버통신 400 오류] ' );
+                        console.log( '      URL :', url );
+                        console.log( '      파라미터 : ', param );
+                        console.log( '==================================================' );
+                        return;
+                    }
+
+                    // 그 외의 오류는 네트워크 문제라 판단하고 재시도 3회 후 얼럿 출력.
+                    errCnt++;
+                    if( errCnt >= 3 )
+                    {
+                        console.log( '[서버통신 오류 3회] url:', url );
+                        console.log( '      => param :', param, 'status :', status, 'error :', error );
+                        console.log( 'xhr : ', xhr );
+                        alert( '서버로 부터 데이터를 받아오지 못했습니다. 네트워크 상태를 확인 후 다시 시도해 주세요\n'+url );
+                        errCnt = 0;
+                    }
+                    _get( url, param, callback, errCnt );
+                },
+                timeout : 5000 // 통신 시간초과 설정.
+            });
+    }
+
+    function _getJson( url, callback, errorCnt )
+    {
+        if( typeof errCnt == 'undefined' )
         {
-            type : 'POST',
-            url : url,
-            data : param,
-            dataType : 'json',
-            success : function( data )
+            errCnt = 0;
+        }
+
+        $.ajax(
             {
-                if( typeof callback == 'function' )
+                dataType : 'json',
+                url : url,
+                data : {},
+                success : function( data )
                 {
-                    var ret = {
-                        success : true,
-                        error : 0,
-                        data : data
-                    };
-                    callback( ret );
-                }
-
-            },
-            error : function( xhr, status, error )
-            {
-                if( xhr.status == 500 )
-                {
-                    var ret = {
-                        success : false,
-                        error : xhr.status,
-                        data : null
-                    };
                     if( typeof callback == 'function' )
+                    {
+                        var ret = {
+                            success : true,
+                            error : 0,
+                            data : data
+                        };
                         callback( ret );
+                    }
 
-                    alert( '서버통신 오류[500] 콘솔 확인: ' + url );
-                    console.log( '==================================================' );
-                    console.log( '[서버통신 500 오류]' );
-                    console.log( '      URL : ', url );
-                    console.log( '      파라미터 : ', param );
-                    console.log( '==================================================' );
-                    return;
-                }
-                else if( xhr.status == 404 )
+                },
+                error : function( xhr, status, error )
                 {
-                    var ret = {
-                        success : false,
-                        error : xhr.status,
-                        data : null
-                    };
-                    if( typeof callback == 'function' )
-                        callback( ret );
+                    if( xhr.status == 500 )
+                    {
+                        var ret = {
+                            success : false,
+                            error : xhr.status,
+                            data : null
+                        };
+                        if( typeof callback == 'function' )
+                            callback( ret );
 
-                    alert( '서버통신 오류[404] 콘솔확인 : ' + url );
-                    console.log( '==================================================' );
-                    console.log( '[서버통신 404 오류] ' );
-                    console.log( '      URL :', url );
-                    console.log( '==================================================' );
-                    return;
-                }
-                else if( xhr.status == 400 )
-                {
-                    var ret = {
-                        success : false,
-                        error : xhr.status,
-                        data : null
-                    };
-                    if( typeof callback == 'function' )
-                        callback( ret );
+                        alert( '서버통신 오류[500] 콘솔 확인: ' + url );
+                        console.log( '==================================================' );
+                        console.log( '[서버통신 500 오류]' );
+                        console.log( '      URL : ', url );
+                        console.log( '      파라미터 : ', param );
+                        console.log( '==================================================' );
+                        return;
+                    }
+                    else if( xhr.status == 404 )
+                    {
+                        var ret = {
+                            success : false,
+                            error : xhr.status,
+                            data : null
+                        };
+                        if( typeof callback == 'function' )
+                            callback( ret );
 
-                    alert( '서버통신 오류[400] 콘솔확인 : ' + url );
-                    console.log( '==================================================' );
-                    console.log( '[서버통신 400 오류] ' );
-                    console.log( '      URL :', url );
-                    console.log( '      파라미터 : ', param );
-                    console.log( '==================================================' );
-                    return;
-                }
+                        alert( '서버통신 오류[404] 콘솔확인 : ' + url );
+                        console.log( '==================================================' );
+                        console.log( '[서버통신 404 오류] ' );
+                        console.log( '      URL :', url );
+                        console.log( '==================================================' );
+                        return;
+                    }
+                    else if( xhr.status == 400 )
+                    {
+                        var ret = {
+                            success : false,
+                            error : xhr.status,
+                            data : null
+                        };
+                        if( typeof callback == 'function' )
+                            callback( ret );
 
-                // 그 외의 오류는 네트워크 문제라 판단하고 재시도 3회 후 얼럿 출력.
-                errCnt++;
-                if( errCnt >= 3 )
-                {
-                    console.log( '[서버통신 오류 3회] url:', url );
-                    console.log( '      => param :', param, 'status :', status, 'error :', error );
-                    console.log( 'xhr : ', xhr );
-                    alert( '서버로 부터 데이터를 받아오지 못했습니다. 네트워크 상태를 확인 후 다시 시도해 주세요\n'+url );
-                    errCnt = 0;
-                }
-                _get( url, param, callback, errCnt );
-            },
-            timeout : 5000 // 통신 시간초과 설정.
-        });
+                        alert( '서버통신 오류[400] 콘솔확인 : ' + url );
+                        console.log( '==================================================' );
+                        console.log( '[서버통신 400 오류] ' );
+                        console.log( '      URL :', url );
+                        console.log( '      파라미터 : ', param );
+                        console.log( '==================================================' );
+                        return;
+                    }
+
+                    // 그 외의 오류는 네트워크 문제라 판단하고 재시도 3회 후 얼럿 출력.
+                    errCnt++;
+                    if( errCnt >= 3 )
+                    {
+                        console.log( '[서버통신 오류 3회] url:', url );
+                        console.log( '      => param :', param, 'status :', status, 'error :', error );
+                        console.log( 'xhr : ', xhr );
+                        alert( '서버로 부터 데이터를 받아오지 못했습니다. 네트워크 상태를 확인 후 다시 시도해 주세요\n'+url );
+                        errCnt = 0;
+                    }
+                    _get( url, param, callback, errCnt );
+                },
+                timeout : 5000 // 통신 시간초과 설정.
+
+            });
+
+
     }
 
     return {
-        get : _get
+        get : _get,
+        getJson : _getJson
     }
 }());
 
@@ -258,28 +359,29 @@ var USER = (function()
 
     function _refresh( callback )
     {
-        if( _info.index == -1 )
-        {
-            if( typeof callback == 'function' )
-                callback();
-        }
-        else
-        {
-            var param = { u_idx : _info.index };
-            MODEL.get( API.USER_INFO, param, function( ret )
-            {
-                if( ret.success )
-                {
-                    if( ret.data[0].ResultCode == 1 )
-                        _setUserData( ret.data[0].ResultData[0] );
-                    else
-                        alert( '[잘못된 유저정보] : ResultCode : '+ret.data.ResultCode );
-
-                    if( typeof callback == 'function' )
-                        callback();
-                }
-            });
-        }
+        //if( _info.index == -1 )
+        //{
+        //    if( typeof callback == 'function' )
+        //        callback();
+        //}
+        //else
+        //{
+        //    var param = { u_idx : _info.index };
+        //    MODEL.get( API.USER_INFO, param, function( ret )
+        //    {
+        //        if( ret.success )
+        //        {
+        //            if( ret.data[0].ResultCode == 1 )
+        //                _setUserData( ret.data[0].ResultData[0] );
+        //            else
+        //                alert( '[잘못된 유저정보] : ResultCode : '+ret.data.ResultCode );
+        //
+        //            if( typeof callback == 'function' )
+        //                callback();
+        //        }
+        //    });
+        //}
+        _setUserInfo( callback );
     }
 
     return {
@@ -327,12 +429,14 @@ var GPS = (function()
         {
             if( status == google.maps.GeocoderStatus.OK )
             {
-                console.log( '지역명 확인결과 : ', results );
+                //console.log( '지역명 확인결과 : ', results );
                 if( results[0] )
                 {
                     var ret = { success:true, regionName:results[0].address_components[1].short_name };
                     callback( ret );
                 }
+                else
+                    callback( { success:false, regionName:''} );
             }
             else
             {
@@ -346,11 +450,32 @@ var GPS = (function()
         _getRegionName( GPS.lati, GPS.longi, callback );
     }
 
+    function _getLocationFromAddress( address, callback )
+    {
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'address':address}, function( result, status )
+        {
+            if( status == google.maps.GeocoderStatus.OK )
+            {
+                if( result[0] )
+                {
+                    var ret = { success:true, loc:{lati:result[0].geometry.location.lat(), longi:result[0].geometry.location.lng()}}
+                    callback( ret );
+                }
+                else
+                    callback( { success:false, loc:{lati:0,longi:0}} );
+            }
+            else
+                callback( { success:false, loc:{lati:0,longi:0}} );
+        });
+    }
+
     return {
         lati : _lati,
         longi :_longi,
         getRegionName : _getRegionName,
         getCurrentRegionName : _getCurrentRegionName,
+        getLocationFromAddress : _getLocationFromAddress,
         init :_init
     }
 

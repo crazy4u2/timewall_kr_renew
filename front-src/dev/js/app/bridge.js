@@ -565,7 +565,7 @@
             {
                 USER_INFO :
                 {
-                    INDEX : 285, // 1:로그인 유저, 285:임시가입 유저
+                    INDEX : CONF.userIndex, // 1:로그인 유저, 285:임시가입 유저
                     ID : 'nicecue',
                     STATE : 0, // 0:임시, 1:가입회원, -1:탈퇴요청중, -2:탈퇴완료, -3:계정블럭, -4:임시회원 데이터이전완료
                     BIRTHDAY :
@@ -726,10 +726,11 @@
             location.href = '#/shop-list';
         }
 
-        function userLogined( userInfo )
+        function userLogined( userIndex )
         {
-            console.log( '로그인 : ', userInfo );
-            location.href = '#/shop-list';
+            console.log( '로그인 : ', userIndex );
+            __TEST_DATA__.USER_INFO.INDEX = userIndex;
+            __TEST_DATA__.USER_INFO.USER_INDEX = userIndex;
         }
 
         function userUnregistered()
@@ -836,6 +837,9 @@
     // os 체크후 os 별 브릿지 인터페이스 생성
     function _init()
     {
+        _interface = _Unknown();
+        return;
+
         _deviceType = _checkDeviceType();
         if( _deviceType == 'ANDROID' )
         {

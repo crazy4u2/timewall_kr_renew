@@ -19,7 +19,7 @@ var UI = (function()
     var _app;
 
     //var _defaultPage = 'SHOP_LIST'; // 취향과 상황에 맞게 설정.....
-    var _defaultPage = 'NOTICE';
+    var _defaultPage = CONF.defaultPage;
     var _firstShowFlagList = {};
 
 
@@ -139,18 +139,18 @@ var UI = (function()
         if( !_firstShowFlagList[pageName] )
         {
             _firstShowFlagList[pageName] = true;
-            if( typeof nextPage.onShowFirst == 'function' )
-                nextPage.onShowFirst();
+            if( typeof nextPage.onShowFirst === 'function' )
+                    nextPage.onShowFirst();
         }
 
         // 페이지 슬라이딩 전 onBeforeShow 가 정의 되어 있으면 호출해준다.
-        if( typeof nextPage.onBeforeShow == 'function' )
+        if( typeof nextPage.onBeforeShow !== 'undefined' && typeof nextPage.onBeforeShow === 'function' )
         {
             nextPage.onBeforeShow( param );
         }
 
         // 페이지 슬라이딩 후 onShow 가 정의 되어 있으면 호출해준다.
-        if( typeof nextPage.onShow == 'function' )
+        if( typeof nextPage.onShow !== 'undefined' && typeof nextPage.onShow === 'function' )
         {
             setTimeout( function()
             {

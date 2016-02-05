@@ -50,7 +50,8 @@ var PageHeader = React.createClass(
 
     onBtnLocation : function()
     {
-        console.log( '위치 선택버튼' );
+        if( typeof this.props.onBtnLocation == 'function' )
+            this.props.onBtnLocation();
     },
 
     onBtnSearch : function()
@@ -116,7 +117,7 @@ var PageHeader = React.createClass(
                     { bShowBackButton && <PageHeaderPrevButton onClick={this.onBtnPrev} />}
                     { bShowMenuButton && <PageHeaderMenuButton onClick={this.onBtnMenu} />}
                     { !bShowLocationButton && <h1 className="title" onClick={this.onTitleClick}>{this.props.title}</h1>}
-                    { bShowLocationButton && <PageHeaderLocationButton onClick={this.onBtnLocation} />}
+                    { bShowLocationButton && <PageHeaderLocationButton onClick={this.onBtnLocation} region={this.props.region}/>}
                     { bShowListButton && <PageHeaderButtonShopList onClick={this.onBtnShoplist} />}
                     { bShowSearchButton && <PageHeaderSearchButton onClick={this.onBtnSearch} />}
                     { bShowMapButton && <PageHeaderMapButton onClick={this.onBtnMap} />}
@@ -164,7 +165,7 @@ var PageHeaderLocationButton = React.createClass(
         return (
             <h1 className="title" onClick={this.props.onClick} >
                 <a className="btn-title-location" href="javascript:void(0);"></a>
-                <a className="my-location" href="javascript:void(0)" >위치 확인중</a>
+                <a className="my-location" href="javascript:void(0)" >{this.props.region}</a>
             </h1>
         );
     }
