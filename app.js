@@ -197,6 +197,24 @@ app.get('/settingTutorial', function(req, res) {
     res.sendFile(path.join(__dirname + _path + 'setting_tutorial.html'))
 });
 
+//membership Start
+app.get('/membershipList', function(req, res) {
+    res.sendFile(path.join(__dirname + _path + 'membership_list.html'))
+});
+
+app.get('/membershipDetail', function(req, res) {
+    res.sendFile(path.join(__dirname + _path + 'membership_detail.html'))
+});
+
+app.get('/membershipJoin', function(req, res) {
+    res.sendFile(path.join(__dirname + _path + 'membership_join.html'))
+});
+
+app.get('/membershipNotice', function(req, res) {
+    res.sendFile(path.join(__dirname + _path + 'membership_notice.html'))
+});
+//membership End
+
 http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));
 });

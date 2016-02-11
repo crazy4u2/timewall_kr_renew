@@ -15,7 +15,6 @@ $gulim: '굴림','Gulim';
 $helvetica: 'Helvetica';
 $sans-serif: 'sans-serif';
 //@extend-elements
-//original selectors
 //input, textarea, select, button, table
 %common_font_style {
 	font-size: inherit;
@@ -23,10 +22,13 @@ $sans-serif: 'sans-serif';
 	line-height: inherit;
 	*font-size: 100%;
 }
+$header_height : 45px;  // 헤더 높이
+$shop_category_height : 89px; // 매장 카테고리 선택 메뉴 높이
 html, body{height:100%;overflow:hidden;-webkit-overflow-scrolling: none;}
 *:before, *:after {
     @include box-sizing(border-box);
 }
+html{min-height:100%;}
 body {
 	color: $common_font_color;
 	font-size: $common_font_size;
@@ -36,8 +38,7 @@ body {
   -webkit-text-size-adjust:100%;
 }
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,button,p,blockquote,th,td,input,select,textarea,header,section,article,footer,nav,aside {
-	margin: 0;
-	padding: 0;
+	margin: 0; padding: 0;
   @include box-sizing(border-box);
 	-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;user-select: none;-webkit-touch-callout: none;    
 	-webkit-text-size-adjust:none;             /* prevent webkit from resizing text to fit */
@@ -112,19 +113,9 @@ input[type="button"],input[type="submit"],input[type="reset"] {line-height: norm
 article, aside, canvas, details, embed, figcaption, figure, footer, header, hgroup, menu, nav, section ,summary,command,datalist, keygen, mark, meter, progress, rp, rt, ruby, time, wbr {display: block;}
 .fix {
   &:after {
-    content: "";
-    height: 0;
-    display: block;
-    visibility: hidden;
-    clear: both;
+    content: "";height: 0;display: block;visibility: hidden;clear: both;
   }
 }
-// * html .fix {height: 1px;}
-// .overflowHidden{
-//   overflow:hidden;-webkit-overflow-scrolling:none;
-//   body{overflow:hidden;-webkit-overflow-scrolling:none;}
-// }
-
 /*!
  *  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)

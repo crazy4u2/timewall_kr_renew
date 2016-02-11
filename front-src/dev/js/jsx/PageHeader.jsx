@@ -56,7 +56,7 @@ var PageHeader = React.createClass(
 
     onBtnSearch : function()
     {
-        console.log( '검색 버튼 클릭' );
+        UI.slidePage( 'SHOP_SEARCH' );
     },
 
     onBtnMap : function()
@@ -106,6 +106,11 @@ var PageHeader = React.createClass(
             case 'MENU_LIST' :
                 classSuffix = 'header-shopmap';
                 bShowMenuButton = true;
+                bShowListButton = true;
+                break;
+            case  'COUPON_EXCHANGE' || 'NO-BORDER' :
+                classSuffix = 'header-no-border';
+                bShowBackButton = true;
                 bShowListButton = true;
                 break;
         }

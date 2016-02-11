@@ -35,6 +35,7 @@ var PageContainer = React.createClass(
                     <PageSettingTutorial pageName="SETTING_TUTORIAL" />
                     <PageSettingFaq pageName="SETTING_FAQ" />
                     <PageShopDetail pageName="SHOP_DETAIL" />
+                    <PageShopSearch pageName="SHOP_SEARCH" />
                     <PageShopList pageName="SHOP_LIST" />
                     <PageUseCoin pageName="USE_COIN" />
                     <PageExchangeCoin pageName="EXCHANGE_COIN" />
@@ -43,6 +44,7 @@ var PageContainer = React.createClass(
                     <PageJoin pageName="JOIN" />
                     <PageLogin pageName="LOGIN" />
                     <PageSearchPassword pageName="SEARCH_PASSWORD" />
+                    <PageCouponExchange pageName="COUPON_EXCHANGE" />
                 </div>
 //            </div>
         );
