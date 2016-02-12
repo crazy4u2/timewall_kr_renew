@@ -439,15 +439,17 @@ var CouponList = React.createClass({
 
 var CouponInfo = React.createClass({
     goCouponInfo : function() {
-
+        UI.slidePage('COUPON_EXCHANGE_INFO', this.props.info.coupon_master_idx);
+        console.log('COUPON_EXCHANGE_INFO', this.props.info.coupon_master_idx);
     },
     render : function() {
+
         var _this = this,
             _contents_coupon=null,
             _coupon_kind = {cls:'',txt:''},
             _cafe_icon = {cls:'',txt:'',bg:''},
             coupon = _this.props.info;
-
+        console.log(_this.props.info);
         if(coupon.coupon_type==1) { //할인
             _coupon_kind.cls = ' discount';
             _coupon_kind.txt = 'coupon 할인';
@@ -479,7 +481,7 @@ var CouponInfo = React.createClass({
         }
 
         return (
-            <li data-coupon-idx={_this.props.info.coupon_master_idx}>
+            <li data-coupon-idx={_this.props.info.coupon_master_idx} onClick={this.goCouponInfo}>
                 <div className="coupon-wrap fix">
                     <div className={"coupon-kind"+_coupon_kind.cls}>{_coupon_kind.txt}</div>
                     <div className="coupon-balloons">

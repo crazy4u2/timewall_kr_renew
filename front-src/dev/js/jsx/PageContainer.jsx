@@ -20,7 +20,6 @@ var PageContainer = React.createClass(
 //            <div className="page-viewer" >
                 <div className="page-container" style={{overflow:'hidden', position:'relative'}} >
                     <PageBookmark pageName="BOOKMARK" />
-                    <PageBuyCoupon pageName="BUY_COUPON" />
                     <PageDonate pageName="DONATE" />
                     <PageDonateList pageName="DONATE_LIST" />
                     <PageHistory pageName="HISTORY" />
@@ -44,6 +43,7 @@ var PageContainer = React.createClass(
                     <PageJoin pageName="JOIN" />
                     <PageLogin pageName="LOGIN" />
                     <PageSearchPassword pageName="SEARCH_PASSWORD" />
+                    <PageCouponExchangeInfo pageName="COUPON_EXCHANGE_INFO" />
                     <PageCouponExchange pageName="COUPON_EXCHANGE" />
                 </div>
 //            </div>
