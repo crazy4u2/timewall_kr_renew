@@ -3,7 +3,8 @@
  */
 // Include gulp
 var gulp = require('gulp');
-var server = require('gulp-express');
+//var server = require('gulp-express');
+var webserver = require('gulp-webserver');
 var compass = require('gulp-compass');
 var autoprefixer = require('gulp-autoprefixer');
 var jshint = require('gulp-jshint');
@@ -19,6 +20,8 @@ var path = require('path');
 var react = require('gulp-react');
 var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
+var plumber = require('gulp-plumber');
+var open = require('gulp-open');
 //var debug = require('gulp-debug');
 
 // renewal
@@ -51,10 +54,33 @@ gulp.task('serve',['index','html','jsx','styles','scripts','images'], function()
 
 });
 
+/*
 gulp.task('server', function () {
     // Start the server at the beginning of the task
     server.run(['app.js']);
 });
+*/
+
+gulp.task('server', ['watch'], function () {
+  console.log('server시작');
+  var options = {
+    uri: "http://localhost:8080/html/index.html",
+    app: 'chrome'
+  };
+  return gulp.src(release + "/")
+    .pipe(plumber({
+      errorHandler: function (error) {
+        console.log(error.message);
+        this.emit('end');
+      }}))
+    .pipe(webserver({
+      host:'127.0.0.1',
+      livereload : true,
+      port:8080
+    }))
+    .pipe(open(options));
+});
+
 
 // Html
 gulp.task('index', function() {
@@ -227,11 +253,6 @@ gulp.task( 'renewal-sass', function()
         .pipe(gulp.dest('renewal-dist/front-src/renewal/css'));
 });
 
-gulp.task( 'renewal-img', function()
-{
-
-});
-
 gulp.task( 'renewal',
     [
         //'renewal-clean',
@@ -243,10 +264,5 @@ gulp.task( 'renewal',
         'renewal-jsx-merge',
         //'renewal-watch',
         'styles'
+        //'server'
     ], function(){} );
-
-
-
-
-
-
